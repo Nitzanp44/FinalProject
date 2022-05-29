@@ -4,7 +4,7 @@ import {changeLogin,changeUser} from '../actions/index'
 import { useState } from "react";
 
 const Login = () => {
-    // const state = useSelector((state) => state.isLogin);
+
     const dispatch = useDispatch();
 
     const[user,setUser]=useState({
@@ -26,12 +26,7 @@ const Login = () => {
         e.preventDefault();
     
         console.log(user);
-        
-       /* const userToSend = {
-            Email: this.state.Email,
-            Password: this.state.Password
-          }
-          console.log(userToSend);*/
+
         axios.post('http://localhost:5000/login' ,user,
         {headers: {
             "Content-Type": "application/json",
@@ -42,8 +37,7 @@ const Login = () => {
               dispatch(changeUser(record));
               dispatch(changeLogin());
             }
-            )
-            ; }
+            ); }
     
 
     return (
@@ -51,12 +45,10 @@ const Login = () => {
             <h3>כניסה</h3>
 
             <div className="form-group">
-                {/* <label>שם משתמש</label> */}
                 <input name="Email" type="email" className="form-control" placeholder="אימייל" onChange={handlechange}/>
             </div>
 
             <div className="form-group">
-                {/* <label>סיסמא</label> */}
                 <input name="Password" type="password" className="form-control" placeholder="סיסמא" onChange={handlechange}/>
             </div>
 

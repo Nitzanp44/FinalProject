@@ -9,7 +9,6 @@ const SideBar = () =>  {
     let defaultRangeVal = 600;
     const changeRange = () => {
         let rangeVal = document.getElementById('graphRange').value;
-        // console.log(rangeVal);
         dispatch(changeView(rangeVal));
         defaultRangeVal = rangeVal;
     }
@@ -34,21 +33,6 @@ const SideBar = () =>  {
                     </li>
                 </ul>
             </div>
-
-
-   
-            {/* <div className="row mb-4">
-                <div className="col-12">
-                <div className="btn-group btn-toggle"> 
-                    <button className="btn btn-sm btn-default">5 Sec</button>
-                    <button className="btn btn-sm btn-primary active">10 Min</button>
-                </div>
-                <hr/>
-                </div>
-            </div> */}
-            {/* <div className="form-check pl-0">
-                <input className="form-check-input" type="checkbox" checked-data-toggle="toggle" data-on="10 Min" data-off="5 Sec" data-onstyle="success" data-offstyle="danger" data-size="lg"/>
-            </div> */}
         </div>
     )
 }

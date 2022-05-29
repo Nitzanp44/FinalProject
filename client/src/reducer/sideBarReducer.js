@@ -4,7 +4,6 @@ let dataGraphIntianal = {
 
     viewScale: 600,
     labels: Array(600).fill("-"),
-    // labels: Array(600).fill().map((_, i) => i+1),
     datasets: [
       {
         type: 'scatter',
@@ -29,16 +28,8 @@ let dataGraphIntianal = {
         name: "ימין",
         marker: { color: 'green' },
         y: Array(600).fill(0),
-      },
-      // {
-
-      //   label: "Minimum",
-      //   backgroundColor: "rgb(255, 165, 0)",
-      //   borderColor: "rgb(255, 165, 0)",
-      //   visible: true,
-      //   data: Array(600).fill(30)
-      // },
-    ],
+      }
+    ]
 };
 
 const dataGraph = (state = dataGraphIntianal, action) =>{
@@ -89,7 +80,3 @@ const dataGraph = (state = dataGraphIntianal, action) =>{
 }
 
 export default dataGraph;
-
-
-// (arr = []).length = len; arr.fill(0);
-// Array(end - start + 1).fill().map((_, idx) => start + idx)
