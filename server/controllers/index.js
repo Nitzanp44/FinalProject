@@ -14,12 +14,12 @@ module.exports={
 
     patientsList:(req,res)=>{
         console.log("patientsList");
-        console.log(req.body);
+        //console.log(req.body);
         Patients.find()
         .then(lst=>{
             console.log(lst);
             res.json(lst)})
-        .catch(res.json('אין מטופלים'));
+        .catch(err => res.status(400).json('Error: ' + err));
     },
 
     addPatient:(req,res)=>{
