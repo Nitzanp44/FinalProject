@@ -12,6 +12,16 @@ module.exports={
         .catch(err=>res.status(400).json('Error: ' + err));
     },
 
+    patientsList:(req,res)=>{
+        console.log("patientsList");
+        //console.log(req.body);
+        Patients.find()
+        .then(lst=>{
+            console.log(lst);
+            res.json(lst)})
+        .catch(err => res.status(400).json('Error: ' + err));
+    },
+
     addPatient:(req,res)=>{
         console.log("addPatient");
         console.log(req.body);

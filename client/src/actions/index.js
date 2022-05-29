@@ -62,3 +62,15 @@ export const changeMaximum = (newData) => {
             payload: newData
     };
 };
+
+export const changeModalShow = () => {
+    return {
+            type: "CHANGE_MODAL_SHOW"
+    };
+};
+
+export const changeCanvaslShow = () => {
+    return {
+            type: "CHANGE_CANVAS_SHOW"
+    };
+};
