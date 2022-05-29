@@ -1,12 +1,16 @@
 import { combineReducers } from "redux";
 import sideBarReducer from "./sideBarReducer";
 import isLoginReducer from "./isLoginReducer";
-import userReducer from "./userReducer"
+import userReducer from "./userReducer";
+import showCanvasRrducer from "./showCanvasReducer";
+import showModalRrducer from "./showModalReducer";
 
 const reducers = combineReducers({
     sideBar: sideBarReducer,
     isLogin: isLoginReducer,
-    user: userReducer
+    user: userReducer,
+    showCanvas: showCanvasRrducer,
+    showModal: showModalRrducer 
 });
 
 export default reducers;
