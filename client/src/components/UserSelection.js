@@ -1,13 +1,13 @@
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeModalShow } from '../actions/index';
+import { changeModalShow, changePatient } from '../actions/index';
 import axios from 'axios';
 
 
 const UserSelection = () =>  {
 
-    const stateShowCanvas = useSelector((state) => state.showCanvas);
-    const stateShowModal = useSelector((state) => state.showModal);
+    // const stateShowCanvas = useSelector((state) => state.showCanvas);
+    // const stateShowModal = useSelector((state) => state.showModal);
     const dispatch = useDispatch();
 
     let record;
@@ -27,8 +27,8 @@ const UserSelection = () =>  {
         <div>
            <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
-                {record.map((patient) =>   <button type="button" class="list-group-item list-group-item-action">{patient}</button>)}
-                <button type="button" class="btn btn-primary" variant="link" onClick={() => dispatch(changeModalShow())}>+ הוסף מטופל</button>
+                {record.map((patient) =>   <button type="button" className="list-group-item list-group-item-action" onChange={(e) => dispatch(changePatient(e.target.value))}>{patient.Name}</button>)}
+                <button type="button" className="btn btn-primary" variant="link" onClick={() => dispatch(changeModalShow())}>+ הוסף מטופל</button>
             </Offcanvas.Body>
         </div>
     )

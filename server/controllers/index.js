@@ -19,8 +19,8 @@ module.exports={
         .then(lst=>{
             console.log(lst);
             res.json(lst)})
-        .catch(res.json('אין מטופלים'));
-    },
+        .catch(err=>res.status(400).json('Error: ' + err));
+        },
 
     addPatient:(req,res)=>{
         console.log("addPatient");

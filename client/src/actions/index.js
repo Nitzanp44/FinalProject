@@ -74,3 +74,10 @@ export const changeCanvaslShow = () => {
             type: "CHANGE_CANVAS_SHOW"
     };
 };
+
+export const changePatient = (newData) => {
+    return {
+            type: "CHANGE_PATIENT",
+            payload: newData
+    };
+};
