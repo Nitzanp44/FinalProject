@@ -42,7 +42,7 @@ const AddPatient = () => {
 
     return(
         <div className='mt-5'>
-            <form class="mx-1 mx-md-4">
+            <form className="mx-1 mx-md-4">
                 {inputsArr.map((input) => 
                     <div className='d-flex flex-column'>
                         <label className="form-label text-right">{input.label}</label>

@@ -18,8 +18,8 @@ const NavigationBar = () => {
                 <nav className="navbar navbar-expand-lg navbar-light fixed-top mb-5">
                     <div className="container">
                         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-                        <button type="button" class="btn btn-link" onClick={logOut}>התנתק</button>
-                        <span class="navbar-text-primary">
+                        <button type="button" className="btn btn-link" onClick={logOut}>התנתק</button>
+                        <span className="navbar-text-primary">
                             שלום {therapist.Name} 
                             </span>
                             <ul className="navbar-nav ml-auto">

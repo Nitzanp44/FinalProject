@@ -34,6 +34,7 @@ const Login = () => {
           .then(res => {
               let record=res.data;
               console.log(res.data);
+              console.log("server post");
               dispatch(changeUser(record));
               dispatch(changeLogin());
             }
