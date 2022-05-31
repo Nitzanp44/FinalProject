@@ -18,7 +18,7 @@ const UserSelection =  () =>  {
         <div>
            <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
-                {recordList.map((patient) => <button type="button" className="list-group-item list-group-item-action">{patient.Name}</button>)}
+                {recordList.map((patient) => <button type="button" className="list-group-item list-group-item-action" onClick={() => dispatch(changeModalShow())}>{patient.Name}</button>)}
                 <button type="button" className="btn btn-primary" variant="link" onClick={() => dispatch(changeModalShow())}>+ הוסף מטופל</button>
             </Offcanvas.Body>
         </div>
