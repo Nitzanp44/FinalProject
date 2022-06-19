@@ -1,53 +1,51 @@
-// import Select from 'react-select';
-import { useDispatch } from 'react-redux';
-import { changeMaximum } from '../actions';
+import { useSelector, useDispatch } from 'react-redux';
 import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
-
-
+import { useState } from 'react';
+import CycleSetup from './CycleSetup';
+import { startPractice, IntianalCycle, updateCycle, changeMaximum } from '../actions/index';
 
 const PracticeSetup = () =>  {
+    const stateCycles = useSelector((state) => state.cycle);
+    const statePatient = useSelector((state) => state.patient);
+    const stateTherapist = useSelector((state) => state.user);
 
+    const [numCycle, setNumCycle] = useState(0);
     const dispatch = useDispatch();
 
-    const options = [0.5, 1, 1.5 ,2, 2.2 ,3, 3.5 ,4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8];
-    // const options = [
-    //     { value: '0.5'},
-    //     { value: '1'},
-    //     { value: '1.5'}
-    //   ]
+
+    const updateCycle = (val) => {
+        let intVal = parseInt(val);
+        if(Number.isInteger(intVal)){
+            if(intVal < 0){
+                setNumCycle(0);
+            } else {
+            setNumCycle(intVal);
+            dispatch(IntianalCycle(intVal));
+            }
+        } else {
+            setNumCycle(0);
+        }
+    }
+
     return (
         <div>
-            <h4>פרטי אימון:</h4>
-            <Box sx={{ maxWidth: 200 }}>
-                <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">משקולת (ק"ג)</InputLabel>
-                    <Select labelId="demo-simple-select-label" id="demo-simple-select">
-                        {options.map(option =>{return(<MenuItem value={option}>{option}</MenuItem>)})}
-                    </Select>
-                </FormControl>
-            </Box>
-            <Box sx={{ maxWidth: 200 }}>
-                <FormControl fullWidth>
-                        <TextField id="outlined-number" label="מספר מחזורים" type="number" InputProps={{inputProps: {min: 0}}}/>
-                </FormControl>
-            </Box>
-            <Box sx={{ maxWidth: 200 }}>
-                <FormControl fullWidth>
-                        <TextField id="outlined-number" label="זמן מחזור" type="number" InputProps={{inputProps: {min: 0}}}/>
-                </FormControl>
-            </Box>
+            <h4>פרטי אימון:</h4> 
             <Box sx={{ maxWidth: 200 }}>
                 <FormControl fullWidth>
                         <TextField id="outlined-number" label="עומס שריר מרבי" type="number" InputProps={{inputProps: {min: 0}}} onChange={(e) => dispatch(changeMaximum(e.target.value))}/>
                 </FormControl>
             </Box>
-            {/* <input type="number" min="0" name="muscle load" placeholder="Maximum muscle load is allowed" onChange={(e) => dispatch(changeMaximum(e.target.value))}/> */}
-
+            <Box sx={{ maxWidth: 200 }}>
+                <FormControl fullWidth>
+                        <TextField id="outlined-number" label="מספר מחזורים" type="number" InputProps={{inputProps: {min: 0, max: 10}}} onChange={(e) => updateCycle(e.target.value)}/>
+                </FormControl>
+            </Box>
+            <div className="d-flex">
+                {[...Array(numCycle)].map((x,i) => {return <CycleSetup key={i} cycleSetupKey={i}/>})}
+            </div>
+            <button type="button" className="btn btn-primary" variant="link" onClick={() => dispatch(startPractice([statePatient, stateTherapist, stateCycles]))}>התחל אימון</button>
         </div>
     )
 }

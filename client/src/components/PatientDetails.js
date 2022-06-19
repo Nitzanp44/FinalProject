@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import {changeModalShow, changeCanvaslShow} from '../actions/index';
+import {changeModalShow, changeCanvasShow, changePatient} from '../actions/index';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Modal from 'react-bootstrap/Modal';
 import UserSelection from './UserSelection';
@@ -10,6 +10,7 @@ const PatientDetails = () => {
 
   const stateShowCanvas = useSelector((state) => state.showCanvas);
   const stateShowModal = useSelector((state) => state.showModal);
+  const statePatient = useSelector((state) => state.patient);
   const dispatch = useDispatch();
 
   return (
@@ -19,10 +20,10 @@ const PatientDetails = () => {
           <MDBCard style={{ width: "22rem", marginTop: "1rem" }}>
             <MDBCardBody>
           
-              <MDBCardTitle tag="h6" sub className="mb-2 text-muted">מטופל: נועם לוי</MDBCardTitle>
-              <button type="button" className="btn btn-link" variant="link" onClick={() => dispatch(changeCanvaslShow())}>בחר מטופל </button>
+              <MDBCardTitle tag="h6" sub className="mb-2 text-muted">מטופל: {statePatient.Name}</MDBCardTitle>
+              <button type="button" className="btn btn-link" variant="link" onClick={() => dispatch(changeCanvasShow())}>בחר מטופל </button>
               
-              <Offcanvas show={stateShowCanvas} onHide={() => dispatch(changeCanvaslShow())}>
+              <Offcanvas show={stateShowCanvas} onHide={() => dispatch(changeCanvasShow())}>
                 <UserSelection/>
               </Offcanvas>
 
@@ -31,7 +32,7 @@ const PatientDetails = () => {
         </MDBContainer>
 
         {/* הוספת מטופל */}
-        <Modal className='p-4' show={stateShowModal} fullscreen={true} size={'l'} onHide={() => dispatch(changeModalShow())}>
+        <Modal show={stateShowModal} fullscreen={true} size={'l'} onHide={() => dispatch(changeModalShow())}>
           <AddPatient/>
         </Modal>
       </div>
