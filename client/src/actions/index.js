@@ -16,6 +16,14 @@ export const changeLogin = () => {
     };
 };
 
+
+export const changeData = (newData) => {
+    return {
+            type: "UPDATE_DATA",
+            payload: newData
+    };
+};
+
 export const changeDataRight = (newData) => {
     return {
             type: "DATA_RIGHT",
@@ -74,3 +82,5 @@ export const changeCanvaslShow = () => {
             type: "CHANGE_CANVAS_SHOW"
     };
 };
+
+
