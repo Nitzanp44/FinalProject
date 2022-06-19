@@ -47,6 +47,7 @@ const dataGraph = (state = dataGraphIntianal, action) =>{
         case "DATA_LEFT":{
           let copyState = cloneDeep(state);
           copyState.datasets[1].y.unshift(action.payload);
+          // copyState.datasets[1].y.[מספור].(action.payload);
           copyState.datasets[1].y.pop();
           return copyState;
         }
@@ -56,6 +57,7 @@ const dataGraph = (state = dataGraphIntianal, action) =>{
           copyState.datasets[2].y.pop();
           return copyState;
         }
+       
         case "CHANGE_VIEW_SCALE":{
           let copyState = cloneDeep(state);
           copyState.viewScale = action.payload;

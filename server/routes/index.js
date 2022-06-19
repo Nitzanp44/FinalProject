@@ -8,6 +8,6 @@ const {
   } = require('../controllers/index.js');
   router.post('/login',login);
   router.post('/addPatient',addPatient);
-  router.get('/patientsList',patientsList);
+  router.post('/patientsList',patientsList);
 
   module.exports = router;

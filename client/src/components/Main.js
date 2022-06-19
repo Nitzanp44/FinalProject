@@ -7,7 +7,7 @@ const Main = () => {
     return (
         <div className="App">
             <NavigationBar/>
-            <Page />
+            <Page/>
         </div>
     )
 }

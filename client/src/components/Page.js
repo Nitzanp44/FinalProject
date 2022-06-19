@@ -4,12 +4,11 @@ import PracticeSummary from './PracticeSummary'
 import PracticeSetup from './PracticeSetup'
 import PreviousPractice from './PreviousPractice'
 import PatientDetails from './PatientDetails';
-import { CDBContainer } from "cdbreact";
 
-const Page = ({dataGraph, setDataGraph}) =>  {
+const Page = () =>  {
  
     return (
-        <div>
+        <div className="container">
             <div className="App">
                 <div className="auth-wrapper mt-5">
                         <PatientDetails/>
