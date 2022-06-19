@@ -19,7 +19,6 @@ const App = () => {
   let login = useSelector(state => state.isLogin);
   
   ReceivingDataA();
-  //ReceivingDataB();
   return (
     <div className="App">
       {(login) ? <Main /> : <EntranceManagement/>}

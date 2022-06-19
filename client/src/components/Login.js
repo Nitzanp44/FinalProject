@@ -24,8 +24,6 @@ const Login = () => {
     function onSubmit(e){
 
         e.preventDefault();
-    
-        console.log(user);
 
         axios.post('http://localhost:5000/login' ,user,
         {headers: {
@@ -33,7 +31,6 @@ const Login = () => {
             }})
           .then(res => {
               let record=res.data;
-              console.log(res.data);
               dispatch(changeUser(record));
               dispatch(changeLogin());
             }

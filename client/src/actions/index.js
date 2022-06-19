@@ -57,6 +57,12 @@ export const changeUser = (newData) => {
             payload: newData
     };
 };
+export const changePatient = (newData) => {
+    return {
+            type: "CHANGE_PATIENT",
+            payload: newData
+    };
+};
 
 export const loggOut = () => {
     return {
@@ -77,10 +83,29 @@ export const changeModalShow = () => {
     };
 };
 
-export const changeCanvaslShow = () => {
+export const changeCanvasShow = () => {
     return {
             type: "CHANGE_CANVAS_SHOW"
     };
 };
 
+export const updateCycle = (newData) => {
+    return {
+            type: "UPDATE_CYCLE",
+            payload: newData
+    };
+};
 
+export const IntianalCycle = (newData) => {
+    return {
+            type: "INTIANAL_CYCLE_LIST",
+            payload: newData
+    };
+};
+
+export const startPractice = (newData) => {
+    return {
+            type: "START_PRACTICE",
+            payload: newData
+    };
+};

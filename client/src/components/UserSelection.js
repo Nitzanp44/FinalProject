@@ -1,36 +1,44 @@
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { useSelector, useDispatch } from 'react-redux';
-import { changeModalShow } from '../actions/index';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { changeModalShow, changePatient, changeCanvasShow } from '../actions/index';
 import axios from 'axios';
 
+const UserSelection =  () =>  {
 
-const UserSelection = () =>  {
-
-    const stateShowCanvas = useSelector((state) => state.showCanvas);
-    const stateShowModal = useSelector((state) => state.showModal);
+    const userState = useSelector((state) => state.user)
     const dispatch = useDispatch();
+    const [recordList, setRecordList] = useState([]);
+  
+    const patient = Object.assign({}, userState.Patients);
+    const therapist = {ID: userState.ID};
+    const getAnswer = async () => {
+        console.log(therapist);
+        try{
+            await axios.post('http://localhost:5000/patientsList', 
+            therapist, 
+            {headers: {
+                "Content-Type": "application/json",
+            }},
+            ).then(res => {
+                let record=res.data; 
+                setRecordList(res.data)}); 
+        } catch(err){
+            console.log('err --->', err);
+        }
+    };
+    getAnswer();
 
-    let record;
-    axios.get('http://localhost:5000/patientsList' 
-        // ,{headers: {
-        //     "Content-Type": "application/json",
-        //     }})
-          ).then(res => {
-              record=res.data;
-              console.log("userSel");
-              console.log(res.data);
-            //   dispatch(changeUser(record));
-            //   dispatch(changeLogin());
-            }
-            ); 
     return (
         <div>
            <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
-                {record.map((patient) =>   <button type="button" class="list-group-item list-group-item-action">{patient}</button>)}
-                <button type="button" class="btn btn-primary" variant="link" onClick={() => dispatch(changeModalShow())}>+ הוסף מטופל</button>
+                {recordList.map((patient) => <button type="button" className="list-group-item list-group-item-action" onClick={e=>{dispatch(changePatient(e.target.innerHTML)); dispatch(changeCanvasShow())}}>{patient.Name}</button>)}
+                <button type="button" className="btn btn-primary" variant="link" onClick={() => dispatch(changeModalShow())}>+ הוסף מטופל</button>
             </Offcanvas.Body>
         </div>
     )
 };
 export default UserSelection;
+
+//dispatch(changePatient(e.target.value))

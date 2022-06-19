@@ -6,7 +6,6 @@ const therapistsSchema = mongoose.Schema({
         Email:{ type: String, required: true },
         Phone: { type: String, required: true },
         Password: { type: String, required: true },
-        patients: {type:Array},
         created_at: Date,
         updated_at: Date
     }); 
