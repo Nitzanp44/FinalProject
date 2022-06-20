@@ -21,12 +21,8 @@ module.exports={
     },
 
     patientsList:(req,res)=>{
-        console.log("patientsList");
-        console.log(req.body);
         Patients.find({IDTherapist:req.body.ID})
         .then(lst=>{    
-            console.log(lst);
-            
             res.json(lst)})
         .catch(err => res.status(400).json('Error: ' + err));
     },
@@ -55,7 +51,7 @@ module.exports={
     choosePatient:(req,res)=>{
         console.log("choosePatient");
         console.log(req.body);
-        Patients.findOne({Name:req.body})
+        Patients.findOne({Name:req.body.Name})
         .then(patient=>{
             let patientRes = {ID: "", Name: ""};
             patientRes.ID = patient.ID;
