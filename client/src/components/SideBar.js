@@ -18,10 +18,10 @@ const SideBar = () =>  {
             <div className='sideBar d-flex'>
                 <ul className="list-group-flush">
                     <li className="list-group-item">
-                        <input className="form-check-input me-1" type="checkbox" defaultChecked={!state.datasets[1].hidden} onChange={() => dispatch(changeSideBarLeft())}/>שמאל
+                        <input className="form-check-input me-1" type="checkbox" defaultChecked={true} onChange={() => dispatch(changeSideBarLeft())}/>שמאל
                     </li>
                     <li className="list-group-item">
-                        <input className="form-check-input me-1" type="checkbox" defaultChecked={!state.datasets[2].hidden} onChange={() => dispatch(changeSideBarRight())}/>ימין
+                        <input className="form-check-input me-1" type="checkbox" defaultChecked={true} onChange={() => dispatch(changeSideBarRight())}/>ימין
                     </li>
                     <li className="list-group-item">
                         <label className="form-label">קנה מידה</label>
