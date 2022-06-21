@@ -96,10 +96,10 @@ export const updateCycle = (newData) => {
     };
 };
 
-export const IntianalCycle = (newData) => {
+export const IntianalCycle = () => {
     return {
             type: "INTIANAL_CYCLE_LIST",
-            payload: newData
+            //payload: newData
     };
 };
 
@@ -109,3 +109,11 @@ export const startPractice = (newData) => {
             payload: newData
     };
 };
+
+export const finishPractice = (newData) => {
+    return {
+            type: "FINISH_PRACTICE",
+            payload: newData
+    };
+};
+
