@@ -4,7 +4,11 @@ import createPlotlyComponent from 'react-plotly.js/factory';
 import Plotly from "plotly.js-basic-dist";
 import { CDBContainer } from "cdbreact";
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setPracticeList } from '../actions';
+import PreviousPracticeDate from './PreviousPracticeDate'
+import PreviousPracticeData from './PreviousPracticeData'
+
 
 ChartJS.register(CategoryScale, LinearScale, PointElement,LineElement, Title, Tooltip, Legend, BarElement);
 
@@ -14,30 +18,11 @@ const PreviousPractice = () =>  {
     const patientState = useSelector((state) => state.patient);
     const [recordList, setRecordList] = useState([]);
     const patient = {ID: patientState.ID};
+    const dispatch = useDispatch();
     
-    let obj = {
-    labels: [],
-    datasets: [
-        {
-            label: 'זמן אימון',
-            data: [],
-            backgroundColor: "red",
-            direction: "rtl",
-        },
-        {
-            label: '(ק"ג) משקל',
-            data: [],
-            backgroundColor: "blue",
-            direction: "rtl",
-        }, 
-    ]}
-
-    let { labels, datasets } = obj;
-    recordList.forEach(element => {
-        labels.push(element.title);
-        datasets[0].data.push(element.time);
-        datasets[1].data.push(element.kg);
-    });
+   
+    
+   
 
     const getAnswer = async () => {
         try{
@@ -47,8 +32,12 @@ const PreviousPractice = () =>  {
                 {headers: {"Content-Type": "application/json",}},
             );
             if(res.data){
-                setRecordList(res.data); 
-            }
+                dispatch(setPracticeList(res.data));
+                console.log("hey")
+                // setRecordList(res.data); 
+                 
+            };
+            
         } catch(err){
             console.log('err --->', err);
         }
@@ -57,15 +46,9 @@ const PreviousPractice = () =>  {
     getAnswer();
     
     return (
-        <div>
-            <CDBContainer>
-                <Plot data={[
-                    {type: 'bar', x: obj.labels, y: obj.datasets[0].data, name: 'זמן אימון'},
-                    {type: 'bar', x: obj.labels, y: obj.datasets[1].data, name: '(ק"ג) משקל'},
-                ]}
-                layout={ {width: 900, height: 500, title: 'אימונים קודמים'} }/>
-            </CDBContainer>
+        <div className='d-flex'>
+            <PreviousPracticeDate/>
         </div>
     )
-}
+};
 export default PreviousPractice;

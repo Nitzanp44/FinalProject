@@ -5,10 +5,12 @@ const practiceSchema = mongoose.Schema({
         IDTherapist:{ type: String, required: true, index: true },
         NumOfCycles: { type: Number},
         MuscleLoad: { type: Number},
-        Cycle: { type: Array},
-        //CycleTime: { type: Array},
-        //DataLeft: { type: Array},
-        //DataRight: { type: Array},
+        CycleList: [{
+            KG : Number,
+            Time : Number,
+            dataLeft: [{ type: Number}],
+            dataRight: [{ type: Number}]
+        }],
         created_at: Date,
         updated_at: Date
     }); 

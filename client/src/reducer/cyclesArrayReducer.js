@@ -13,7 +13,7 @@ import cloneDeep from 'lodash/cloneDeep';
             case "INTIANAL_CYCLE_LIST":{
                 let arr = cloneDeep(state);
                 arr = [];
-                arr[action.payload[0]] = action.payload[1];
+                // arr[action.payload[0]] = action.payload[1];
                 for(let i = 0; i< action.payload; i++){
                     let cycle = {
                         KG: 0,

@@ -5,17 +5,11 @@ const Practice=require('../models/practice');
 
 module.exports={
     login:(req,res)=>{
-        console.log("login");
-        console.log(req.body);
         therapists.findOne({Email:req.body.Email})
         .then(user=>{
-            console.log(user);
-            console.log("user123");
             let clientUser = {ID: "", Name: ""};
             clientUser.ID = user.ID;
             clientUser.Name = user.Name;
-            // user = Object.assign({}, clientUser);
-            console.log(clientUser);
             res.json(clientUser)})
         .catch(err=>res.status(400).json('Error: ' + err));
     },
@@ -28,19 +22,13 @@ module.exports={
     },
 
     practiceList:(req,res)=>{
-        console.log("practiceList");
-        console.log(req.body);
         Practice.find({IDPatient:req.body.ID})
-        .then(lst=>{    
-            console.log(lst);
-            
+        .then(lst=>{                
             res.json(lst)})
         .catch(err => res.status(400).json('Error: ' + err));
     },
 
     addPatient:(req,res)=>{
-        console.log("addPatient");
-        console.log(req.body);
         const newPatient = new Patients(req.body);
 
         newPatient.save()
@@ -49,22 +37,17 @@ module.exports={
     },
 
     choosePatient:(req,res)=>{
-        console.log("choosePatient");
-        console.log(req.body);
         Patients.findOne({Name:req.body.Name})
         .then(patient=>{
             let patientRes = {ID: "", Name: ""};
             patientRes.ID = patient.ID;
             patientRes.Name = patient.Name;
-            console.log(patientRes);
             res.json(patientRes)})
         .catch(err=>res.status(400).json('Error: ' + err));
     },
     
     addPractice:(req,res)=>{
         
-        console.log("addPractice");
-        console.log(req.body);
         const newPractice = new Practice(req.body);
 
         newPractice.save()
