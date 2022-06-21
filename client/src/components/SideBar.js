@@ -1,17 +1,30 @@
 import { useSelector, useDispatch } from 'react-redux';
-import {changeSideBarRight, changeSideBarLeft, changeView} from '../actions/index'
+import {changeSideBarRight, changeSideBarLeft, changeView, finishPractice} from '../actions/index'
 
 const SideBar = () =>  {
 
     const state = useSelector((state) => state.sideBar);
+    const practiceState = useSelector((state) => state.sideBar);
     const dispatch = useDispatch();
 
     let defaultRangeVal = 600;
     const changeRange = () => {
         let rangeVal = document.getElementById('graphRange').value;
+        console.log(rangeVal);
         dispatch(changeView(rangeVal));
         defaultRangeVal = rangeVal;
     }
+
+    const finishPractice = () => {
+        let dataRigth=state.dataRigth;
+        let dataLeft=state.dataLeft;
+        let time=state.labels;
+        dispatch(finishPractice(dataRigth,dataLeft,time));
+    }
+
+    let currentNumCycle=1;
+    let NumOfCycles=practiceState.NumOfCycles;
+
 
     return (
         <div>
@@ -25,11 +38,18 @@ const SideBar = () =>  {
                     </li>
                     <li className="list-group-item">
                         <label className="form-label">קנה מידה</label>
-                        <input type="range" className="form-range" min="5" max="600" step="1" id="graphRange" defaultValue={defaultRangeVal} onChange={() => dispatch(changeRange())}/>
+                        <input type="range" className="form-range" min="5" max="600" step="1" id="graphRange" defaultValue={defaultRangeVal} onChange={changeRange}/>
                         <div className="d-flex justify-content-between">
                             <span>5 שניות</span>
                             <span>10 דקות</span>
                         </div>
+                    </li>
+                    {/* <li className="list-group-item">
+                        <label className="form-label">:מספר מחזורים</label>
+                        <label className="form-label">{currentNumCycle}/{NumOfCycles}</label>
+                    </li> */}
+                    <li className="list-group-item">
+                    <button type="button" className="btn btn-primary" variant="link" onClick={finishPractice}>סיום אימון</button>
                     </li>
                 </ul>
             </div>

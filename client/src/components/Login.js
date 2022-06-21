@@ -14,6 +14,7 @@ const Login = () => {
 
     
     const handlechange=e=>{
+        document.getElementById("erorrEmailOrPass").hidden=true;
         const{name,value}=e.target
         setUser({
             ...user,//spread operator 
@@ -30,11 +31,22 @@ const Login = () => {
             "Content-Type": "application/json",
             }})
           .then(res => {
+              
               let record=res.data;
               dispatch(changeUser(record));
               dispatch(changeLogin());
             }
-            ); }
+            ).catch(error => {
+                console.log(error.response.data);
+                if(error.response.data=="no user or password")
+                {
+                    document.getElementById("erorrEmailOrPass").hidden=false;
+                    document.getElementById("Email").placeholder="אימייל";
+                    document.getElementById("Email").style.outlineColor='red';
+                    document.getElementById("Password").placeholder="סיסמא";
+                    document.getElementById("Password").style.outlineColor='red';
+                }
+    }); }
     
 
     return (
@@ -42,11 +54,11 @@ const Login = () => {
             <h3>כניסה</h3>
 
             <div className="form-group">
-                <input name="Email" type="email" className="form-control" placeholder="אימייל" onChange={handlechange}/>
+                <input id="Email" name="Email" type="email" className="form-control" placeholder="אימייל" onChange={handlechange}/>
             </div>
 
             <div className="form-group">
-                <input name="Password" type="password" className="form-control" placeholder="סיסמא" onChange={handlechange}/>
+                <input id="Password" name="Password" type="password" className="form-control" placeholder="סיסמא" onChange={handlechange}/>
             </div>
 
             <div className="form-group">
@@ -56,6 +68,7 @@ const Login = () => {
                 </div>
             </div>
 
+            <p id="erorrEmailOrPass" style={{ color: "red" }} hidden={true}>שם המשתמש או הסיסמא אינם תקינים</p>
             <button type="submit" className="btn btn-primary btn-block">אישור</button>
             <p className="forgot-password text-right">
                 ?שכחת <a href="#">סיסמא</a>

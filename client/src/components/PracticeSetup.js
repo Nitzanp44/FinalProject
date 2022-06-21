@@ -45,7 +45,7 @@ const PracticeSetup = () =>  {
             <div className="d-flex">
                 {[...Array(numCycle)].map((x,i) => {return <CycleSetup key={i} cycleSetupKey={i}/>})}
             </div>
-            <button type="button" className="btn btn-primary" variant="link" onClick={() => dispatch(startPractice([statePatient, stateTherapist, stateCycles]))}>התחל אימון</button>
+            <button type="button" className="btn btn-primary" variant="link" onClick={() => dispatch(startPractice([statePatient.ID, stateTherapist.ID, stateCycles]))}>התחל אימון</button>
         </div>
     )
 }

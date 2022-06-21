@@ -7,10 +7,26 @@ module.exports={
     login:(req,res)=>{
         therapists.findOne({Email:req.body.Email})
         .then(user=>{
-            let clientUser = {ID: "", Name: ""};
-            clientUser.ID = user.ID;
-            clientUser.Name = user.Name;
-            res.json(clientUser)})
+            if(user)
+            {
+                console.log(user.Password);
+                console.log(req.body.Password);
+                if (user.Password===req.body.Password)
+                {
+                    //console.log(user);
+                    let clientUser = {ID: "", Name: ""};
+                    clientUser.ID = user.ID;
+                    clientUser.Name = user.Name;
+                    // user = Object.assign({}, clientUser);
+                   // console.log(clientUser);
+                    res.json(clientUser)
+                }}
+            else
+            {
+                console.log("erorr");
+                res.status(400).json("no user or password");
+
+            }})
         .catch(err=>res.status(400).json('Error: ' + err));
     },
 
