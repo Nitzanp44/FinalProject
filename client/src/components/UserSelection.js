@@ -15,25 +15,32 @@ const UserSelection =  () =>  {
     const getAnswer = async () => {
         console.log(therapist);
         try{
-            await axios.post('http://localhost:5000/patientsList', 
-            therapist, 
-            {headers: {
-                "Content-Type": "application/json",
-            }},
-            ).then(res => {
-                let record=res.data; 
-                setRecordList(res.data)}); 
+            let res = await axios.post(
+                'http://localhost:5000/patientsList', 
+                therapist, 
+                {headers: {"Content-Type": "application/json"}}
+            );
+            if(res.data){
+                setRecordList(res.data); 
+            } 
         } catch(err){
             console.log('err --->', err);
         }
     };
+
     getAnswer();
+
+    const handlechange = (e) => {
+        console.log(e.target.innerHTML);
+        dispatch(changePatient(e.target.innerHTML)); 
+        dispatch(changeCanvasShow())
+    };
 
     return (
         <div>
            <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
-                {recordList.map((patient) => <button type="button" className="list-group-item list-group-item-action" onClick={e=>{dispatch(changePatient(e.target.innerHTML)); dispatch(changeCanvasShow())}}>{patient.Name}</button>)}
+                {recordList.map((patient) => <button type="button" className="list-group-item list-group-item-action" onClick={handlechange}>{patient.Name}</button>)}
                 <button type="button" className="btn btn-primary" variant="link" onClick={() => dispatch(changeModalShow())}>+ הוסף מטופל</button>
             </Offcanvas.Body>
         </div>

@@ -117,3 +117,15 @@ export const finishPractice = (newData) => {
     };
 };
 
+export const setPracticeList = (newData) => {
+    return {
+            type: "INTIANAL_PRACTICE_LIST",
+            payload: newData
+    };
+};
+export const setDate = (newData) => {
+    return {
+            type: "SELECTED_DATE",
+            payload: newData
+    };
+};
