@@ -13,17 +13,22 @@ let patientIntianal = {
       switch (action.type) {
           case "CHANGE_PATIENT":{
             let patient = cloneDeep(state);
-            axios.post('http://localhost:5000/choosePatient' ,action.payload,
-        {headers: {
-            "Content-Type": "application/json",
-            }})
-          .then(res => {
-              let record=res.data;
-              patient.ID=record.ID;
-            //   patient.Email=record.Email;
-              patient.Name=record.Name;
-            }
-            ); 
+            let patientName = {Name: action.payload};
+            const getAnswer = async () => {
+              try{
+                let res = await axios.post(
+                  'http://localhost:5000/choosePatient', 
+                  patientName,
+                  {headers: {"Content-Type": "application/json"}}
+                );
+                if(res.data){
+                  patient.ID=res.data.ID;
+                  patient.Name=res.data.Name;                } 
+            } catch(err){
+                console.log('err --->', err);
+            }};
+            getAnswer();
+            console.log(patient);
             return patient;
           }
           default:

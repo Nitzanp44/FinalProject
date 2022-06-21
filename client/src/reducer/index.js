@@ -7,6 +7,8 @@ import showModalRrducer from "./showModalReducer";
 import patientRrducer from "./patientReducer";
 import cycleArrayReducer from "./cyclesArrayReducer";
 import practiceReducer from "./practiceReducer";
+import practiceArrayReducer from "./practiceArrayReducer";
+import practiceDateReducer from "./practiceDateReducer";
 
 const reducers = combineReducers({
     sideBar: sideBarReducer,
@@ -16,7 +18,9 @@ const reducers = combineReducers({
     showModal: showModalRrducer,
     patient: patientRrducer,
     cycle: cycleArrayReducer,
-    practice: practiceReducer
+    practice: practiceReducer,
+    practiceList: practiceArrayReducer,
+    practiceDate: practiceDateReducer
 });
 
 export default reducers;
