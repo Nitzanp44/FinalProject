@@ -7,13 +7,13 @@ import axios from 'axios';
 const UserSelection =  () =>  {
 
     const userState = useSelector((state) => state.user)
+    const isPatientListChangeState = useSelector((state) => state.isPatientListChange)
     const dispatch = useDispatch();
     const [recordList, setRecordList] = useState([]);
   
     const patient = Object.assign({}, userState.Patients);
     const therapist = {ID: userState.ID};
     const getAnswer = async () => {
-        console.log(therapist);
         try{
             let res = await axios.post(
                 'http://localhost:5000/patientsList', 
@@ -27,12 +27,32 @@ const UserSelection =  () =>  {
             console.log('err --->', err);
         }
     };
+    console.log('recordList --->', recordList);
 
-    getAnswer();
+    if (recordList.length == 0 || isPatientListChangeState == true){
+        getAnswer();
+    }
 
     const handlechange = (e) => {
-        console.log(e.target.innerHTML);
-        dispatch(changePatient(e.target.innerHTML)); 
+        let patient = {ID: "", Name: ""};
+        let patientName = {Name: e.target.innerHTML};
+        const getPatient = async () => {
+            try{
+            let res = await axios.post(
+                'http://localhost:5000/choosePatient', 
+                patientName,
+                {headers: {"Content-Type": "application/json"}}
+            );
+            if(res.data){
+                patient.ID = res.data.ID;
+                patient.Name = res.data.Name;      
+                console.log(patient);       
+                dispatch(changePatient(patient)); 
+            } 
+        } catch(err){
+            console.log('err --->', err);
+        }};
+        getPatient();
         dispatch(changeCanvasShow())
     };
 

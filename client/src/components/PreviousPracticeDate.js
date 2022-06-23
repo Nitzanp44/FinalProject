@@ -9,7 +9,8 @@ const PreviousPracticeDate = () =>  {
     console.log('statePracticeList ---> ',statePracticeList);
 
     const handleDateSelected = (event) => {
-        let date = new Date(event.target.name);
+        let evDate = new Date(event.target.name);
+        let date = evDate.toISOString();
         console.log("date", date);
         console.log(typeof date);
         dispatch(setDate(date));
@@ -25,7 +26,7 @@ const PreviousPracticeDate = () =>  {
         <div>
             <div className="list-group">
                 {statePracticeList.map((practice) =>
-                    <button type="button" className="list-group-item list-group-item-action" onClick={handleDateSelected} name={practice.created_at}>{practice.created_at}</button>
+                    <button type="button" className="list-group-item list-group-item-action" onClick={handleDateSelected} name={practice.created_at}>{(new Date(practice.created_at)).toISOString().split('T')[0]}</button>
                 )}
                 {/* <button type="button" className="list-group-item list-group-item-action" onClick={handleDateSelected} name='22/06'>22/06</button>
                 <button type="button" className="list-group-item list-group-item-action" onClick={handleDateSelected} name='23/06'>23/06</button>

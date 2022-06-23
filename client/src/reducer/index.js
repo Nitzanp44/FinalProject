@@ -9,6 +9,7 @@ import cycleArrayReducer from "./cyclesArrayReducer";
 import practiceReducer from "./practiceReducer";
 import practiceArrayReducer from "./practiceArrayReducer";
 import practiceDateReducer from "./practiceDateReducer";
+import isPatientListChangeReducer from "./isPatientListChangeReducer";
 
 const reducers = combineReducers({
     sideBar: sideBarReducer,
@@ -20,7 +21,8 @@ const reducers = combineReducers({
     cycle: cycleArrayReducer,
     practice: practiceReducer,
     practiceList: practiceArrayReducer,
-    practiceDate: practiceDateReducer
+    practiceDate: practiceDateReducer,
+    isPatientListChange: isPatientListChangeReducer
 });
 
 export default reducers;

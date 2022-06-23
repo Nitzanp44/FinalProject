@@ -63,8 +63,8 @@ const dataGraph = (state = dataGraphIntianal, action) =>{
         }
         case "UPDATE_DATA":{
         const copyState = cloneDeep(state);
-        let rigth=action.payload[1];
-        let left=action.payload[2];
+        let rigth = action.payload[1];
+        let left = action.payload[2];
         copyState.labels.unshift(action.payload[0]);
         copyState.labels.pop();
         // copyState.datasets[1].x.unshift(action.payload[0]);
@@ -86,7 +86,6 @@ const dataGraph = (state = dataGraphIntianal, action) =>{
         }
 
         case "CHANGE_VIEW_SCALE":{
-          console.log("change")
           let copyState = cloneDeep(state);
           copyState.viewScale = action.payload;
           return copyState;
@@ -94,7 +93,6 @@ const dataGraph = (state = dataGraphIntianal, action) =>{
         case "CHANGE_LABEL":{
           var today = new Date();
           const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-          //console.log(time);
           const copyState = cloneDeep(state);
           copyState.labels.unshift(time);
           copyState.labels.pop();
