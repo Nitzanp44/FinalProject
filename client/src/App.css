@@ -22,10 +22,6 @@
     width: 100%;
 }
 
-.sideBar.d-flex {
-    flex-direction: column;
-}
-
 label.checkbox-inline {
     display: flex;
 }
@@ -44,9 +40,23 @@ label.checkbox-inline {
 }
 
 .choocePatient:hover {
-    border: 3px solid darkgray;
+    border: 1px solid black;
 }
 
 .choocePatient button{
     width: fit-content;
+}
+
+.sideBar ul{
+    padding: 0 !important;
+}
+
+.list-group-item-action:focus {
+    background-color: blue;
+}
+
+.practiceSetupContaine{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

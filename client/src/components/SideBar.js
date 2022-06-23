@@ -28,7 +28,7 @@ const SideBar = () =>  {
 
     return (
         <div>
-            <div className='sideBar d-flex'>
+            <div className='sideBar'>
                 <ul className="list-group-flush">
                     <li className="list-group-item">
                         <input className="form-check-input me-1" type="checkbox" defaultChecked={true} onChange={() => dispatch(changeSideBarLeft())}/>שמאל
@@ -44,12 +44,8 @@ const SideBar = () =>  {
                             <span>10 דקות</span>
                         </div>
                     </li>
-                    {/* <li className="list-group-item">
-                        <label className="form-label">:מספר מחזורים</label>
-                        <label className="form-label">{currentNumCycle}/{NumOfCycles}</label>
-                    </li> */}
                     <li className="list-group-item">
-                    <button type="button" className="btn btn-primary" variant="link" onClick={finishPractice}>סיום אימון</button>
+                        <button type="button" className="btn btn-primary" variant="link" onClick={finishPractice}>סיום אימון</button>
                     </li>
                 </ul>
             </div>
