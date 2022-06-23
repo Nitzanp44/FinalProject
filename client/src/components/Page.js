@@ -7,18 +7,14 @@ import PreviousPractice from './PreviousPractice'
 const Page = () =>  {
  
     return (
-        <div className="container">
-            <div className="App">
-                <div className="auth-wrapper mt-5">
-                    <Routes>
-                        <Route exact path='/' element={<PracticePage />} />
-                        <Route path="/practiceSetup" element={<PracticeSetup/>} />
-                        <Route path="/practicePage" element={<PracticePage/>} />
-                        <Route path="/practiceSummary" element={<PracticeSummary/>} />
-                        <Route path="/previousPractice" element={<PreviousPractice/>} />
-                    </Routes>
-                </div>
-            </div>
+        <div>
+            <Routes>
+                <Route exact path='/' element={<PracticePage/>} />
+                <Route path="/practiceSetup" element={<PracticeSetup/>} />
+                <Route path="/practicePage" element={<PracticePage/>} />
+                <Route path="/practiceSummary" element={<PracticeSummary/>} />
+                <Route path="/previousPractice" element={<PreviousPractice/>} />
+            </Routes>
         </div>
     )
 }
