@@ -27,7 +27,6 @@ const UserSelection =  () =>  {
             console.log('err --->', err);
         }
     };
-    console.log('recordList --->', recordList);
 
     if (recordList.length == 0 || isPatientListChangeState == true){
         getAnswer();
@@ -46,7 +45,6 @@ const UserSelection =  () =>  {
             if(res.data){
                 patient.ID = res.data.ID;
                 patient.Name = res.data.Name;      
-                console.log(patient);       
                 dispatch(changePatient(patient)); 
             } 
         } catch(err){
@@ -60,12 +58,11 @@ const UserSelection =  () =>  {
         <div>
            <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
-                {recordList.map((patient) => <button type="button" className="list-group-item list-group-item-action" onClick={handlechange}>{patient.Name}</button>)}
-                <button type="button" className="btn btn-primary" variant="link" onClick={() => dispatch(changeModalShow())}>+ הוסף מטופל</button>
+                {recordList.map((patient) => <button type="button" className="list-group-item list-group-item-action text-center" onClick={handlechange}>{patient.Name}</button>)}
+                <button type="button" className="btn btn-outline-secondary mt-4 float-right" variant="link" onClick={() => dispatch(changeModalShow())}>+ הוסף מטופל</button>
             </Offcanvas.Body>
         </div>
     )
 };
-export default UserSelection;
 
-//dispatch(changePatient(e.target.value))
+export default UserSelection;

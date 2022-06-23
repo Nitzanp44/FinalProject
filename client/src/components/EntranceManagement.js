@@ -6,8 +6,8 @@ const EntranceManagement = () => {
 
     return (
         <div className="w-50 p-5 text-center">
-            <div className="App">
-                <nav className="navbar navbar-expand-lg navbar-light fixed-top mb-5">
+            <div>
+                <nav className="navbar navbar-expand-lg navbar-light fixed-top mb-5 bgNavbar">
                     <div className="container">
                         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                             <ul className="navbar-nav ml-auto">
