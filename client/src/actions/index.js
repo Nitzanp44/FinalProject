@@ -123,9 +123,17 @@ export const setPracticeList = (newData) => {
             payload: newData
     };
 };
+
 export const setDate = (newData) => {
     return {
             type: "SELECTED_DATE",
+            payload: newData
+    };
+};
+
+export const patientListChange = (newData) => {
+    return {
+            type: "IS_PATIENT_LIST_CHANGE",
             payload: newData
     };
 };

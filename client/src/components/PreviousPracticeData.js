@@ -4,7 +4,7 @@ import PreviousPracticeSetupData from './PreviousPracticeSetupData';
 const PreviousPracticeData = () =>  {
 
     return (
-        <div>
+        <div className='d-flex'>
             <PreviousPracticeSetupData/>
             <PreviousPracticeHandsData/>
         </div>

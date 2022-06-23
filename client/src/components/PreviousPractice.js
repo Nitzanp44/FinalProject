@@ -48,6 +48,7 @@ const PreviousPractice = () =>  {
     return (
         <div className='d-flex'>
             <PreviousPracticeDate/>
+            <PreviousPracticeData/>
         </div>
     )
 };

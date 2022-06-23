@@ -17,7 +17,7 @@ const practice = (state = practiceIntianal, action) =>{
             practice.IDPatient = action.payload[0];
             practice.IDTherapist = action.payload[1];
             practice.CycleList = action.payload[2];
-
+            return practice;
         }
         case "CHANGE_MAXIMUM":{
             let practice = cloneDeep(state);

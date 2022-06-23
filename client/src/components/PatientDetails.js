@@ -10,7 +10,7 @@ const PatientDetails = () => {
 
   const stateShowCanvas = useSelector((state) => state.showCanvas);
   const stateShowModal = useSelector((state) => state.showModal);
-  const statePatient = useSelector((state) => state.patient);
+  const statePatientName = useSelector((state) => state.patient.Name);
   const dispatch = useDispatch();
 
   return (
@@ -19,8 +19,7 @@ const PatientDetails = () => {
         <MDBContainer>
           <MDBCard style={{ width: "22rem", marginTop: "1rem" }}>
             <MDBCardBody>
-          
-              <MDBCardTitle tag="h6" sub className="mb-2 text-muted">מטופל: {statePatient.Name}</MDBCardTitle>
+              <MDBCardTitle tag="h6" sub className="mb-2 text-muted">מטופל: {statePatientName}</MDBCardTitle>
               <button type="button" className="btn btn-link" variant="link" onClick={() => dispatch(changeCanvasShow())}>בחר מטופל </button>
               
               <Offcanvas show={stateShowCanvas} onHide={() => dispatch(changeCanvasShow())}>

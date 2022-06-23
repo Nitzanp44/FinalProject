@@ -2,8 +2,13 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import {patientListChange} from '../actions/index';
+
 
 const AddPatient = () => {
+    const therapist = useSelector((state) => state.user);
+    const dispatch = useDispatch();
 
     const handlechange = (e) => {
         const{name,value} = e.target;
@@ -12,7 +17,7 @@ const AddPatient = () => {
 
     let postUrl = 'http://localhost:5000/addPatient';
   
-    function onSubmit(){
+    const onSubmit = () =>{
     
         axios.post(
             postUrl,
@@ -22,7 +27,14 @@ const AddPatient = () => {
         .then(res => {
             console.log(res.data);
         });
+
+        dispatch(patientListChange());
     }
+
+    const updateUserDetails = (e) =>{
+        user[e.target.name] = e.target.value;
+    }
+
 
     let inputsArr = [
         {label: 'שם', name: 'Name', type: 'text', placeHolder: 'אנא הקלד שם', icon: 'fa-user'},
@@ -37,7 +49,8 @@ const AddPatient = () => {
         Email:"",
         ID:"",
         Phone:"",
-        Age:""
+        Age:"",
+        IDTherapist: therapist.IS
     };
 
     return(
@@ -49,7 +62,7 @@ const AddPatient = () => {
                         <div className="align-items-center mb-4">
                             <div className="form-outline mb-0 mr-4">
                                 <div className='d-flex'>
-                                    <input type={input.type} name={input.name} className="form-control" />
+                                    <input type={input.type} name={input.name} className="form-control" onChange={updateUserDetails}/>
                                     <i className={'fas fa-lg me-3 fa-fw ' + input.icon}></i>
                                 </div>
                             </div>
