@@ -1,12 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavigationBar from './NavigationBar'
 import Page from './Page'
-import * as Space from "react-spaces";
+import PatientDetails from './PatientDetails';
 
 const Main = () => {
     return (
         <div className="App">
             <NavigationBar/>
+            <PatientDetails/>
             <Page/>
         </div>
     )

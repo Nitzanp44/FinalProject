@@ -3,7 +3,6 @@ import PracticePage from './PracticePage'
 import PracticeSummary from './PracticeSummary'
 import PracticeSetup from './PracticeSetup'
 import PreviousPractice from './PreviousPractice'
-import PatientDetails from './PatientDetails';
 
 const Page = () =>  {
  
@@ -11,14 +10,13 @@ const Page = () =>  {
         <div className="container">
             <div className="App">
                 <div className="auth-wrapper mt-5">
-                        <PatientDetails/>
-                        <Routes>
-                            <Route exact path='/' element={<PracticePage />} />
-                            <Route path="/practiceSetup" element={<PracticeSetup/>} />
-                            <Route path="/practicePage" element={<PracticePage/>} />
-                            <Route path="/practiceSummary" element={<PracticeSummary/>} />
-                            <Route path="/previousPractice" element={<PreviousPractice/>} />
-                        </Routes>
+                    <Routes>
+                        <Route exact path='/' element={<PracticePage />} />
+                        <Route path="/practiceSetup" element={<PracticeSetup/>} />
+                        <Route path="/practicePage" element={<PracticePage/>} />
+                        <Route path="/practiceSummary" element={<PracticeSummary/>} />
+                        <Route path="/previousPractice" element={<PreviousPractice/>} />
+                    </Routes>
                 </div>
             </div>
         </div>

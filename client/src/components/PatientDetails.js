@@ -20,12 +20,10 @@ const PatientDetails = () => {
           <MDBCard style={{ width: "22rem", marginTop: "1rem" }}>
             <MDBCardBody>
               <MDBCardTitle tag="h6" sub className="mb-2 text-muted">מטופל: {statePatientName}</MDBCardTitle>
-              <button type="button" className="btn btn-link" variant="link" onClick={() => dispatch(changeCanvasShow())}>בחר מטופל </button>
-              
+              <button type="button" className="btn btn-outline-info" variant="link" onClick={() => dispatch(changeCanvasShow())}>בחר מטופל </button>
               <Offcanvas show={stateShowCanvas} onHide={() => dispatch(changeCanvasShow())}>
                 <UserSelection/>
               </Offcanvas>
-
             </MDBCardBody>
           </MDBCard>
         </MDBContainer>
