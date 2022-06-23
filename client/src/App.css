@@ -1,3 +1,15 @@
+/***************   font-face   ********************/
+@font-face {
+    font-family: 'HeeboRegular';
+    src: local('fonts'), url(./fonts/otf/Heebo-Regular.otf) format('woff');
+}
+
+/***************   CSS   ********************/
+
+* {
+    font-family: 'HeeboRegular' !important;
+}
+
 .footer {
     background: lightgray;
     padding: 18px;
@@ -10,14 +22,41 @@
     width: 100%;
 }
 
-.sideBar.d-flex {
-    flex-direction: column;
-}
-
 label.checkbox-inline {
     display: flex;
 }
 
-h3 {
-    font-size: 15px;
+.choocePatient {
+    position: fixed;
+    top: 10%;
+    right: 4%;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    padding: 22px;
+    z-index: 1500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.choocePatient:hover {
+    border: 1px solid black;
+}
+
+.choocePatient button{
+    width: fit-content;
+}
+
+.sideBar ul{
+    padding: 0 !important;
+}
+
+.list-group-item-action:focus {
+    background-color: blue;
+}
+
+.practiceSetupContaine{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

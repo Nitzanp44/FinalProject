@@ -61,7 +61,7 @@ const Login = () => {
                 <input id="Password" name="Password" type="password" className="form-control" placeholder="סיסמא" onChange={handlechange}/>
             </div>
 
-            <div className="form-group">
+            <div className="form-group float-right">
                 <div className="custom-control custom-checkbox">
                     <input type="checkbox" className="custom-control-input" id="customCheck1" />
                     <label className="custom-control-label" htmlFor="customCheck1">זכור אותי</label>
@@ -69,9 +69,8 @@ const Login = () => {
             </div>
 
             <p id="erorrEmailOrPass" style={{ color: "red" }} hidden={true}>שם המשתמש או הסיסמא אינם תקינים</p>
-            <button type="submit" className="btn btn-primary btn-block">אישור</button>
-            <p className="forgot-password text-right">
-                ?שכחת <a href="#">סיסמא</a>
+                <button type="submit" className="btn btn-primary btn-block">אישור</button>
+                <p className="forgot-password text-right">?שכחת <a href="#">סיסמא</a>
             </p>
         </form>
     );

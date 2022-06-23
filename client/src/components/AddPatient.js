@@ -10,11 +10,6 @@ const AddPatient = () => {
     const therapist = useSelector((state) => state.user);
     const dispatch = useDispatch();
 
-    const handlechange = (e) => {
-        const{name,value} = e.target;
-        user[name] = value;
-    };
-
     let postUrl = 'http://localhost:5000/addPatient';
   
     const onSubmit = () =>{
@@ -50,7 +45,7 @@ const AddPatient = () => {
         ID:"",
         Phone:"",
         Age:"",
-        IDTherapist: therapist.IS
+        IDTherapist: therapist.ID
     };
 
     return(

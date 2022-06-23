@@ -15,9 +15,9 @@ const App = () => {
   
   ReceivingDataA();
   return (
-    <div className="App">
-      {(login) ? <Main /> : <EntranceManagement/>}
-      {/* <Footer/> */}
+    <div className="h-100 d-flex justify-content-center align-items-center container">
+      {(login) ? <Main/> : <EntranceManagement/>}
+      <Footer/>
     </div>
   );
 }
