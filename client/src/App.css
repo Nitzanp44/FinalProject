@@ -72,3 +72,7 @@ label.checkbox-inline {
 .bgNavbar{
     background-color: #E0FFFF !important;
 }
+
+.practiceSetupContainer{
+    height: 50vh !important;
+}

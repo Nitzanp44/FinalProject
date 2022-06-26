@@ -39,7 +39,7 @@ const Login = () => {
 
     return (
         <form onSubmit = {onSubmit}>
-            <h3>כניסה</h3>
+            <h3 className='mb-5'>כניסה</h3>
 
             <div className="form-group">
                 <input id="Email" name="Email" type="email" className="form-control" placeholder="אימייל" onChange={handlechange}/>

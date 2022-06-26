@@ -13,7 +13,8 @@ const UserSelection =  () =>  {
     const therapist = {ID: userState.ID};
     
     const getAnswer = async () => {
-        await axiosPost(therapist, 'patientsList');
+        let res = await axiosPost(therapist, 'patientsList');
+        setRecordList(res.data);
     };
 
     if (recordList.length == 0 || isPatientListChangeState == true){

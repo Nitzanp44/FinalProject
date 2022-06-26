@@ -9,8 +9,7 @@ const PreviousPracticeHandsData = () =>  {
     const statePracticeList = useSelector((state) => state.practiceList, shallowEqual);
     const statePracticeDate = useSelector((state) => state.practiceDate);
     var Plot = createPlotlyComponent(Plotly);
-
-    let { labels, datasets } = barData;
+    
     let barData = {
         labels: [],
         datasets: [
@@ -34,6 +33,7 @@ const PreviousPracticeHandsData = () =>  {
               }
     ]}
 
+    let { labels, datasets } = barData;
     const checkDate = (practice) => {
         return practice.created_at == statePracticeDate;
     };

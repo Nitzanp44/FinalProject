@@ -12,16 +12,18 @@ import cloneDeep from 'lodash/cloneDeep';
             } 
             case "INTIANAL_CYCLE_LIST":{
                 let arr = cloneDeep(state);
-                arr = [];
-                // arr[action.payload[0]] = action.payload[1];
-                for(let i = 0; i< action.payload; i++){
-                    let cycle = {
-                        KG: 0,
-                        Time: 0,
-                        dataLeft: [],
-                        dataRight: []
+                if(action.payload > arr.length){
+                    for(let i = arr.length; i < action.payload; i++){
+                        let cycle = {
+                            KG: 0,
+                            Time: 0,
+                            dataLeft: [],
+                            dataRight: []
+                        }
+                        arr.push(cycle)
                     }
-                    arr.push(cycle);
+                } else {
+                    arr = arr.slice(0 , action.payload);
                 }
                 return arr;
             }

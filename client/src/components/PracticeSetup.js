@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import CycleSetup from './CycleSetup';
-import { startPractice, IntianalCycle, changeMaximum } from '../actions/index';
+import { IntianalCycle, changeMaximum } from '../actions/index';
 
 const PracticeSetup = () =>  {
     const stateCycles = useSelector((state) => state.cycle);
@@ -30,7 +30,7 @@ const PracticeSetup = () =>  {
     }
     
     return (
-        <div>
+        <div className='practiceSetupContainer'>
             <div className="d-flex w-100">
                 <div className="input-group mb-3 d-flex justify-content-between">
                     <div className="input-group w-25">    
