@@ -7,6 +7,7 @@ import Paho from 'paho-mqtt';
 
 const ReceivingDataA = () =>  {
 
+const practiceStart = useSelector((state) => state.practiceStart);
 const dispatch = useDispatch();
 var numMassageA=0;
 var numMessageRecive=0;
@@ -50,19 +51,23 @@ function ConnectionLost(res) {
 
 /*Callback for incoming message processing */
 function MessageArrived(message) {
-    var data = message.payloadString;
-    var arrData=data.split(',');
-    var arrDataT=[];
-    arrDataT[0]=arrData[0];
-    arrDataT[1]=[arrData[1],arrData[(arrData.length-1)/2]];
-    arrDataT[2]=[arrData[(arrData.length-1)/2+1],arrData[arrData.length-1]];
-    console.log(arrDataT);
-    numMessageRecive=parseInt(arrDataT[0].replace(/:/g,""));
-    if (numMessageRecive>numMassageA)
-    {
-        dispatch(changeData(arrDataT));
-        numMassageA=numMessageRecive;
-    }
+    //if(practiceStart)
+    //{
+        var data = message.payloadString;
+        var arrData=data.split(',');
+        var arrDataT=[];
+        arrDataT[0]=arrData[0];
+        arrDataT[1]=[arrData[1],arrData[(arrData.length-1)/2]];
+        arrDataT[2]=[arrData[(arrData.length-1)/2+1],arrData[arrData.length-1]];
+        console.log(arrDataT);
+        numMessageRecive=parseInt(arrDataT[0].replace(/:/g,""));
+        if (numMessageRecive>numMassageA)
+        {
+            dispatch(changeData(arrDataT));
+            numMassageA=numMessageRecive;
+        }
+   // }
 }
+    
 }
 export default ReceivingDataA;

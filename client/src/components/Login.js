@@ -42,9 +42,9 @@ const Login = () => {
                 {
                     document.getElementById("erorrEmailOrPass").hidden=false;
                     document.getElementById("Email").placeholder="אימייל";
-                    document.getElementById("Email").style.outlineColor='red';
+                    //document.getElementById("Email").style.outlineColor='red';
                     document.getElementById("Password").placeholder="סיסמא";
-                    document.getElementById("Password").style.outlineColor='red';
+                    //document.getElementById("Password").style.outlineColor='red';
                 }
     }); }
     

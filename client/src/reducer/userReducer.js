@@ -20,6 +20,7 @@ const user = (state = userIntianal, action) =>{
           // userIntianal.Email="";
           userIntianal.ID="";
           userIntianal.Name="";
+          return userIntianal;
         }
         default:
             return state;

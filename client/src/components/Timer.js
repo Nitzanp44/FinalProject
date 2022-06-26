@@ -1,47 +1,84 @@
-// import React, { Component } from 'react'
 
-// const Timer = () => {
-//     state = {
-//         minutes: 3,
-//         seconds: 0,
-//     }
+import React from "react";
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from "react";
+import "./Timer.css";
 
-//     componentDidMount() {
-//         this.myInterval = setInterval(() => {
-//             const { seconds, minutes } = this.state
 
-//             if (seconds > 0) {
-//                 this.setState(({ seconds }) => ({
-//                     seconds: seconds - 1
-//                 }))
-//             }
-//             if (seconds === 0) {
-//                 if (minutes === 0) {
-//                     clearInterval(this.myInterval)
-//                 } else {
-//                     this.setState(({ minutes }) => ({
-//                         minutes: minutes - 1,
-//                         seconds: 59
-//                     }))
-//                 }
-//             } 
-//         }, 1000)
-//     }
 
-//     componentWillUnmount() {
-//         clearInterval(this.myInterval)
-//     }
+const Timer = () =>   {
+    const practiceState = useSelector((state) => state.practice);
+    let numCycle=practiceState.NumOfCycles;
+    let cycleList= practiceState.CycleList;
+    let currntCycle=0;
+    let cycleTimes=[];
+    for (let x in cycleList)
+    {
+      console.log(cycleList[x]);
+      console.log(cycleList[x].Time);
+      cycleTimes.push(cycleList[x].Time);
+    }
+    console.log(numCycle);
+    console.log(cycleTimes);
 
-//     render() {
-//         const { minutes, seconds } = this.state
-//         return (
-//             <div>
-//                 { minutes === 0 && seconds === 0
-//                     ? <h1>Busted!</h1>
-//                     : <h1>Time Remaining: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</h1>
-//                 }
-//             </div>
-//         )
-//     }
-// };
-// export default SignUp;
+    const [isActive, setIsActive] = useState(false);
+    const [duration, setduration] = useState(cycleTimes);
+
+    console.log(cycleTimes[1]);
+
+    const formatRemainingTime = time => {
+      //console.log(time);
+      const minutes = Math.floor((time % 3600) / 60);
+      const seconds = time % 60;
+    //console.log(minutes+" "+seconds)
+      return `${minutes}:${seconds}`;
+    };
+
+
+    const renderTime = ({ remainingTime }) => {
+      //console.log(remainingTime);
+      if (remainingTime === 0) {
+        setTimeout(()=> setIsActive(0),0);
+        if (currntCycle<numCycle)
+        {
+          currntCycle+=1;
+          console.log(currntCycle);
+          console.log(cycleTimes[currntCycle]);
+          let newDuration=parseInt(cycleTimes[currntCycle]);
+          console.log(typeof cycleTimes[currntCycle]);
+          setTimeout(()=>setduration(Number(cycleTimes[currntCycle])),0);
+        }
+        
+        //return <div className="timer">Too lale...</div>;
+      }
+
+      return (
+        <div className="timer">
+          {isActive? <div className="text">מחזור 1/3</div>:<button onClick={()=>setIsActive(!isActive)}>התחל מחזור הבא</button>}
+          <div className="value">{formatRemainingTime(remainingTime)}</div>
+        </div>
+      );
+    };
+
+
+  return (
+     <div className="App">
+     <div className="timer-wrapper">
+        <CountdownCircleTimer
+          isPlaying={isActive}
+          duration={duration}
+          colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
+          //onComplete={() => [true, 1000]}
+          //onComplete={handleComplete}
+        >
+          {renderTime}
+        </CountdownCircleTimer>
+       </div>
+     </div>
+  );
+}
+export default Timer;
+
+// const rootElement = document.getElementById("root");
+// ReactDOM.render(<App />, rootElement);

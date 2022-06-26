@@ -9,16 +9,11 @@ module.exports={
         .then(user=>{
             if(user)
             {
-                console.log(user.Password);
-                console.log(req.body.Password);
                 if (user.Password===req.body.Password)
                 {
-                    //console.log(user);
                     let clientUser = {ID: "", Name: ""};
                     clientUser.ID = user.ID;
                     clientUser.Name = user.Name;
-                    // user = Object.assign({}, clientUser);
-                   // console.log(clientUser);
                     res.json(clientUser)
                 }}
             else

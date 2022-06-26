@@ -16,7 +16,7 @@ let dataGraphIntianal = {
     dataRigth:[],
     dataLeft:[],
     viewScale: 600,
-    labels: Array(600).fill("-"),
+    labels: [],
     datasets: [
       {
         type: 'scatter',
@@ -91,15 +91,15 @@ const dataGraph = (state = dataGraphIntianal, action) =>{
           copyState.viewScale = action.payload;
           return copyState;
         }
-        case "CHANGE_LABEL":{
-          var today = new Date();
-          const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-          //console.log(time);
-          const copyState = cloneDeep(state);
-          copyState.labels.unshift(time);
-          copyState.labels.pop();
-          return copyState;
-        }
+        // case "CHANGE_LABEL":{
+        //   var today = new Date();
+        //   const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        //   //console.log(time);
+        //   const copyState = cloneDeep(state);
+        //   copyState.labels.unshift(time);
+        //   copyState.labels.pop();
+        //   return copyState;
+        // }
         case "CHANGE_MAXIMUM":{
           let copyState = cloneDeep(state);
           copyState.datasets[0].y = Array(600).fill(action.payload);
