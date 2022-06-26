@@ -23,7 +23,7 @@ const reducers = combineReducers({
     practice: practiceReducer,
     practiceList: practiceArrayReducer,
     practiceDate: practiceDateReducer,
-    practiceStart:practiceStartReducer
+    practiceStart:practiceStartReducer,
     isPatientListChange: isPatientListChangeReducer
 });
 

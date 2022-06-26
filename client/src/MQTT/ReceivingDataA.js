@@ -1,6 +1,6 @@
-import { useDispatch } from 'react-redux';
 import { changeData } from '../actions/index'
 import Paho from 'paho-mqtt';
+import { useSelector, useDispatch } from 'react-redux';
 
 const ReceivingDataA = () =>  {
 
