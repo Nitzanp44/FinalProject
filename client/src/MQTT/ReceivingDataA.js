@@ -38,7 +38,6 @@ function ConnectionFailed(res) {
 /*Callback for lost connection*/
 function ConnectionLost(res) {
 	if (res.errorCode !== 0) {
-		//console.log("Connection lost:" + res.errorMessage);
 		Connect();
 	}
 }
@@ -51,10 +50,8 @@ function MessageArrived(message) {
     arrDataT[0]=arrData[0];
     arrDataT[1]=[arrData[1],arrData[(arrData.length-1)/2]];
     arrDataT[2]=[arrData[(arrData.length-1)/2+1],arrData[arrData.length-1]];
-    console.log(arrDataT);
     numMessageRecive=parseInt(arrDataT[0].replace(/:/g,""));
-    if (numMessageRecive>numMassageA)
-    {
+    if (numMessageRecive>numMassageA) {
         dispatch(changeData(arrDataT));
         numMassageA=numMessageRecive;
     }

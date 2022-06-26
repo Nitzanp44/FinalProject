@@ -9,7 +9,6 @@ const SideBar = () =>  {
     let defaultRangeVal = 600;
     const changeRange = () => {
         let rangeVal = document.getElementById('graphRange').value;
-        console.log(rangeVal);
         dispatch(changeView(rangeVal));
         defaultRangeVal = rangeVal;
     }

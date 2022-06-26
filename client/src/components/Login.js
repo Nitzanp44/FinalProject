@@ -26,7 +26,6 @@ const Login = () => {
             dispatch(changeUser(res.data));
             dispatch(changeLogin());
         } catch (error) {
-            console.log(error.response.data);
             if(error.response.data === 'no user or password') {
                 document.getElementById("erorrEmailOrPass").hidden=false;
                 document.getElementById("Email").placeholder="אימייל";
