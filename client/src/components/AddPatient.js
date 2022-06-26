@@ -1,35 +1,20 @@
-import Modal from 'react-bootstrap/Modal';
-import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import axios from 'axios';
+import { axiosPost } from '../actions/serverHelper';
 import { useSelector, useDispatch } from 'react-redux';
 import {patientListChange} from '../actions/index';
-
 
 const AddPatient = () => {
     const therapist = useSelector((state) => state.user);
     const dispatch = useDispatch();
-
-    let postUrl = 'http://localhost:5000/addPatient';
   
-    const onSubmit = () =>{
-    
-        axios.post(
-            postUrl,
-            user,
-            {headers: {"Content-Type": "application/json"}}
-        )
-        .then(res => {
-            console.log(res.data);
-        });
-
+    const onSubmit =  async () =>{
+        await axiosPost(user, 'addPatient');
         dispatch(patientListChange());
     }
 
     const updateUserDetails = (e) =>{
         user[e.target.name] = e.target.value;
     }
-
 
     let inputsArr = [
         {label: 'שם', name: 'Name', type: 'text', placeHolder: 'אנא הקלד שם', icon: 'fa-user'},

@@ -1,10 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
-import {changeSideBarRight, changeSideBarLeft, changeView, finishPractice} from '../actions/index'
+import {changeSideBarRight, changeSideBarLeft, changeView } from '../actions/index'
 
 const SideBar = () =>  {
 
     const state = useSelector((state) => state.sideBar);
-    const practiceState = useSelector((state) => state.sideBar);
     const dispatch = useDispatch();
 
     let defaultRangeVal = 600;
@@ -21,10 +20,6 @@ const SideBar = () =>  {
         let time=state.labels;
         dispatch(finishPractice(dataRigth,dataLeft,time));
     }
-
-    let currentNumCycle=1;
-    let NumOfCycles=practiceState.NumOfCycles;
-
 
     return (
         <div>
@@ -52,4 +47,5 @@ const SideBar = () =>  {
         </div>
     )
 }
+
 export default SideBar;

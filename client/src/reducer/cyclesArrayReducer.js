@@ -4,12 +4,12 @@ import cloneDeep from 'lodash/cloneDeep';
 
     const cycleArr = (state = cycleIntianal, action) =>{
         switch (action.type) {
+            
             case "UPDATE_CYCLE":{
                 let arr = cloneDeep(state);
                 arr[action.payload[0]][action.payload[1]] = parseFloat(action.payload[2]);
                 return arr;
-            }
-            
+            } 
             case "INTIANAL_CYCLE_LIST":{
                 let arr = cloneDeep(state);
                 arr = [];
@@ -25,8 +25,6 @@ import cloneDeep from 'lodash/cloneDeep';
                 }
                 return arr;
             }
-
-    
             default:
                 return state;
         }

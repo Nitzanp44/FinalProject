@@ -11,4 +11,5 @@ const PreviousPracticeData = () =>  {
         
     )
 }
+
 export default PreviousPracticeData;
