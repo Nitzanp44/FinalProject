@@ -1,4 +1,3 @@
-import Button from 'react-bootstrap/Button';
 import { axiosPost } from '../actions/serverHelper';
 import { useSelector, useDispatch } from 'react-redux';
 import {patientListChange} from '../actions/index';
@@ -38,18 +37,23 @@ const AddPatient = () => {
             <form className="mx-1 mx-md-4">
                 {inputsArr.map((input) => 
                     <div className='d-flex flex-column'>
-                        <label className="form-label text-right">{input.label}</label>
                         <div className="align-items-center mb-4">
                             <div className="form-outline mb-0 mr-4">
                                 <div className='d-flex'>
-                                    <input type={input.type} name={input.name} className="form-control" onChange={updateUserDetails}/>
-                                    <i className={'fas fa-lg me-3 fa-fw ' + input.icon}></i>
+                                    <div className='w-75'>
+                                        <input type={input.type} name={input.name} placeholder={input.label} className="form-control" onChange={updateUserDetails}/>
+                                    </div>
+                                    <div className='w-25 d-flex align-items-center justify-content-end'>
+                                        <i className={'fas fa-lg me-3 fa-fw ' + input.icon + '  float-right'} ></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 )}
-                <Button variant="primary" type="submit" onClick={onSubmit}> הוסף מטופל</Button>
+                <div className='d-flex justify-content-center mt-4'>
+                    <button className='btn btn-outline-secondary' onClick={onSubmit}> הוסף מטופל</button>
+                </div>
             </form>
         </div>
     )  

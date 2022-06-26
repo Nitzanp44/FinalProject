@@ -30,7 +30,7 @@ const PracticeSetup = () =>  {
     }
     
     return (
-        <div className='practiceSetupContainer'>
+        <div>
             <div className="d-flex w-100">
                 <div className="input-group mb-3 d-flex justify-content-between">
                     <div className="input-group w-25">    
@@ -54,7 +54,9 @@ const PracticeSetup = () =>  {
             <div className="d-flex my-5 flex-wrap">
                 {[...Array(numCycle)].map((x,i) => {return <CycleSetup key={i} cycleSetupKey={i}/>})}
             </div>
-            <button type="button" className="btn btn-outline-secondary btnCenter" onClick={startPractice}>התחל אימון</button>
+            <div className='d-flex justify-content-center mt-4'>
+                <button type="button" className="btn btn-outline-secondary" onClick={startPractice}>התחל אימון</button>
+            </div>
         </div>
     )
 }

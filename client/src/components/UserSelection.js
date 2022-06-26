@@ -42,7 +42,9 @@ const UserSelection =  () =>  {
            <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
                 {recordList.map((patient) => <button type="button" className="list-group-item list-group-item-action text-center" onClick={handlechange}>{patient.Name}</button>)}
-                <button type="button" className="btn btn-outline-secondary mt-4 float-right" variant="link" onClick={() => dispatch(changeModalShow())}>+ הוסף מטופל</button>
+                <div className='d-flex justify-content-center'>
+                    <button type="button" className="btn btn-outline-secondary mt-4" onClick={() => dispatch(changeModalShow())}>+ הוסף מטופל</button>
+                </div>
             </Offcanvas.Body>
         </div>
     )
