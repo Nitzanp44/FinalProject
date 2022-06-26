@@ -9,6 +9,7 @@ const PracticeSetup = () =>  {
     const stateTherapist = useSelector((state) => state.user);
 
     const [numCycle, setNumCycle] = useState(0);
+    const [numMax, setNumMax] = useState(0);
     const dispatch = useDispatch();
 
     const updateCycle = (val) => {
@@ -28,6 +29,20 @@ const PracticeSetup = () =>  {
     const startPractice = () => {
         dispatch(startPractice([statePatient.ID, stateTherapist.ID, stateCycles]));
     }
+
+    const updateMaximum = (val) => {
+        dispatch(changeMaximum(val));
+        let intVal = parseInt(val);
+        if(Number.isInteger(intVal)){
+            if(intVal < 0){
+                setNumMax(0);
+            } else {
+            setNumMax(intVal);
+            }
+        } else {
+            setNumMax(0);
+        }
+    }
     
     return (
         <div>
@@ -46,7 +61,7 @@ const PracticeSetup = () =>  {
                             <span className="input-group-text">עומס שריר מרבי</span>
                         </div>
                         <div className="custom-file">
-                            <input type="number" className="form-control input-sm" max='100' min='0' onChange={(e) => dispatch(changeMaximum(e.target.value))}/>
+                            <input type="number" className="form-control input-sm" max='100' min='0' onChange={(e) => updateMaximum(e.target.value)}/>
                         </div>
                     </div>
                 </div>
@@ -55,7 +70,7 @@ const PracticeSetup = () =>  {
                 {[...Array(numCycle)].map((x,i) => {return <CycleSetup key={i} cycleSetupKey={i}/>})}
             </div>
             <div className='d-flex justify-content-center mt-4'>
-                <button type="button" className="btn btn-outline-secondary" onClick={startPractice}>התחל אימון</button>
+                <button type="button" className="btn btn-outline-secondary" onClick={startPractice} disabled= {!(numCycle && statePatient.ID && numMax)}>התחל אימון</button>
             </div>
         </div>
     )
