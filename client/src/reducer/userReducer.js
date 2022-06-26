@@ -14,6 +14,7 @@ const user = (state = userIntianal, action) =>{
         case "LOGOUT":{
           userIntianal.ID="";
           userIntianal.Name="";
+          return userIntianal;
         }
         default:
           return state;

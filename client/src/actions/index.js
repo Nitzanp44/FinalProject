@@ -131,6 +131,17 @@ export const setDate = (newData) => {
     };
 };
 
+export const dataCycels = (newData) => {
+    return {
+            type: "DATA_CYCLES",
+            payload: newData
+    };
+};
+export const changePracticeStart = () => {
+    return {
+            type: "PRACTICE_START"
+    };
+};
 export const patientListChange = (newData) => {
     return {
             type: "IS_PATIENT_LIST_CHANGE",

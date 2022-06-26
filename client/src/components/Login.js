@@ -33,6 +33,7 @@ const Login = () => {
                 document.getElementById("Password").placeholder="סיסמא";
                 document.getElementById("Password").style.outlineColor='red';
             }
+             }
         }
     }
     

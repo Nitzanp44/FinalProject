@@ -6,39 +6,39 @@ import realtimeline from "fusioncharts/viz/realtimeline";
 ReactFC.fcRoot(FusionCharts, realtimeline, FusionTheme);
 
 let dataGraphIntianal = {
-  dataRigth:[],
-  dataLeft:[],
-  viewScale: 600,
-  labels: Array(600).fill("-"),
-  datasets: [
-    {
-      type: 'scatter',
-      mode: 'lines+points',
-      visible: true,
-      name: "עומס שריר מרבי",
-      marker: { color: 'red' },
-      // x:Array(600).fill("-"),
-      y: Array(600).fill(4),
-    },
-    {
-      type: 'scatter',
-      mode: 'lines+points',
-      visible: true,
-      name: "שמאל",
-      marker: { color: 'blue' },
-      //x:Array(600).fill("-"),
-      y: Array(600).fill(0),
-    },
-    {
-      type: 'scatter',
-      mode: 'lines+points',
-      visible: true,
-      name: "ימין",
-      marker: { color: 'green' },
-      //x:Array(600).fill("-"),
-      y:Array(600).fill(0),
-    }
-  ]
+    dataRigth:[],
+    dataLeft:[],
+    viewScale: 600,
+    labels: [],
+    datasets: [
+      {
+        type: 'scatter',
+        mode: 'lines+points',
+        visible: true,
+        name: "עומס שריר מרבי",
+        marker: { color: 'red' },
+       // x:Array(600).fill("-"),
+        y: Array(600).fill(4),
+      },
+      {
+        type: 'scatter',
+        mode: 'lines+points',
+        visible: true,
+        name: "שמאל",
+        marker: { color: 'blue' },
+        //x:Array(600).fill("-"),
+        y: Array(600).fill(0),
+      },
+      {
+        type: 'scatter',
+        mode: 'lines+points',
+        visible: true,
+        name: "ימין",
+        marker: { color: 'green' },
+        //x:Array(600).fill("-"),
+        y:Array(600).fill(0),
+      }
+    ]
 };
 
 const dataGraph = (state = dataGraphIntianal, action) =>{
@@ -74,27 +74,30 @@ const dataGraph = (state = dataGraphIntianal, action) =>{
         return copyState;
       }
 
-      case "CHANGE_VIEW_SCALE":{
-        let copyState = cloneDeep(state);
-        copyState.viewScale = action.payload;
-        return copyState;
-      }
-      case "CHANGE_LABEL":{
-        var today = new Date();
-        const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        const copyState = cloneDeep(state);
-        copyState.labels.unshift(time);
-        copyState.labels.pop();
-        return copyState;
-      }
-      case "CHANGE_MAXIMUM":{
-        let copyState = cloneDeep(state);
-        copyState.datasets[0].y = Array(600).fill(action.payload);
-        return copyState;
-      }
-      default:
-          return state;
-  }
+        case "CHANGE_VIEW_SCALE":{
+          console.log("change")
+          let copyState = cloneDeep(state);
+          copyState.viewScale = action.payload;
+          return copyState;
+        }
+        // case "CHANGE_LABEL":{
+        //   var today = new Date();
+        //   const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        //   //console.log(time);
+        //   const copyState = cloneDeep(state);
+        //   copyState.labels.unshift(time);
+        //   copyState.labels.pop();
+        //   return copyState;
+        // }
+        case "CHANGE_MAXIMUM":{
+          let copyState = cloneDeep(state);
+          copyState.datasets[0].y = Array(600).fill(action.payload);
+          //copyState.trendlines[0].startvalue = action.payload;
+          return copyState;
+        }
+        default:
+            return state;
+    }
 }
 
 export default dataGraph;

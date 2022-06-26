@@ -7,8 +7,10 @@ module.exports={
     login:(req,res)=>{
         therapists.findOne({Email:req.body.Email})
         .then(user=>{
-            if(user) {
-                if (user.Password===req.body.Password) {
+            if(user)
+            {
+                if (user.Password===req.body.Password)
+                {
                     let clientUser = {ID: "", Name: ""};
                     clientUser.ID = user.ID;
                     clientUser.Name = user.Name;
@@ -63,3 +65,4 @@ module.exports={
             .catch(err => res.status(400).json('Error: ' + err));
     },
 }
+
