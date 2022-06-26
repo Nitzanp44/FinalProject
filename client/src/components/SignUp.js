@@ -3,7 +3,7 @@ const SignUp = () =>  {
     
     return (
         <form>
-            <h3>הרשמה</h3>
+            <h3 className='mb-5'>הרשמה</h3>
 
             <div className="form-group">
                 <input type="text" className="form-control" placeholder="שם פרטי" />
@@ -28,4 +28,5 @@ const SignUp = () =>  {
         </form>
     );
 }
+
 export default SignUp;

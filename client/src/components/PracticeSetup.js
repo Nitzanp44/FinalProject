@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import CycleSetup from './CycleSetup';
-import { startPractice, IntianalCycle, changeMaximum } from '../actions/index';
+import { IntianalCycle, changeMaximum } from '../actions/index';
 
 const PracticeSetup = () =>  {
     const stateCycles = useSelector((state) => state.cycle);
@@ -28,29 +28,35 @@ const PracticeSetup = () =>  {
     const startPractice = () => {
         dispatch(startPractice([statePatient.ID, stateTherapist.ID, stateCycles]));
     }
-
+    
     return (
-        <div className='practiceSetupContaine'>
-            <div className="d-flex">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">עומס שריר מרבי</span>
+        <div>
+            <div className="d-flex w-100">
+                <div className="input-group mb-3 d-flex justify-content-between">
+                    <div className="input-group w-25">    
+                        <div className="input-group-prepend">
+                            <span className="input-group-text">מספר מחזורים</span>
+                        </div>
+                        <div className="custom-file">
+                            <input type="number" className="form-control input-sm" max='10' min='0' onChange={(e) => updateCycle(e.target.value)}/>
+                        </div>
                     </div>
-                    <div class="custom-file">
-                        <input type="number" class="form-control input-sm mr-5" max='100' min='0' onChange={(e) => dispatch(changeMaximum(e.target.value))}/>
-                    </div>
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">מספר מחזורים</span>
-                    </div>
-                    <div class="custom-file">
-                    <input type="number" class="form-control input-sm" max='10' min='0' onChange={(e) => updateCycle(e.target.value)}/>
+                    <div className="input-group w-25">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text">עומס שריר מרבי</span>
+                        </div>
+                        <div className="custom-file">
+                            <input type="number" className="form-control input-sm" max='100' min='0' onChange={(e) => dispatch(changeMaximum(e.target.value))}/>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="d-flex my-5 flex-wrap">
                 {[...Array(numCycle)].map((x,i) => {return <CycleSetup key={i} cycleSetupKey={i}/>})}
             </div>
-            <button type="button" className="btn btn-outline-secondary" onClick={startPractice}>התחל אימון</button>
+            <div className='d-flex justify-content-center mt-4'>
+                <button type="button" className="btn btn-outline-secondary" onClick={startPractice}>התחל אימון</button>
+            </div>
         </div>
     )
 }

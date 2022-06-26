@@ -5,7 +5,7 @@ import PatientDetails from './PatientDetails';
 
 const Main = () => {
     return (
-        <div class='w-100'>
+        <div className='w-100'>
             <NavigationBar/>
             <PatientDetails/>
             <Page/>

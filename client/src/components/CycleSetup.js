@@ -10,7 +10,7 @@ import TextField from '@mui/material/TextField';
 const CycleSetup = (props) =>  {
     
     const dispatch = useDispatch();
-    const options = [0.5, 1, 1.5 ,2, 2.2 ,3, 3.5 ,4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8];
+    const options = [0.5, 1, 1.5 ,2, 2.5 ,3, 3.5 ,4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8];
 
     return (
         <div className='mr-5 mb-4'>      

@@ -1,6 +1,5 @@
 import cloneDeep from 'lodash/cloneDeep';
-import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux';
+import { axiosPost } from '../actions/serverHelper';
 
 let practiceIntianal = {
     IDPatient:" ",
@@ -10,7 +9,8 @@ let practiceIntianal = {
     CycleList: []
 };
 
-const practice = (state = practiceIntianal, action) =>{
+const practice = async (state = practiceIntianal, action) =>{
+    
     switch (action.type) {
         case "START_PRACTICE":{
             let practice = cloneDeep(state);
@@ -29,28 +29,15 @@ const practice = (state = practiceIntianal, action) =>{
             practice.NumOfCycles = action.payload;
             return practice;
         }
-
-        case "FINISH_PRACTICE":{
-            
-            let postUrl = 'http://localhost:5000/addPractice';
-    
-            axios.post(
-                postUrl,
-                practice,
-                {headers: {"Content-Type": "application/json"}}
-            )
-            .then(res => {
-                console.log(res.data);
-            });
+        case "FINISH_PRACTICE":{           
+            await axiosPost(practice, 'addPractice');
             return practice;
-
         }
-
 
         default:
             return state;
     }
-};
+}
 
 export default practice;
 

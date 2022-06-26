@@ -1,4 +1,5 @@
 /***************   font-face   ********************/
+
 @font-face {
     font-family: 'HeeboRegular';
     src: local('fonts'), url(./fonts/otf/Heebo-Regular.otf) format('woff');
@@ -11,7 +12,6 @@
 }
 
 .footer {
-    background: lightgray;
     padding: 18px;
     color: black;
     font-size: 17px;
@@ -55,8 +55,28 @@ label.checkbox-inline {
     background-color: blue;
 }
 
-.practiceSetupContaine{
+.practiceSetupContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
+.practiceSetupContainer .input-group-prepend , .practiceSetupContainer span.input-group-text, .practiceSetupContainer input{
+    width: 150px !important;
+}
+
+.bgNavbar{
+    background-color: #E0FFFF !important;
+}
+
+.practiceSetupContainer{
+    height: 50vh !important;
+}
+
+.fa, .far, .fas {
+    font-family: "Font Awesome 5 Free" !important;
+}
+
+::-webkit-input-placeholder {
+    text-align: right;
+} 

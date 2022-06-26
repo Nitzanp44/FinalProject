@@ -96,10 +96,10 @@ export const updateCycle = (newData) => {
     };
 };
 
-export const IntianalCycle = () => {
+export const IntianalCycle = (newData) => {
     return {
             type: "INTIANAL_CYCLE_LIST",
-            //payload: newData
+            payload: newData
     };
 };
 

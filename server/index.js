@@ -1,12 +1,10 @@
 let express = require('express');
 let mongoose = require('mongoose');
-let indexRoutes =require ('./routes/index.js');
+let indexRoutes = require ('./routes/index.js');
 var cors = require('cors')
-let bodyParser=require('body-parser')
+let bodyParser = require('body-parser')
 require("dotenv").config({ path: "./config.env" });
 const Db = process.env.MongoURL;
-
-
 const app = express();
 
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
@@ -20,5 +18,3 @@ const PORT = process.env.PORT|| 5000;
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))
   .catch((error) => console.log(`${error} did not connect`));
-
-//mongoose.set('useFindAndModify', false);

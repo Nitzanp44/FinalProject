@@ -1,7 +1,7 @@
-import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import {changeLogin,changeUser} from '../actions/index'
 import { useState } from "react";
+import { axiosPost } from '../actions/serverHelper';
 
 const Login = () => {
 
@@ -11,47 +11,35 @@ const Login = () => {
         Email:"",
         Password:""
     });
-
     
-    const handlechange=e=>{
+    const handlechange = (e) => {
         document.getElementById("erorrEmailOrPass").hidden=true;
         const{name,value}=e.target
-        setUser({
-            ...user,//spread operator 
-    [name]:value
-    })
+        setUser({...user, [name]:value})
     };
 
-    function onSubmit(e){
+    const onSubmit = async (e) => {
 
         e.preventDefault();
-
-        axios.post('http://localhost:5000/login' ,user,
-        {headers: {
-            "Content-Type": "application/json",
-            }})
-          .then(res => {
-              
-              let record=res.data;
-              dispatch(changeUser(record));
-              dispatch(changeLogin());
+        try {
+            let res = await axiosPost(user, 'login');
+            dispatch(changeUser(res.data));
+            dispatch(changeLogin());
+        } catch (error) {
+            if(error.response.data === 'no user or password') {
+                document.getElementById("erorrEmailOrPass").hidden=false;
+                document.getElementById("Email").placeholder="אימייל";
+                document.getElementById("Email").style.outlineColor='red';
+                document.getElementById("Password").placeholder="סיסמא";
+                document.getElementById("Password").style.outlineColor='red';
             }
-            ).catch(error => {
-                console.log(error.response.data);
-                if(error.response.data=="no user or password")
-                {
-                    document.getElementById("erorrEmailOrPass").hidden=false;
-                    document.getElementById("Email").placeholder="אימייל";
-                    document.getElementById("Email").style.outlineColor='red';
-                    document.getElementById("Password").placeholder="סיסמא";
-                    document.getElementById("Password").style.outlineColor='red';
-                }
-    }); }
+        }
+    }
     
 
     return (
-        <form onSubmit={onSubmit}>
-            <h3>כניסה</h3>
+        <form onSubmit = {onSubmit}>
+            <h3 className='mb-5'>כניסה</h3>
 
             <div className="form-group">
                 <input id="Email" name="Email" type="email" className="form-control" placeholder="אימייל" onChange={handlechange}/>
