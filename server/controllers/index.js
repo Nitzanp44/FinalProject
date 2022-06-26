@@ -15,14 +15,13 @@ module.exports={
                     clientUser.ID = user.ID;
                     clientUser.Name = user.Name;
                     res.json(clientUser)
-                }}
-            else
-            {
-                console.log("erorr");
+                }
+            } else {
                 res.status(400).json("no user or password");
-
             }})
-        .catch(err=>res.status(400).json('Error: ' + err));
+        .catch(err =>
+            res.status(400).json('Error: ' + err)
+        );
     },
 
     patientsList:(req,res)=>{
@@ -65,14 +64,5 @@ module.exports={
             .then((practice) => res.json(practice._id))
             .catch(err => res.status(400).json('Error: ' + err));
     },
-
-    // practiceList:(req,res)=>{
-    //     console.log("practiceList");
-    //     console.log(req);
-    //     Practice.find({IDPatient: statePatient.ID})
-    //     .then(lst=>{    
-    //         console.log(lst);
-    //         res.json(lst)})
-    //     .catch(err => res.status(400).json('Error: ' + err));
-    // }
 }
+

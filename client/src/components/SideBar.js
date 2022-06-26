@@ -66,7 +66,6 @@ const SideBar = () =>  {
     let defaultRangeVal = 600;
     const changeRange = () => {
         let rangeVal = document.getElementById('graphRange').value;
-        console.log(rangeVal);
         dispatch(changeView(rangeVal));
         defaultRangeVal = rangeVal;
     }
@@ -82,13 +81,9 @@ const SideBar = () =>  {
         dispatch(finishPractice(cycels));
     }
 
-    let currentNumCycle=1;
-    let NumOfCycles=practiceState.NumOfCycles;
-
-
     return (
         <div>
-            <div className='sideBar d-flex'>
+            <div className='sideBar'>
                 <ul className="list-group-flush">
                     <li className="list-group-item">
                         <input className="form-check-input me-1" type="checkbox" defaultChecked={true} onChange={() => dispatch(changeSideBarLeft())}/>שמאל
@@ -123,11 +118,12 @@ const SideBar = () =>  {
                     </CountdownCircleTimer>
                     // </li> */}
                     <li className="list-group-item">
-                    <button type="button" className="btn btn-primary" variant="link" onClick={finishPractice}>סיום אימון</button>
+                        <button type="button" className="btn btn-primary" variant="link" onClick={finishPractice}>סיום אימון</button>
                     </li>
                 </ul>
             </div>
         </div>
     )
 }
+
 export default SideBar;

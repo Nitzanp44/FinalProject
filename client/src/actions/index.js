@@ -123,6 +123,7 @@ export const setPracticeList = (newData) => {
             payload: newData
     };
 };
+
 export const setDate = (newData) => {
     return {
             type: "SELECTED_DATE",
@@ -139,5 +140,11 @@ export const dataCycels = (newData) => {
 export const changePracticeStart = () => {
     return {
             type: "PRACTICE_START"
+    };
+};
+export const patientListChange = (newData) => {
+    return {
+            type: "IS_PATIENT_LIST_CHANGE",
+            payload: newData
     };
 };

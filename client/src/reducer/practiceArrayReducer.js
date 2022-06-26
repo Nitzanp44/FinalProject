@@ -1,19 +1,19 @@
 import cloneDeep from 'lodash/cloneDeep';
 
-    let practiceArrIntianal = [];
+let practiceArrIntianal = [];
 
-    const practiceArr = (state = practiceArrIntianal, action) =>{
-        switch (action.type) {            
-            case "INTIANAL_PRACTICE_LIST":{
-                let arr = cloneDeep(state);
-                arr = action.payload;
-                return arr;
-            }
-
-    
-            default:
-                return state;
+const practiceArr = (state = practiceArrIntianal, action) =>{
+    switch (action.type) {            
+        case "INTIANAL_PRACTICE_LIST":{
+            let arr = cloneDeep(state);
+            arr = action.payload;
+            return arr;
         }
 
-    };
-    export default practiceArr;
+        default:
+            return state;
+    }
+
+};
+
+export default practiceArr;

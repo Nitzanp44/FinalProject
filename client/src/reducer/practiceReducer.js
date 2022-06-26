@@ -1,6 +1,7 @@
 import cloneDeep from 'lodash/cloneDeep';
 import axios from 'axios';
 
+import { axiosPost } from '../actions/serverHelper';
 
 let practiceIntianal = {
     IDPatient:" ",
@@ -10,7 +11,8 @@ let practiceIntianal = {
     CycleList: []
 };
 
-const practice = (state = practiceIntianal, action) =>{
+const practice = async (state = practiceIntianal, action) =>{
+    
     switch (action.type) {
         case "START_PRACTICE":{
             let practice = cloneDeep(state);
@@ -18,7 +20,6 @@ const practice = (state = practiceIntianal, action) =>{
             practice.IDPatient = action.payload[0];
             practice.IDTherapist = action.payload[1];
             practice.CycleList = action.payload[2];
-            console.log(practice);
             return practice;
         }
 
@@ -35,27 +36,27 @@ const practice = (state = practiceIntianal, action) =>{
             return practice;
         }
 
-        case "FINISH_PRACTICE":{
+        // case "FINISH_PRACTICE":{
 
-            let postUrl = 'http://localhost:5000/addPractice';
+        //     let postUrl = 'http://localhost:5000/addPractice';
     
-            axios.post(
-                postUrl,
-                practice,
-                {headers: {"Content-Type": "application/json"}}
-            )
-            .then(res => {
-                console.log(res.data);
-            });
+        //     axios.post(
+        //         postUrl,
+        //         practice,
+        //         {headers: {"Content-Type": "application/json"}}
+        //     )
+        //     .then(res => {
+        //         console.log(res.data);
+        //     });
+        case "FINISH_PRACTICE":{           
+            await axiosPost(practice, 'addPractice');
             return practice;
-
         }
-
 
         default:
             return state;
     }
-};
+}
 
 export default practice;
 

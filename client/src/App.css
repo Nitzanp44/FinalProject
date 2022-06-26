@@ -1,5 +1,17 @@
+/***************   font-face   ********************/
+
+@font-face {
+    font-family: 'HeeboRegular';
+    src: local('fonts'), url(./fonts/otf/Heebo-Regular.otf) format('woff');
+}
+
+/***************   CSS   ********************/
+
+* {
+    font-family: 'HeeboRegular' !important;
+}
+
 .footer {
-    background: lightgray;
     padding: 18px;
     color: black;
     font-size: 17px;
@@ -10,14 +22,61 @@
     width: 100%;
 }
 
-.sideBar.d-flex {
-    flex-direction: column;
-}
-
 label.checkbox-inline {
     display: flex;
 }
 
-h3 {
-    font-size: 15px;
+.choocePatient {
+    position: fixed;
+    top: 10%;
+    right: 4%;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    padding: 22px;
+    z-index: 1500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.choocePatient:hover {
+    border: 1px solid black;
+}
+
+.choocePatient button{
+    width: fit-content;
+}
+
+.sideBar ul{
+    padding: 0 !important;
+}
+
+.list-group-item-action:focus {
+    background-color: blue;
+}
+
+.practiceSetupContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.practiceSetupContainer .input-group-prepend , .practiceSetupContainer span.input-group-text, .practiceSetupContainer input{
+    width: 150px !important;
+}
+
+.bgNavbar{
+    background-color: #E0FFFF !important;
+}
+
+.practiceSetupContainer{
+    height: 50vh !important;
+}
+
+.fa, .far, .fas {
+    font-family: "Font Awesome 5 Free" !important;
+}
+
+::-webkit-input-placeholder {
+    text-align: right;
+} 

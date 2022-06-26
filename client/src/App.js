@@ -8,16 +8,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector } from 'react-redux';
 import ReceivingDataA from './MQTT/ReceivingDataA';
 
-
 const App = () => {
   
   let login = useSelector(state => state.isLogin);
   
   ReceivingDataA();
   return (
-    <div className="App">
-      {(login) ? <Main /> : <EntranceManagement/>}
-      {/* <Footer/> */}
+    <div className="h-100 d-flex justify-content-center align-items-center container">
+      {(login) ? <Main/> : <EntranceManagement/>}
+      <Footer/>
     </div>
   );
 }

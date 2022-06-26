@@ -10,26 +10,22 @@ const PatientDetails = () => {
 
   const stateShowCanvas = useSelector((state) => state.showCanvas);
   const stateShowModal = useSelector((state) => state.showModal);
-  const statePatient = useSelector((state) => state.patient);
+  const statePatientName = useSelector((state) => 'מטופל : ' + state.patient.Name);
   const dispatch = useDispatch();
 
   return (
-      <div>
-        {/* חלון מטופל נוכחי */}
-        <MDBContainer>
-          <MDBCard style={{ width: "22rem", marginTop: "1rem" }}>
-            <MDBCardBody>
-          
-              <MDBCardTitle tag="h6" sub className="mb-2 text-muted">מטופל: {statePatient.Name}</MDBCardTitle>
-              <button type="button" className="btn btn-link" variant="link" onClick={() => dispatch(changeCanvasShow())}>בחר מטופל </button>
-              
-              <Offcanvas show={stateShowCanvas} onHide={() => dispatch(changeCanvasShow())}>
-                <UserSelection/>
-              </Offcanvas>
+      <div >
+        
+        {/* חלון בחר מטופל */}
+        <div className='choocePatient'>
+          <p>{statePatientName}</p>
+          <button type="button" className="btn btn-outline-info mt-2 btn-sm" variant="link" onClick={() => dispatch(changeCanvasShow())}>בחר מטופל</button>
+        </div>
 
-            </MDBCardBody>
-          </MDBCard>
-        </MDBContainer>
+        {/* חלון מטופל נוכחי */}
+        <Offcanvas show={stateShowCanvas} onHide={() => dispatch(changeCanvasShow())}>
+          <UserSelection/>
+        </Offcanvas>
 
         {/* הוספת מטופל */}
         <Modal show={stateShowModal} fullscreen={true} size={'l'} onHide={() => dispatch(changeModalShow())}>

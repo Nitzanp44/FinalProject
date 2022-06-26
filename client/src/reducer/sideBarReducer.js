@@ -1,15 +1,8 @@
 import cloneDeep from 'lodash/cloneDeep';
 import ReactFC from 'react-fusioncharts';
-//import FusionCharts from "fusioncharts";
-//import Column2D from "fusioncharts/fusioncharts.charts";
-//ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 import FusionCharts from 'fusioncharts/core';
-//import feedData from 'fusioncharts/';
-//import Column2D from "fusioncharts/fusioncharts.charts";
 import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
-import realtimelinedy from "fusioncharts/viz/realtimelinedy";
 import realtimeline from "fusioncharts/viz/realtimeline";
-import TimeSeries from 'fusioncharts/fusioncharts.timeseries';
 ReactFC.fcRoot(FusionCharts, realtimeline, FusionTheme);
 
 let dataGraphIntianal = {
@@ -48,30 +41,26 @@ let dataGraphIntianal = {
     ]
 };
 
-
 const dataGraph = (state = dataGraphIntianal, action) =>{
-    switch (action.type) {
-        case "HIDDEN_LEFT":{
-          let copyState = cloneDeep(state);
-          copyState.datasets[1].visible = !copyState.datasets[1].visible;
-          return copyState;
-        }
-        case "HIDDEN_RIGHT":{
-          let copyState = cloneDeep(state);
-          copyState.datasets[2].visible = !copyState.datasets[2].visible;
-          return copyState;
-        }
-        case "UPDATE_DATA":{
+  switch (action.type) {
+      case "HIDDEN_LEFT":{
+        let copyState = cloneDeep(state);
+        copyState.datasets[1].visible = !copyState.datasets[1].visible;
+        return copyState;
+      }
+      case "HIDDEN_RIGHT":{
+        let copyState = cloneDeep(state);
+        copyState.datasets[2].visible = !copyState.datasets[2].visible;
+        return copyState;
+      }
+      case "UPDATE_DATA":{
         const copyState = cloneDeep(state);
-        let rigth=action.payload[1];
-        let left=action.payload[2];
+        let rigth = action.payload[1];
+        let left = action.payload[2];
         copyState.labels.unshift(action.payload[0]);
         copyState.labels.pop();
-        // copyState.datasets[1].x.unshift(action.payload[0]);
-        // copyState.datasets[1].x.pop();
-        // copyState.datasets[2].x.unshift(action.payload[0]);
-        // copyState.datasets[2].x.pop();
-        //console.log(copyState.labels)
+
+        
         for (let element in rigth){
           copyState.datasets[1].y.unshift(rigth[element]);
           copyState.datasets[1].y.pop();
@@ -83,7 +72,7 @@ const dataGraph = (state = dataGraphIntianal, action) =>{
           copyState.dataLeft.push(left[element2]);
         }
         return copyState;
-        }
+      }
 
         case "CHANGE_VIEW_SCALE":{
           console.log("change")

@@ -1,7 +1,7 @@
-import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import {changeLogin,changeUser} from '../actions/index'
 import { useState } from "react";
+import { axiosPost } from '../actions/serverHelper';
 
 const Login = () => {
 
@@ -11,47 +11,36 @@ const Login = () => {
         Email:"",
         Password:""
     });
-
     
-    const handlechange=e=>{
+    const handlechange = (e) => {
         document.getElementById("erorrEmailOrPass").hidden=true;
         const{name,value}=e.target
-        setUser({
-            ...user,//spread operator 
-    [name]:value
-    })
+        setUser({...user, [name]:value})
     };
 
-    function onSubmit(e){
+    const onSubmit = async (e) => {
 
         e.preventDefault();
-
-        axios.post('http://localhost:5000/login' ,user,
-        {headers: {
-            "Content-Type": "application/json",
-            }})
-          .then(res => {
-              
-              let record=res.data;
-              dispatch(changeUser(record));
-              dispatch(changeLogin());
+        try {
+            let res = await axiosPost(user, 'login');
+            dispatch(changeUser(res.data));
+            dispatch(changeLogin());
+        } catch (error) {
+            if(error.response.data === 'no user or password') {
+                document.getElementById("erorrEmailOrPass").hidden=false;
+                document.getElementById("Email").placeholder="אימייל";
+                document.getElementById("Email").style.outlineColor='red';
+                document.getElementById("Password").placeholder="סיסמא";
+                document.getElementById("Password").style.outlineColor='red';
             }
-            ).catch(error => {
-                console.log(error.response.data);
-                if(error.response.data=="no user or password")
-                {
-                    document.getElementById("erorrEmailOrPass").hidden=false;
-                    document.getElementById("Email").placeholder="אימייל";
-                    //document.getElementById("Email").style.outlineColor='red';
-                    document.getElementById("Password").placeholder="סיסמא";
-                    //document.getElementById("Password").style.outlineColor='red';
-                }
-    }); }
+             }
+        }
+    }
     
 
     return (
-        <form onSubmit={onSubmit}>
-            <h3>כניסה</h3>
+        <form onSubmit = {onSubmit}>
+            <h3 className='mb-5'>כניסה</h3>
 
             <div className="form-group">
                 <input id="Email" name="Email" type="email" className="form-control" placeholder="אימייל" onChange={handlechange}/>
@@ -61,7 +50,7 @@ const Login = () => {
                 <input id="Password" name="Password" type="password" className="form-control" placeholder="סיסמא" onChange={handlechange}/>
             </div>
 
-            <div className="form-group">
+            <div className="form-group float-right">
                 <div className="custom-control custom-checkbox">
                     <input type="checkbox" className="custom-control-input" id="customCheck1" />
                     <label className="custom-control-label" htmlFor="customCheck1">זכור אותי</label>
@@ -69,9 +58,8 @@ const Login = () => {
             </div>
 
             <p id="erorrEmailOrPass" style={{ color: "red" }} hidden={true}>שם המשתמש או הסיסמא אינם תקינים</p>
-            <button type="submit" className="btn btn-primary btn-block">אישור</button>
-            <p className="forgot-password text-right">
-                ?שכחת <a href="#">סיסמא</a>
+                <button type="submit" className="btn btn-primary btn-block">אישור</button>
+                <p className="forgot-password text-right">?שכחת <a href="#">סיסמא</a>
             </p>
         </form>
     );

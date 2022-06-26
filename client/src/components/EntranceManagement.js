@@ -5,9 +5,9 @@ import SignUp from "./SignUp";
 const EntranceManagement = () => {
 
     return (
-        <div>
-            <div className="App">
-                <nav className="navbar navbar-expand-lg navbar-light fixed-top mb-5">
+        <div className="w-50 p-5 text-center">
+            <div>
+                <nav className="navbar navbar-expand-lg navbar-light fixed-top mb-5 bgNavbar">
                     <div className="container">
                         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                             <ul className="navbar-nav ml-auto">
@@ -21,14 +21,12 @@ const EntranceManagement = () => {
                         </div>
                     </div>
                 </nav>
-                <div className="auth-wrapper mt-5">
-                    <div className="auth-inner">
-                        <Routes>
-                            <Route exact path='/' element={<Login/>} />
-                            <Route path="/sign-in" element={<Login/>} />
-                            <Route path="/sign-up" element={<SignUp/>} />
-                        </Routes>
-                    </div>
+                <div>
+                    <Routes>
+                        <Route exact path='/' element={<Login/>} />
+                        <Route path="/sign-in" element={<Login/>} />
+                        <Route path="/sign-up" element={<SignUp/>} />
+                    </Routes>
                 </div>
             </div>
         </div>
