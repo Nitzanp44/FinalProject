@@ -58,7 +58,7 @@ const Timer = () =>   {
   initialDuration();
 
   return (
-      <div>
+      <div className="d-flex justify-content-center timerContainer">
         <div className="position-relative">
           <CountdownCircleTimer
             key={key}

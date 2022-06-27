@@ -102,3 +102,7 @@ label.checkbox-inline {
     transform: translate(-50%,-50%);
     z-index: 150;
 }
+
+.timerContainer {
+    flex-direction: column;
+}
