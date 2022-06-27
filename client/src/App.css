@@ -28,7 +28,7 @@ label.checkbox-inline {
 
 .choocePatient {
     position: fixed;
-    top: 10%;
+    top: 12%;
     right: 4%;
     border: 1px solid darkgray;
     border-radius: 5px;
@@ -80,3 +80,25 @@ label.checkbox-inline {
 ::-webkit-input-placeholder {
     text-align: right;
 } 
+
+.list-group {
+    max-height: 50vh;
+    overflow-y: scroll;
+}
+
+.btnDate {
+    width: max-content !important;
+}
+
+.js-plotly-plot {
+    border: 10px solid lightgray;
+    border-radius: 5px;
+    background-color: #40a0a0;
+}
+
+.formatRemainingTime {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 150;
+}

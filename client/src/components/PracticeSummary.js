@@ -13,7 +13,6 @@ const PracticeSummary = () =>  {
 
     return (
         <div>
-            <h4 className='mb-5 text-center'> סיכום אימון אחרון</h4>
             <PreviousPracticeData/>
         </div>
     )

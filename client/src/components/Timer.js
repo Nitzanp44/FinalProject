@@ -1,84 +1,83 @@
 
-import React from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState } from "react";
-import "./Timer.css";
-
-
+import { useSelector } from 'react-redux';
+import { useState } from "react";
 
 const Timer = () =>   {
-    const practiceState = useSelector((state) => state.practice);
-    let numCycle=practiceState.NumOfCycles;
-    let cycleList= practiceState.CycleList;
-    let currntCycle=0;
-    let cycleTimes=[];
-    for (let x in cycleList)
-    {
-      console.log(cycleList[x]);
-      console.log(cycleList[x].Time);
-      cycleTimes.push(cycleList[x].Time);
+    
+  const practiceState = useSelector((state) => state.practice);
+
+  let numCycle = practiceState.NumOfCycles;
+  // let cycleList = practiceState.CycleList;
+  let cycleList = [2, 10, 30, 40, 50];
+  // let cyclePosition = 0;
+  let colorsList = ['#004777', '#F7B801', '#A30000', '#A30000'];
+  let colorsTimeList = [7, 5, 2, 0];
+
+  const [isActive, setIsActive] = useState(true);
+  const [duration, setDuration] = useState(0);
+  const [cyclePosition, setCyclePosition] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [key, setKey] = useState(0);
+  const [remainingTime, setRemainingTime] = useState(10);
+
+  const initialDuration = () => {
+    setTimeout(()=> setDuration(cycleList[0]), 0);
+  }
+
+  const formatRemainingTime = (time) => {
+    const minutes = Math.floor((time % 3600) / 60);
+    const seconds = time % 60;
+    return `${minutes}:${seconds}`;
+  }
+
+  const nextCycle = () => {
+    setTimeout(() => setIsPlaying(!isPlaying), 0);
+    setTimeout(() => setIsActive(!isActive), 0);
+  }
+
+  const onUpdate = (event) => {
+    setTimeout(() => setRemainingTime(event), 0);
+  }
+
+  const onComplete = () => {
+    if(cyclePosition < cycleList.length){
+      setCyclePosition(cyclePosition+1);
+      let neweRemainingTime = cycleList[cyclePosition];
+      // setTimeout(() => {
+      // }, 0);
+      setKey(cyclePosition);
+      setDuration(neweRemainingTime);
+      setRemainingTime(neweRemainingTime);
+      setIsPlaying(!isPlaying);
+      setIsActive(!isActive);
+      return { shouldRepeat: false, delay: 2, newInitialRemainingTime: neweRemainingTime}
     }
-    console.log(numCycle);
-    console.log(cycleTimes);
+  }
 
-    const [isActive, setIsActive] = useState(false);
-    const [duration, setduration] = useState(cycleTimes);
-
-    console.log(cycleTimes[1]);
-
-    const formatRemainingTime = time => {
-      //console.log(time);
-      const minutes = Math.floor((time % 3600) / 60);
-      const seconds = time % 60;
-    //console.log(minutes+" "+seconds)
-      return `${minutes}:${seconds}`;
-    };
-
-
-    const renderTime = ({ remainingTime }) => {
-      //console.log(remainingTime);
-      if (remainingTime === 0) {
-        setTimeout(()=> setIsActive(0),0);
-        if (currntCycle<numCycle)
-        {
-          currntCycle+=1;
-          console.log(currntCycle);
-          console.log(cycleTimes[currntCycle]);
-          let newDuration=parseInt(cycleTimes[currntCycle]);
-          console.log(typeof cycleTimes[currntCycle]);
-          setTimeout(()=>setduration(Number(cycleTimes[currntCycle])),0);
-        }
-        
-        //return <div className="timer">Too lale...</div>;
-      }
-
-      return (
-        <div className="timer">
-          {isActive? <div className="text">מחזור 1/3</div>:<button onClick={()=>setIsActive(!isActive)}>התחל מחזור הבא</button>}
-          <div className="value">{formatRemainingTime(remainingTime)}</div>
-        </div>
-      );
-    };
-
+  initialDuration();
 
   return (
-     <div className="App">
-     <div className="timer-wrapper">
-        <CountdownCircleTimer
-          isPlaying={isActive}
-          duration={duration}
-          colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
-          //onComplete={() => [true, 1000]}
-          //onComplete={handleComplete}
-        >
-          {renderTime}
-        </CountdownCircleTimer>
-       </div>
-     </div>
+      <div>
+        <div className="position-relative">
+          <CountdownCircleTimer
+            key={key}
+            isPlaying={isPlaying}
+            duration={duration}
+            colors={colorsList}
+            colorsTime={colorsTimeList}
+            onComplete={onComplete}
+            onUpdate={onUpdate}
+          >
+          </CountdownCircleTimer>
+          <div className="formatRemainingTime position-absolute">
+            <h5>{formatRemainingTime(remainingTime)}</h5>
+            {(isPlaying) ? <button className="btn btn-outline-danger" onClick={() => setIsPlaying(!isPlaying)}><i class="fa fa-pause"></i></button> : <button className="btn btn-outline-success" onClick={() => setIsPlaying(!isPlaying)}><i class="fa fa-play"></i></button>}
+          </div>
+        </div>
+        { (isActive) ? <h5 className="mt-5 text-center">מחזור {cyclePosition+1} / {cycleList.length}</h5> : <button className="btn btn-outline-danger mt-5" onClick={nextCycle}>התחל מחזור הבא</button>}
+      </div>
   );
 }
-export default Timer;
 
-// const rootElement = document.getElementById("root");
-// ReactDOM.render(<App />, rootElement);
+export default Timer;

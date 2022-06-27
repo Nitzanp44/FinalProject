@@ -11,12 +11,11 @@ let practiceIntianal = {
     CycleList: []
 };
 
-const practice = async (state = practiceIntianal, action) =>{
+const practice = (state = practiceIntianal, action) =>{
     
     switch (action.type) {
         case "START_PRACTICE":{
             let practice = cloneDeep(state);
-            console.log(action.payload)
             practice.IDPatient = action.payload[0];
             practice.IDTherapist = action.payload[1];
             practice.CycleList = action.payload[2];
@@ -25,9 +24,7 @@ const practice = async (state = practiceIntianal, action) =>{
 
         case "CHANGE_MAXIMUM":{
             let practice = cloneDeep(state);
-            console.log(action.payload);
             practice.MuscleLoad = action.payload;
-            console.log(practice);
             return practice;
         }
         case "INTIANAL_CYCLE_LIST":{
@@ -35,21 +32,8 @@ const practice = async (state = practiceIntianal, action) =>{
             practice.NumOfCycles = action.payload;
             return practice;
         }
-
-        // case "FINISH_PRACTICE":{
-
-        //     let postUrl = 'http://localhost:5000/addPractice';
-    
-        //     axios.post(
-        //         postUrl,
-        //         practice,
-        //         {headers: {"Content-Type": "application/json"}}
-        //     )
-        //     .then(res => {
-        //         console.log(res.data);
-        //     });
         case "FINISH_PRACTICE":{           
-            await axiosPost(practice, 'addPractice');
+           
             return practice;
         }
 
