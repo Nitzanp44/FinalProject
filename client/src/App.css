@@ -66,7 +66,7 @@ label.checkbox-inline {
 }
 
 .bgNavbar{
-    background-color: #E0FFFF !important;
+    background-color: #90EE90 !important;
 }
 
 .practiceSetupContainer{
@@ -80,3 +80,29 @@ label.checkbox-inline {
 ::-webkit-input-placeholder {
     text-align: right;
 } 
+
+.list-group {
+    max-height: 50vh;
+    overflow-y: scroll;
+}
+
+.btnDate {
+    width: max-content !important;
+}
+
+.js-plotly-plot {
+    border: 10px solid lightgray;
+    border-radius: 5px;
+    background-color: #40a0a0;
+}
+
+.formatRemainingTime {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 150;
+}
+
+.timerContainer {
+    flex-direction: column;
+}

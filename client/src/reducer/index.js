@@ -11,6 +11,7 @@ import practiceArrayReducer from "./practiceArrayReducer";
 import practiceDateReducer from "./practiceDateReducer";
 import practiceStartReducer from "./practiceStartReducer";
 import isPatientListChangeReducer from "./isPatientListChangeReducer";
+import isTimerPlayingReducer from "./isTimerPlayingReducer";
 
 const reducers = combineReducers({
     sideBar: sideBarReducer,
@@ -24,7 +25,8 @@ const reducers = combineReducers({
     practiceList: practiceArrayReducer,
     practiceDate: practiceDateReducer,
     practiceStart:practiceStartReducer,
-    isPatientListChange: isPatientListChangeReducer
+    isPatientListChange: isPatientListChangeReducer,
+    isTimerPlaying: isTimerPlayingReducer
 });
 
 export default reducers;
