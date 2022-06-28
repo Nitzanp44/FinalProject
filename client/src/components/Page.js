@@ -9,7 +9,7 @@ const Page = () =>  {
     return (
         <div>
             <Routes>
-                <Route exact path='/' element={<PracticePage/>} />
+                <Route exact path='/' element={<PracticeSetup/>} />
                 <Route path="/practiceSetup" element={<PracticeSetup/>} />
                 <Route path="/practicePage" element={<PracticePage/>} />
                 <Route path="/practiceSummary" element={<PracticeSummary/>} />

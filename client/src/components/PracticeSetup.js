@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import CycleSetup from './CycleSetup';
-import { IntianalCycle, changeMaximum } from '../actions/index';
+import { IntianalCycle, changeMaximum, startPractice } from '../actions/index';
 
 const PracticeSetup = () =>  {
     const stateCycles = useSelector((state) => state.cycle);
@@ -26,7 +26,7 @@ const PracticeSetup = () =>  {
         }
     }
 
-    const startPractice = () => {
+    const startPracticeB = () => {
         dispatch(startPractice([statePatient.ID, stateTherapist.ID, stateCycles]));
     }
 
@@ -70,7 +70,7 @@ const PracticeSetup = () =>  {
                 {[...Array(numCycle)].map((x,i) => {return <CycleSetup key={i} cycleSetupKey={i}/>})}
             </div>
             <div className='d-flex justify-content-center mt-4'>
-                <button type="button" className="btn btn-outline-secondary" onClick={startPractice} disabled= {!(numCycle && statePatient.ID && numMax)}>התחל אימון</button>
+                <button type="button" className="btn btn-outline-secondary" onClick={startPracticeB} disabled= {!(numCycle && statePatient.ID && numMax)}>התחל אימון</button>
             </div>
         </div>
     )

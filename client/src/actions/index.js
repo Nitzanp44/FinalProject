@@ -137,14 +137,29 @@ export const dataCycels = (newData) => {
             payload: newData
     };
 };
+
 export const changePracticeStart = () => {
     return {
             type: "PRACTICE_START"
     };
 };
+
 export const patientListChange = (newData) => {
     return {
             type: "IS_PATIENT_LIST_CHANGE",
             payload: newData
+    };
+};
+
+export const playingChange = (newData) => {
+    return {
+            type: "IS_PLAYING_CHANGE",
+            payload: newData
+    };
+};
+
+export const cycleComplete = () => {
+    return {
+            type: "CYCLE_COMPLETE",
     };
 };

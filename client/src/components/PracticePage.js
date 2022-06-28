@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import SideBar from './SideBar';
 import createPlotlyComponent from 'react-plotly.js/factory';
 import Plotly from "plotly.js-basic-dist";
+import Timer from './Timer';
+
 
 const PracticePage = () =>  {
   var Plot = createPlotlyComponent(Plotly);
@@ -15,7 +17,8 @@ const PracticePage = () =>  {
       <SideBar/>
       <CDBContainer> 
         <Plot data={lineDate.datasets} layout={ { width: 900, height: 600, title: 'גרף האימון', xaxis: {title:"זמן"}}}/>  
-      </CDBContainer>              
+      </CDBContainer>     
+      <Timer/>         
     </div>
   )
 }

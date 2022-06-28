@@ -16,7 +16,7 @@ const PreviousPracticeDate = () =>  {
         <div>
             <div className="list-group">
                 {statePracticeList.map((practice) =>
-                    <button type="button" className="list-group-item list-group-item-action" onClick={handleDateSelected} name={practice.created_at}>{(new Date(practice.created_at)).toISOString().split('T')[0]}</button>
+                    <button type="button" className="list-group-item list-group-item-action btnDate" onClick={handleDateSelected} name={practice.created_at}>{(new Date(practice.created_at)).toISOString().split('T')[0]}</button>
                 )}
             </div>
         </div>
