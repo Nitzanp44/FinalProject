@@ -23,16 +23,22 @@ const Login = () => {
         e.preventDefault();
         try {
             let res = await axiosPost(user, 'login');
+            if(res.status===200)
+            {
+                console.log(res);
             dispatch(changeUser(res.data));
             dispatch(changeLogin());
-        } catch (error) {
-            if(error.response.data === 'no user or password') {
+            }
+            else if(res.response.data === 'no user or password') {
                 document.getElementById("erorrEmailOrPass").hidden=false;
                 document.getElementById("Email").placeholder="אימייל";
                 document.getElementById("Email").style.outlineColor='red';
                 document.getElementById("Password").placeholder="סיסמא";
                 document.getElementById("Password").style.outlineColor='red';
             }
+            else alert("Error");
+        } catch (error) {
+            alert("Error")
              }
         }
     
@@ -57,7 +63,7 @@ const Login = () => {
                 </div>
             </div>
 
-            <p id="erorrEmailOrPass" style={{ color: "red" }} hidden={true}>שם המשתמש או הסיסמא אינם תקינים</p>
+                <p id="erorrEmailOrPass" style={{ color: "red" }} hidden={true}>שם המשתמש או הסיסמא אינם תקינים</p>
                 <button type="submit" className="btn btn-primary btn-block">אישור</button>
                 <p className="forgot-password text-right">?שכחת <a href="#">סיסמא</a>
             </p>

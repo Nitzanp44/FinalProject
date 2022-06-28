@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import CycleSetup from './CycleSetup';
-import { IntianalCycle, changeMaximum } from '../actions/index';
+import { IntianalCycle, changeMaximum, startPractice } from '../actions/index';
 
 const PracticeSetup = () =>  {
     const stateCycles = useSelector((state) => state.cycle);
@@ -25,14 +25,14 @@ const PracticeSetup = () =>  {
         }
     }
 
-    const startPractice = () => {
+    const startPracticee = () => {
         dispatch(startPractice([statePatient.ID, stateTherapist.ID, stateCycles]));
     }
     
     return (
         <div>
             <div className="d-flex w-100">
-                <div className="input-group mb-3 d-flex justify-content-between">
+                <div className="input-group mr-5 pl-5 pr-5 d-flex justify-content-sm-around">
                     <div className="input-group w-25">    
                         <div className="input-group-prepend">
                             <span className="input-group-text">מספר מחזורים</span>
@@ -55,7 +55,7 @@ const PracticeSetup = () =>  {
                 {[...Array(numCycle)].map((x,i) => {return <CycleSetup key={i} cycleSetupKey={i}/>})}
             </div>
             <div className='d-flex justify-content-center mt-4'>
-                <button type="button" className="btn btn-outline-secondary" onClick={startPractice}>התחל אימון</button>
+                <button type="button" className="btn btn-outline-secondary" onClick={startPracticee}>התחל אימון</button>
             </div>
         </div>
     )

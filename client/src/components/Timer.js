@@ -9,23 +9,26 @@ import "./Timer.css";
 
 const Timer = () =>   {
     const practiceState = useSelector((state) => state.practice);
+    // console.log(practiceState);
+    // console.log(practiceState.CycleList);
+    // console.log(practiceState.NumOfCycles);
     let numCycle=practiceState.NumOfCycles;
     let cycleList= practiceState.CycleList;
     let currntCycle=0;
     let cycleTimes=[];
     for (let x in cycleList)
     {
-      console.log(cycleList[x]);
-      console.log(cycleList[x].Time);
+      // console.log(cycleList[x]);
+      // console.log(cycleList[x].Time);
       cycleTimes.push(cycleList[x].Time);
     }
-    console.log(numCycle);
-    console.log(cycleTimes);
+    // console.log(numCycle);
+    // console.log(cycleTimes);
 
     const [isActive, setIsActive] = useState(false);
     const [duration, setduration] = useState(cycleTimes);
 
-    console.log(cycleTimes[1]);
+    // console.log(cycleTimes[1]);
 
     const formatRemainingTime = time => {
       //console.log(time);
@@ -43,10 +46,10 @@ const Timer = () =>   {
         if (currntCycle<numCycle)
         {
           currntCycle+=1;
-          console.log(currntCycle);
-          console.log(cycleTimes[currntCycle]);
+          // console.log(currntCycle);
+          // console.log(cycleTimes[currntCycle]);
           let newDuration=parseInt(cycleTimes[currntCycle]);
-          console.log(typeof cycleTimes[currntCycle]);
+          // console.log(typeof cycleTimes[currntCycle]);
           setTimeout(()=>setduration(Number(cycleTimes[currntCycle])),0);
         }
         

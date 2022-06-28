@@ -11,5 +11,6 @@ export const axiosPost = async (payload, domain) => {
        return res;
     } catch(err) {
         console.log('err --->', err);
+        return err;
     }
 }
