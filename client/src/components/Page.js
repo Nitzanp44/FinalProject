@@ -5,7 +5,7 @@ import PracticeSetup from './PracticeSetup'
 import PreviousPractice from './PreviousPractice'
 
 const Page = () =>  {
- 
+
     return (
         <div>
             <Routes>

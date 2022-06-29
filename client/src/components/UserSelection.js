@@ -1,12 +1,13 @@
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { changeModalShow, changePatient, changeCanvasShow } from '../actions/index';
+import { changeModalShow, changePatient, changeCanvasShow, restartPractice } from '../actions/index';
 import { axiosPost } from '../actions/serverHelper';
 
 const UserSelection =  () =>  {
 
     const userState = useSelector((state) => state.user)
+    const patientState = useSelector((state) => state.patient);
     const isPatientListChangeState = useSelector((state) => state.isPatientListChange)
     const dispatch = useDispatch();
     const [recordList, setRecordList] = useState([]);  
@@ -28,12 +29,15 @@ const UserSelection =  () =>  {
     }
 
     const getPatient = async (patient, patientName) => {
-        let res = await axiosPost(patientName, 'choosePatient');
-        if(res.data){
-            patient.ID = res.data.ID;
-            patient.Name = res.data.Name;      
-            dispatch(changePatient(patient)); 
-        } 
+        if(patientName.Name != patientState.Name){
+            let res = await axiosPost(patientName, 'choosePatient');
+            if(res.data){
+                patient.ID = res.data.ID;
+                patient.Name = res.data.Name;      
+                dispatch(changePatient(patient)); 
+                dispatch(restartPractice(patient.ID)); 
+            } 
+        }
         dispatch(changeCanvasShow())
     };
 

@@ -14,11 +14,11 @@ const PracticePage = () =>  {
 
   return (
     <div className='d-flex'>
-      <SideBar/>
+      <Timer/>         
       <CDBContainer> 
         <Plot data={lineDate.datasets} layout={ { width: 900, height: 600, title: 'גרף האימון', xaxis: {title:"זמן"}}}/>  
       </CDBContainer>     
-      <Timer/>         
+      <SideBar/>
     </div>
   )
 }

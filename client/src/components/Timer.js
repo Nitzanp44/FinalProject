@@ -8,7 +8,10 @@ const Timer = () =>   {
   const dispatch = useDispatch();
   const practiceState = useSelector((state) => state.practice);
   const isPlaying = useSelector((state) => state.isTimerPlaying);
+  let colorsList = ['#004777', '#F7B801', '#A30000', '#A30000'];
+  let colorsTimeList = [7, 5, 2, 0];
   let cycleTimes = [];
+  
   if(practiceState.CycleList.length > 0){
     practiceState.CycleList.forEach(cycle => {
       cycleTimes.push(cycle.Time);
@@ -16,8 +19,6 @@ const Timer = () =>   {
   }else{
     cycleTimes.push(0);
   }
-  let colorsList = ['#004777', '#F7B801', '#A30000', '#A30000'];
-  let colorsTimeList = [7, 5, 2, 0];
 
   const [isActive, setIsActive] = useState(false);
   const [duration, setDuration] = useState(cycleTimes[0]);
@@ -42,7 +43,8 @@ const Timer = () =>   {
     }
 
     const onComplete = () => {
-      dispatch(cycleComplete);
+      dispatch(cycleComplete());
+      setTimeout(() => dispatch(playingChange(false)), 0);
       let neweRemainingTime = 0;
       if(cyclePosition < cycleTimes.length){
         setTimeout(() => setCyclePosition(cyclePosition+1), 0);
@@ -50,7 +52,6 @@ const Timer = () =>   {
         setTimeout(() => setKey(cyclePosition), 0);
         setTimeout(() => setDuration(neweRemainingTime), 0);
         setTimeout(() => setRemainingTime(neweRemainingTime), 0);
-        setTimeout(() => dispatch(playingChange(false)), 0);
         setTimeout(() => setIsActive(!isActive), 0);
       }
       return { shouldRepeat: true, newInitialRemainingTime: neweRemainingTime}
