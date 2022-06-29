@@ -14,8 +14,10 @@ const App = () => {
   
   ReceivingDataA();
   return (
-    <div className="h-100 d-flex justify-content-center align-items-center container">
-      {(login) ? <Main/> : <EntranceManagement/>}
+    <div className="h-100 d-flex justify-content-center align-items-center appBg">
+      <div className='container h-100 d-flex justify-content-center align-items-center'>
+        {(login) ? <Main/> : <EntranceManagement/>}
+      </div>
       <Footer/>
     </div>
   );

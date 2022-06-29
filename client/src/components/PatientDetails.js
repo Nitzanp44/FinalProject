@@ -14,12 +14,12 @@ const PatientDetails = () => {
   const dispatch = useDispatch();
 
   return (
-      <div >
+      <div>
         
         {/* חלון בחר מטופל */}
         <div className='choocePatient'>
           <p>{statePatientName}</p>
-          <button type="button" className="btn btn-outline-info mt-2 btn-sm" variant="link" onClick={() => dispatch(changeCanvasShow())}>בחר מטופל</button>
+          <button type="button" className="btn btn-outline-secondary mt-2 btn-sm" variant="link" onClick={() => dispatch(changeCanvasShow())}>בחר מטופל</button>
         </div>
 
         {/* חלון מטופל נוכחי */}

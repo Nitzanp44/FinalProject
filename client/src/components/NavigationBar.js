@@ -20,16 +20,16 @@ const NavigationBar = () => {
                         <span className="navbar-text-primary">שלום {therapist.Name}</span>
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <Link className="nav-link" to={"/PracticeSetup"}>הגדרת אימון</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to={"/practicePage"}>צפייה באימון</Link>
+                                <Link className="nav-link" to={"/previousPractice"}>אימונים קודמים</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to={"/practiceSummary"}>סיכום אימון</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to={"/previousPractice"}>אימונים קודמים</Link>
+                                <Link className="nav-link" to={"/practicePage"}>צפייה באימון</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to={"/PracticeSetup"}>הגדרת אימון</Link>
                             </li>
                         </ul> 
                     </div>

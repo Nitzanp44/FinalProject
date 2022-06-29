@@ -1,6 +1,4 @@
 import cloneDeep from 'lodash/cloneDeep';
-import axios from 'axios';
-import { axiosPost } from '../actions/serverHelper';
 
 let counter = 0;
 let practiceIntianal = {

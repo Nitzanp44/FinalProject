@@ -52,7 +52,7 @@ const PreviousPracticeHandsData = () =>  {
 
     return (
         <CDBContainer>
-            <Plot data={barData.datasets} layout={ {width: 600, height: 400, title: 'מהלך האימון'} }/>
+            <Plot data={barData.datasets} layout={ {width: 600, height: 400, title: 'מהלך האימון' } }/>
         </CDBContainer>
     )
 };
