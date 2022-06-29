@@ -56,7 +56,7 @@ const AddPatient = () => {
                 </div>
             </form>
         </div>
-    )  
+    )
 }
 
 export default AddPatient;

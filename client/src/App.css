@@ -73,7 +73,7 @@ label.checkbox-inline {
     height: 50vh !important;
 }
 
-.fa, .far, .fas {
+.fa, .far, .fas, .timeContainer i {
     font-family: "Font Awesome 5 Free" !important;
 }
 

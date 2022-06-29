@@ -1,8 +1,8 @@
 import cloneDeep from 'lodash/cloneDeep';
 import axios from 'axios';
-
 import { axiosPost } from '../actions/serverHelper';
-const counter =0;
+
+let counter = 0;
 let practiceIntianal = {
     IDPatient:" ",
     IDTherapist:" ",
@@ -48,7 +48,10 @@ const practice = (state = practiceIntianal, action) =>{
             counter = 0;
             return practice;
         }
-
+        case "RESTART_PRACTICE":{
+            practice.IDPatient = action.payload;
+            return practice;
+        }
         default:
             return state;
     }
