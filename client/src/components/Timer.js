@@ -74,12 +74,12 @@ const Timer = () =>   {
               {(isPlaying) ? <button className="btn btn-outline-danger" onClick={() => dispatch(playingChange(!isPlaying))}><i className="fa fa-pause"></i></button> : <button className="btn btn-outline-success" onClick={() => dispatch(playingChange(!isPlaying))}><i className="fa fa-play"></i></button>}
             </div>
           </div>
-          { (isActive) ? <h5 className="mt-5 text-center">מחזור {cyclePosition} / {cycleTimes.length}</h5> : <button className="btn btn-outline-danger mt-5" onClick={nextCycle}>התחל מחזור הבא</button>}
+          { (isActive) ? <h5 className="mt-5 text-center">מחזור {cyclePosition} / {cycleTimes.length}</h5> : <button className="btn btn-outline-secondary mt-5" onClick={nextCycle}>התחל מחזור הבא</button>}
         </div>
     );
   }else{
     return (
-      <div className="d-flex justify-content-center timerContainer">
+      <div className="d-flex justify-content-center timerContainer cmpBg p-5">
         <div className="position-relative">
           <CountdownCircleTimer
             isPlaying={false}
