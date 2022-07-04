@@ -72,30 +72,24 @@ const dataGraph = (state = dataGraphIntianal, action) =>{
         }
         return copyState;
       }
-
-        case "CHANGE_VIEW_SCALE":{
-          let copyState = cloneDeep(state);
-          copyState.viewScale = action.payload;
-          return copyState;
-        }
-        // case "CHANGE_LABEL":{
-        //   var today = new Date();
-        //   const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        //   //console.log(time);
-        //   const copyState = cloneDeep(state);
-        //   copyState.labels.unshift(time);
-        //   copyState.labels.pop();
-        //   return copyState;
-        // }
-        case "CHANGE_MAXIMUM":{
-          let copyState = cloneDeep(state);
-          copyState.datasets[0].y = Array(600).fill(action.payload);
-          //copyState.trendlines[0].startvalue = action.payload;
-          return copyState;
-        }
-        default:
-            return state;
-    }
+      case "CHANGE_VIEW_SCALE":{
+        let copyState = cloneDeep(state);
+        copyState.viewScale = action.payload;
+        return copyState;
+      }
+      case "CHANGE_MAXIMUM":{
+        let copyState = cloneDeep(state);
+        copyState.datasets[0].y = Array(600).fill(action.payload);
+        return copyState;
+      }
+      case "LOGOUT":{
+        let copyState = cloneDeep(state);
+        copyState = dataGraphIntianal;
+        return copyState;
+      }
+      default:
+          return state;
+  }
 }
 
 export default dataGraph;

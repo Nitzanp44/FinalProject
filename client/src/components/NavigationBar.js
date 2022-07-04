@@ -6,9 +6,11 @@ const NavigationBar = () => {
     const therapist = useSelector((state) => state.user);
     const dispatch = useDispatch();
 
-    function logOut(){
-        dispatch(loggOut());
-        dispatch(changeLogin());
+    const logOut = () =>{
+        if(window.confirm("השינויים שביצעת לא יישמרו. האם את/ה בטוח שברצונך לצאת?")){
+            dispatch(loggOut());
+            dispatch(changeLogin());
+        }
     }
 
     return (

@@ -3,6 +3,10 @@ const isTimerPlaying = (state = false, action) =>{
         case "IS_PLAYING_CHANGE":{
           return state = action.payload;
         }
+        case "LOGOUT":{
+          state = false;
+          return state;
+      }
         default:
             return state;
     }

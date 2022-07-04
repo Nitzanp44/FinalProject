@@ -3,6 +3,10 @@ const showModal = (state = false, action) =>{
         case "CHANGE_MODAL_SHOW":{
           return !state;
         }
+        case "LOGOUT":{
+          state = false;
+          return state;
+        }
         default:
             return state;
     }
