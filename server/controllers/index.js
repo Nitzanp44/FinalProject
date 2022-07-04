@@ -14,11 +14,15 @@ module.exports={
                     let clientUser = {ID: "", Name: ""};
                     clientUser.ID = user.ID;
                     clientUser.Name = user.Name;
-                    res.json(clientUser)
+                    res.json(clientUser);
                 }
-            } else {
+             else {
                 res.status(400).json("no user or password");
-            }})
+            }}
+            else {
+                res.status(400).json("no user or password");
+        }
+        })
         .catch(err =>
             res.status(400).json('Error: ' + err)
         );

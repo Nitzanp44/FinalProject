@@ -9,7 +9,6 @@ import cloneDeep from 'lodash/cloneDeep';
             case "UPDATE_CYCLE":{
                 let arr = cloneDeep(state);
                 arr[action.payload[0]][action.payload[1]] = parseFloat(action.payload[2]);
-                console.log(arr);
                 return arr;
             } 
             case "INTIANAL_CYCLE_LIST":{

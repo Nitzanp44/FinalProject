@@ -53,7 +53,7 @@ const PracticeSetup = () =>  {
     return (
         <div className='cmpBg p-5'>
             <div className="d-flex w-100">
-                <div className="input-group mb-3 d-flex justify-content-between">
+                <div className="input-group mr-5 pl-5 pr-5 d-flex justify-content-sm-around">
                     <div className="input-group w-25">    
                         <div className="input-group-prepend">
                             <span className="input-group-text">מספר מחזורים</span>

@@ -1,11 +1,9 @@
 import { changeData } from '../actions/index'
 import Paho from 'paho-mqtt';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const ReceivingDataA = () =>  {
 
-const practiceStart = useSelector((state) => state.practiceStart);
-const isPlaying = useSelector((state) => state.isTimerPlaying);
 const dispatch = useDispatch();
 var numMassageA=0;
 var numMessageRecive=0;
@@ -46,7 +44,6 @@ function ConnectionLost(res) {
 
 /*Callback for incoming message processing */
 function MessageArrived(message) {
-    if(isPlaying){
         var data = message.payloadString;
         var arrData=data.split(',');
         var arrDataT=[];
@@ -60,7 +57,7 @@ function MessageArrived(message) {
             dispatch(changeData(arrDataT));
             numMassageA=numMessageRecive;
         }
-   }
+//    }
 }
     
 }

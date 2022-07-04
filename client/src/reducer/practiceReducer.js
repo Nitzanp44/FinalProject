@@ -1,6 +1,6 @@
 import cloneDeep from 'lodash/cloneDeep';
 
-let counter = 0;
+let counter =-1;
 let practiceIntianal = {
     IDPatient:" ",
     IDTherapist:" ",
@@ -8,6 +8,8 @@ let practiceIntianal = {
     MuscleLoad: 0,
     CycleList: []
 };
+
+
 
 const practice = (state = practiceIntianal, action) =>{
     switch (action.type) {
@@ -30,25 +32,26 @@ const practice = (state = practiceIntianal, action) =>{
             return practice;
         }
         case "UPDATE_DATA":{
-            let practice = cloneDeep(state);
-            let rigth = action.payload[1];
-            let left = action.payload[2];        
-            for (let element in rigth){
-                practice.CycleList[counter].dataRight.push(rigth[element]);
-            }
-            for (let element2 in left){        
-                practice.CycleList[counter].dataLeft.push(left[element2]);
-            }
+           // if(counter>=0){ 
+                let rigth = action.payload[1];
+                let left = action.payload[2];   
+                for (let element in rigth){
+                    practice.CycleList[counter].dataRight.push(rigth[element]);
+                }
+                for (let element2 in left){        
+                    practice.CycleList[counter].dataLeft.push(left[element2]);
+                }
+          //  }
             return practice;
           }
-
-        case "CYCLE_COMPLETE":{
-            counter+=1;
+        case "CHANGE_COUNTER":{
+            counter=action.payload;
+            return practice;
         }
         case "FINISH_PRACTICE":{ 
-            let practice = cloneDeep(state);  
+            let practice = cloneDeep(state); 
+            counter = -1; 
             practice = practiceIntianal;     
-            counter = -1;
             return practice;
         }
         case "LOGOUT":{
