@@ -62,7 +62,7 @@ label.checkbox-inline {
 }
 
 .bgNavbar{
-    background-color: #90EE90 !important;
+    background-color: #5F9EA0 !important;
 }
 
 .practiceSetupContainer{
@@ -137,4 +137,12 @@ button, a{
 .cmpBg {
     background-color: white;
     border-radius: 10px;
+}
+
+img.logo {
+    position: fixed;
+    height: 3em;
+    top: 0.3em;
+    left: 3em;
+    z-index: 1500;
 }

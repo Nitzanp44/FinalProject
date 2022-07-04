@@ -9,7 +9,11 @@ const practiceArr = (state = practiceArrIntianal, action) =>{
             arr = action.payload;
             return arr;
         }
-
+        case "LOGOUT":{
+            let arr = cloneDeep(state);
+            arr = practiceArrIntianal;
+            return arr;
+        }
         default:
             return state;
     }

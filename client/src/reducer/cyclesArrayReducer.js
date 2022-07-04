@@ -3,16 +3,17 @@ import cloneDeep from 'lodash/cloneDeep';
     let cycleIntianal = [];
 
     const cycleArr = (state = cycleIntianal, action) =>{
-        let arr = cloneDeep(state);
 
         switch (action.type) {
             
             case "UPDATE_CYCLE":{
+                let arr = cloneDeep(state);
                 arr[action.payload[0]][action.payload[1]] = parseFloat(action.payload[2]);
                 console.log(arr);
                 return arr;
             } 
             case "INTIANAL_CYCLE_LIST":{
+                let arr = cloneDeep(state);
                 if(action.payload > arr.length){
                     for(let i = arr.length; i < action.payload; i++){
                         let cycle = {
@@ -28,10 +29,15 @@ import cloneDeep from 'lodash/cloneDeep';
                 }
                 return arr;
             }
-            case "DATA_CYCLES":{
-                
-
-
+            case "LOGOUT":{
+                let arr = cloneDeep(state);
+                arr = cycleIntianal;
+                return arr;
+            }
+            case "FINISH_PRACTICE":{ 
+                let arr = cloneDeep(state);  
+                arr = cycleIntianal;     
+                return arr;
             }
 
     
