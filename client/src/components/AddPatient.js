@@ -33,7 +33,7 @@ const AddPatient = () => {
     };
 
     return(
-        <div className='mt-5'>
+        <div>
             <form className="mx-1 mx-md-4">
                 {inputsArr.map((input) => 
                     <div className='d-flex flex-column'>
@@ -56,7 +56,7 @@ const AddPatient = () => {
                 </div>
             </form>
         </div>
-    )  
+    )
 }
 
 export default AddPatient;

@@ -9,7 +9,10 @@ const Timer = () =>   {
   const dispatch = useDispatch();
   const practiceState = useSelector((state) => state.practice);
   const isPlaying = useSelector((state) => state.isTimerPlaying);
+  let colorsList = ['#004777', '#F7B801', '#A30000', '#A30000'];
+  let colorsTimeList = [7, 5, 2, 0];
   let cycleTimes = [];
+  
   if(practiceState.CycleList.length > 0){
     practiceState.CycleList.forEach(cycle => {
       cycleTimes.push(cycle.Time*60);
@@ -17,8 +20,6 @@ const Timer = () =>   {
   }else{
     cycleTimes.push(0);
   }
-  let colorsList = ['#004777', '#F7B801', '#A30000', '#A30000'];
-  let colorsTimeList = [7, 5, 2, 0];
 
   const [isActive, setIsActive] = useState(false);
   const [duration, setDuration] = useState(cycleTimes[0]);
@@ -89,12 +90,12 @@ const playTimer=()=>{
               {(isPlaying) ? <button className="btn btn-outline-danger" onClick={pouseTimer}><i className="fa fa-pause"></i></button> : <button className="btn btn-outline-success" onClick={playTimer}><i className="fa fa-play"></i></button>}
             </div>
           </div>
-          { (isActive) ? <h5 className="mt-5 text-center">מחזור {cyclePosition} / {cycleTimes.length}</h5> : <button className="btn btn-outline-danger mt-5" onClick={nextCycle}>התחל מחזור הבא</button>}
+          { (isActive) ? <h5 className="mt-5 text-center">מחזור {cyclePosition} / {cycleTimes.length}</h5> : <button className="btn btn-outline-secondary mt-5" onClick={nextCycle}>התחל מחזור הבא</button>}
         </div>
     );
   }else{
     return (
-      <div className="d-flex justify-content-center timerContainer">
+      <div className="d-flex justify-content-center timerContainer cmpBg p-5">
         <div className="position-relative">
           <CountdownCircleTimer
             isPlaying={false}

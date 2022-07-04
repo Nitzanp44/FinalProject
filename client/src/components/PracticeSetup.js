@@ -2,6 +2,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import CycleSetup from './CycleSetup';
 import { IntianalCycle, changeMaximum, startPractice } from '../actions/index';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
 
 const PracticeSetup = () =>  {
     const stateCycles = useSelector((state) => state.cycle);
@@ -43,9 +45,13 @@ const PracticeSetup = () =>  {
             setNumMax(0);
         }
     }
+
+    const linkClassName = () => {
+        return !(numCycle && statePatient.ID && numMax) ? 'btn btn-outline-secondary disabled' : 'btn btn-outline-secondary';
+    }
     
     return (
-        <div>
+        <div className='cmpBg p-5'>
             <div className="d-flex w-100">
                 <div className="input-group mr-5 pl-5 pr-5 d-flex justify-content-sm-around">
                     <div className="input-group w-25">    
@@ -70,7 +76,7 @@ const PracticeSetup = () =>  {
                 {[...Array(numCycle)].map((x,i) => {return <CycleSetup key={i} cycleSetupKey={i}/>})}
             </div>
             <div className='d-flex justify-content-center mt-4'>
-                <button type="button" className="btn btn-outline-secondary" onClick={startPracticeB} disabled= {!(numCycle && statePatient.ID && numMax)}>התחל אימון</button>
+                <Link to="/practicePage" type="button" className={'btn btn-outline-secondary ' + (!(numCycle && statePatient.ID && numMax) ? 'disabled' : '')} onClick={startPracticeB}>התחל אימון</Link >
             </div>
         </div>
     )

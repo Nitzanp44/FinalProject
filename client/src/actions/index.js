@@ -110,6 +110,13 @@ export const startPractice = (newData) => {
     };
 };
 
+export const restartPractice = (newData) => {
+    return {
+            type: "RESTART_PRACTICE",
+            payload: newData
+    };
+};
+
 export const finishPractice = (newData) => {
     return {
             type: "FINISH_PRACTICE",

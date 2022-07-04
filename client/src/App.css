@@ -30,7 +30,7 @@ label.checkbox-inline {
     position: fixed;
     top: 15%;
     right: 4%;
-    border: 1px solid darkgray;
+    border: 1px solid #F5DEB3;
     border-radius: 5px;
     padding: 22px;
     z-index: 1500;
@@ -45,10 +45,6 @@ label.checkbox-inline {
 
 .choocePatient button{
     width: fit-content;
-}
-
-.sideBar ul{
-    padding: 0 !important;
 }
 
 .list-group-item-action:focus {
@@ -66,14 +62,14 @@ label.checkbox-inline {
 }
 
 .bgNavbar{
-    background-color: #9099ee !important;
+    background-color: #5F9EA0 !important;
 }
 
 .practiceSetupContainer{
     height: 50vh !important;
 }
 
-.fa, .far, .fas {
+.fa, .far, .fas, .timeContainer i {
     font-family: "Font Awesome 5 Free" !important;
 }
 
@@ -91,8 +87,7 @@ label.checkbox-inline {
 }
 
 .js-plotly-plot {
-    border: 10px solid lightgray;
-    border-radius: 5px;
+    border-radius: 10px !important;
     background-color: #40a0a0;
 }
 
@@ -105,4 +100,49 @@ label.checkbox-inline {
 
 .timerContainer {
     flex-direction: column;
+}
+
+.spaceAround {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.appBg {
+    background: lightgray;
+}
+
+span.input-group-text {
+    background: #F5DEB3;
+}
+
+button, a{
+    cursor: pointer !important;
+}
+
+.modal-dialog.modal-l.modal-fullscreen {
+    display: flex;
+    align-items: center;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.modal-fullscreen .modal-content {
+    height: fit-content !important;
+    padding: 50px;
+    border-radius: 10px !important;
+}
+
+.cmpBg {
+    background-color: white;
+    border-radius: 10px;
+}
+
+img.logo {
+    position: fixed;
+    height: 3em;
+    top: 0.3em;
+    left: 3em;
+    z-index: 1500;
 }
