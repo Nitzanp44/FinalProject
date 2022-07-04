@@ -1,6 +1,5 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
-import { useInterval } from 'usehooks-ts'
+import React from 'react';
 import Footer from './components/Footer'
 import EntranceManagement from './components/EntranceManagement'
 import Main from './components/Main'
@@ -11,8 +10,9 @@ import ReceivingDataA from './MQTT/ReceivingDataA';
 const App = () => {
   
   let login = useSelector(state => state.isLogin);
-  
-  ReceivingDataA();
+
+    ReceivingDataA(); 
+
   return (
     <div className="h-100 d-flex justify-content-center align-items-center container">
       {(login) ? <Main/> : <EntranceManagement/>}

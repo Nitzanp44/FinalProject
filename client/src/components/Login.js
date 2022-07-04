@@ -25,7 +25,6 @@ const Login = () => {
             let res = await axiosPost(user, 'login');
             if(res.status===200)
             {
-                console.log(res);
             dispatch(changeUser(res.data));
             dispatch(changeLogin());
             }

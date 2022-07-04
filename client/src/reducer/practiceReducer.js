@@ -1,8 +1,6 @@
 import cloneDeep from 'lodash/cloneDeep';
-import axios from 'axios';
 
-import { axiosPost } from '../actions/serverHelper';
-const counter =0;
+let counter =-1;
 let practiceIntianal = {
     IDPatient:" ",
     IDTherapist:" ",
@@ -10,6 +8,8 @@ let practiceIntianal = {
     MuscleLoad: 0,
     CycleList: []
 };
+
+
 
 const practice = (state = practiceIntianal, action) =>{
     let practice = cloneDeep(state);
@@ -30,22 +30,25 @@ const practice = (state = practiceIntianal, action) =>{
             return practice;
         }
         case "UPDATE_DATA":{
-            let rigth = action.payload[1];
-            let left = action.payload[2];        
-            for (let element in rigth){
-                practice.CycleList[counter].dataRight.push(rigth[element]);
-            }
-            for (let element2 in left){        
-                practice.CycleList[counter].dataLeft.push(left[element2]);
-            }
+           // if(counter>=0){ 
+                let rigth = action.payload[1];
+                let left = action.payload[2];   
+                for (let element in rigth){
+                    practice.CycleList[counter].dataRight.push(rigth[element]);
+                }
+                for (let element2 in left){        
+                    practice.CycleList[counter].dataLeft.push(left[element2]);
+                }
+          //  }
             return practice;
           }
-
-        case "CYCLE_COMPLETE":{
-            counter+=1;
+        case "CHANGE_COUNTER":{
+            counter=action.payload;
+            return practice;
         }
+
         case "FINISH_PRACTICE":{           
-            counter = 0;
+            counter = -1;
             return practice;
         }
 

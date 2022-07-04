@@ -138,12 +138,6 @@ export const dataCycels = (newData) => {
     };
 };
 
-export const changePracticeStart = () => {
-    return {
-            type: "PRACTICE_START"
-    };
-};
-
 export const patientListChange = (newData) => {
     return {
             type: "IS_PATIENT_LIST_CHANGE",
@@ -158,8 +152,11 @@ export const playingChange = (newData) => {
     };
 };
 
-export const cycleComplete = () => {
+
+export const changeCounter = (newData) => {
     return {
-            type: "CYCLE_COMPLETE",
+            type: "CHANGE_COUNTER",
+            payload: newData
     };
 };
+
