@@ -78,7 +78,7 @@ label.checkbox-inline {
 } 
 
 .list-group {
-    max-height: 50vh;
+    max-height: 450px;
     overflow-y: scroll;
 }
 
@@ -145,4 +145,8 @@ img.logo {
     top: 0.3em;
     left: 3em;
     z-index: 1500;
+}
+
+.list-group-item-action:focus {
+    background-color: #5F9EA0 !important;
 }

@@ -51,7 +51,7 @@ const PreviousPracticeSetupData = () =>  {
                 {type: 'bar', x: barData.labels,  y: barData.datasets[0].data, name: 'זמן אימון'},
                 {type: 'bar', x: barData.labels,  y: barData.datasets[1].data, name: '(ק"ג) משקל'},
             ]}
-            layout={ {width: 600, height: 400, title: 'פרטי האימון'} }/>
+            layout={ {width: 600, height: 450, title: 'פרטי האימון'} }/>
         </CDBContainer>
     )
 };
