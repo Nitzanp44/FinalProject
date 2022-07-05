@@ -1,6 +1,6 @@
 import cloneDeep from 'lodash/cloneDeep';
 import { useSelector, useDispatch } from 'react-redux';
-import { dataCycels} from '../actions/index';
+import { setPracticeList} from '../actions/index';
 import { axiosPost } from '../actions/serverHelper';
 import SideBar from './SideBar';
 import createPlotlyComponent from 'react-plotly.js/factory';
@@ -13,18 +13,28 @@ const PracticePage = () =>  {
   var Plot = createPlotlyComponent(Plotly);
   const stateSideBar = useSelector((state) => state.sideBar);
   const statePractice = useSelector((state) => state.practice);
+  const patientState = useSelector((state) => state.patient);
+  const patient = {ID: patientState.ID};
   let lineDate = cloneDeep(stateSideBar);
+  
   const dispatch = useDispatch();
+  const getAnswer = async () => {
+    let res = await axiosPost(patient, 'practiceList');
+    if(res.data){
+        dispatch(setPracticeList(res.data));
+    };
+};
 
   const finishPractice = async () => {
     await axiosPost(statePractice, 'addPractice');
+    getAnswer();
   }
 
   return (
     <div>
       <div className='d-flex'>
         <Timer/>         
-        <Plot className='mx-5' data={lineDate.datasets} layout={ { width: 600, height: 600, title: 'גרף האימון', xaxis: {title:"זמן"}}}/>  
+        <Plot className='mx-5' data={lineDate.datasets} layout={lineDate.layout}/>  
         <SideBar/>
       </div>
       <div className='d-flex align-items-center justify-content-center mt-3'>

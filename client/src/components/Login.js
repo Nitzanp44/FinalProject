@@ -31,9 +31,7 @@ const Login = () => {
             else if(res.response.data === 'no user or password') {
                 document.getElementById("erorrEmailOrPass").hidden=false;
                 document.getElementById("Email").placeholder="אימייל";
-                document.getElementById("Email").style.outlineColor='red';
                 document.getElementById("Password").placeholder="סיסמא";
-                document.getElementById("Password").style.outlineColor='red';
             }
             else alert("Error");
         } catch (error) {

@@ -4,11 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setPracticeList } from '../actions';
 import PreviousPracticeDate from './PreviousPracticeDate';
 import PreviousPracticeData from './PreviousPracticeData';
+import PreviosPracticeDetails from './PreviosPracticeDetails';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement,LineElement, Title, Tooltip, Legend, BarElement);
 
 const PreviousPractice = () =>  {
-    
+    const statePracticeList = useSelector((state) => state.practiceList);
     const patientState = useSelector((state) => state.patient);
     const patient = {ID: patientState.ID};
     const dispatch = useDispatch();
@@ -20,14 +21,19 @@ const PreviousPractice = () =>  {
         };
     };
 
-    if(patient){
+    if(statePracticeList.length === 0 && patient){
         getAnswer();
     }
     
     return (
+        <div>
+        <div className='d-flex align-items-start'>
+            <PreviosPracticeDetails/>
+        </div>
         <div className='d-flex'>
             <PreviousPracticeData/>
             <PreviousPracticeDate/>
+        </div>
         </div>
     )
 };

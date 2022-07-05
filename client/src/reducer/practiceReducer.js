@@ -32,19 +32,21 @@ const practice = (state = practiceIntianal, action) =>{
             return practice;
         }
         case "UPDATE_DATA":{
+            let practice = cloneDeep(state);
            // if(counter>=0){ 
                 let rigth = action.payload[1];
                 let left = action.payload[2];   
                 for (let element in rigth){
-                    practice.CycleList[counter].dataRight.push(rigth[element]);
+                    practice.CycleList[counter].dataRight.unshift(rigth[element]);
                 }
                 for (let element2 in left){        
-                    practice.CycleList[counter].dataLeft.push(left[element2]);
+                    practice.CycleList[counter].dataLeft.unshift(left[element2]);
                 }
           //  }
             return practice;
           }
         case "CHANGE_COUNTER":{
+            let practice = cloneDeep(state);
             counter=action.payload;
             return practice;
         }

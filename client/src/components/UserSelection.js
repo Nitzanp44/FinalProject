@@ -18,7 +18,7 @@ const UserSelection =  () =>  {
         setRecordList(res.data);
     };
 
-    if (recordList.length == 0 || isPatientListChangeState == true){
+    if (recordList.length === 0 || isPatientListChangeState === true){
         getAnswer();
     }
 
@@ -29,7 +29,7 @@ const UserSelection =  () =>  {
     }
 
     const getPatient = async (patient, patientName) => {
-        if(patientName.Name != patientState.Name){
+        if(patientName.Name !== patientState.Name){
             let res = await axiosPost(patientName, 'choosePatient');
             if(res.data){
                 patient.ID = res.data.ID;
@@ -45,7 +45,7 @@ const UserSelection =  () =>  {
         <div>
            <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
-                {recordList.map((patient) => <button type="button" className="list-group-item list-group-item-action text-center" onClick={handlechange}>{patient.Name}</button>)}
+                {recordList.map((patient) => <button type="button" key={patient.Name} className="list-group-item list-group-item-action text-center" onClick={handlechange}>{patient.Name}</button>)}
                 <div className='d-flex justify-content-center'>
                     <button type="button" className="btn btn-outline-secondary mt-4" onClick={() => dispatch(changeModalShow())}>+ הוסף מטופל</button>
                 </div>

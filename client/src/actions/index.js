@@ -167,3 +167,11 @@ export const changeCounter = (newData) => {
     };
 };
 
+export const cycleCopmlte = () => {
+    return {
+            type: "CYCLE_COMPLTE",
+            //payload: newData
+    };
+};
+
+
