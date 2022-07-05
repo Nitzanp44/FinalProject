@@ -131,6 +131,13 @@ export const setPracticeList = (newData) => {
     };
 };
 
+export const setPatientList = (newData) => {
+    return {
+            type: "INTIANAL_PATIENT_LIST",
+            payload: newData
+    };
+};
+
 export const setDate = (newData) => {
     return {
             type: "SELECTED_DATE",
@@ -167,3 +174,14 @@ export const changeCounter = (newData) => {
     };
 };
 
+export const stopSpinner = () => {
+    return {
+            type: "STOP_SPINNER",
+    };
+};
+
+export const continueSpinner = () => {
+    return {
+            type: "CONTINUE_SPINNER",
+    };
+};

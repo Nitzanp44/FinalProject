@@ -31,6 +31,7 @@ const PreviousPracticeHandsData = () =>  {
                 //x:Array(600).fill("-"),
                 y:Array(600).fill(0),
               }
+              
     ]}
 
     let { labels, datasets } = barData;
@@ -52,7 +53,27 @@ const PreviousPracticeHandsData = () =>  {
 
     return (
         <CDBContainer>
-            <Plot data={barData.datasets} layout={ {width: 600, height: 400, title: 'מהלך האימון' } }/>
+            <Plot data={barData.datasets} layout={
+    {shapes: [
+        // 1st highlight during Feb 4 - Feb 6
+        {
+            type: 'line',
+            // x-reference is assigned to the x-values
+            xref: 'x',
+            // y-reference is assigned to the plot paper [0,1]
+            yref: 'paper',
+            x0: '300',
+            y0: 0,
+            x1: '300',
+            y1: 1,
+            fillcolor: '#000000',
+            opacity: 0.2,
+            line: {
+                color: 'rgb(0, 0, 0)',
+                width: 4,
+                dash: 'dot'
+            }
+        }], width: 600, height: 450, title: 'מהלך האימון'  }}/>
         </CDBContainer>
     )
 };

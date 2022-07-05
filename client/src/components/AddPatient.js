@@ -1,6 +1,8 @@
 import { axiosPost } from '../actions/serverHelper';
 import { useSelector, useDispatch } from 'react-redux';
-import {patientListChange} from '../actions/index';
+import { setPatientList, changeCanvasShow, changeModalShow } from '../actions/index';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
 
 const AddPatient = () => {
     const therapist = useSelector((state) => state.user);
@@ -8,13 +10,16 @@ const AddPatient = () => {
   
     const onSubmit =  async () =>{
         await axiosPost(user, 'addPatient');
-        dispatch(patientListChange());
+        let res = await axiosPost(therapist, 'patientsList');
+        dispatch(setPatientList(res.data));
+        dispatch(changeCanvasShow());
+        dispatch(changeModalShow());
     }
 
     const updateUserDetails = (e) =>{
         user[e.target.name] = e.target.value;
     }
-
+    
     let inputsArr = [
         {label: 'שם', name: 'Name', type: 'text', placeHolder: 'אנא הקלד שם', icon: 'fa-user'},
         {label: 'דואר אלקטרוני', name: 'Email', type: 'email', placeHolder: 'אנא הקלד שם', icon: 'fa-envelope'},
@@ -52,7 +57,7 @@ const AddPatient = () => {
                     </div>
                 )}
                 <div className='d-flex justify-content-center mt-4'>
-                    <button className='btn btn-outline-secondary' onClick={onSubmit}> הוסף מטופל</button>
+                    <Link to="/PracticeSetup" type="button" className='btn btn-outline-secondary' onClick={onSubmit}>הוסף מטופל</Link >
                 </div>
             </form>
         </div>
