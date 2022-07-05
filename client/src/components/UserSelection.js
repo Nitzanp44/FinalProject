@@ -46,7 +46,7 @@ const UserSelection =  () =>  {
                 dispatch(restartPractice(patient.ID)); 
             } 
         }
-        dispatch(changeCanvasShow())
+        // dispatch(changeCanvasShow())
     };
 
     return (
