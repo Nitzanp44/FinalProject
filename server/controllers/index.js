@@ -30,8 +30,13 @@ module.exports={
 
     patientsList:(req,res)=>{
         Patients.find({IDTherapist:req.body.ID})
-        .then(lst=>{    
-            res.json(lst)})
+        .then(lst=>{
+            if(lst.length > 0){
+                res.json(lst)
+            }else{
+                res.json([{Name:"אין מטופלים להצגה", ID:""}])
+            }
+            })
         .catch(err => res.status(400).json('Error: ' + err));
     },
 
@@ -45,12 +50,11 @@ module.exports={
     addPatient:(req,res)=>{
         const newPatient = new Patients(req.body);
         newPatient.save()
-            .then((patient) => res.json(patient._id))
             .catch(err => res.status(400).json('Error: ' + err));
     },
 
     choosePatient:(req,res)=>{
-        Patients.findOne({Name:req.body.Name})
+        Patients.findOne({ID:req.body.ID})
         .then(patient=>{
             let patientRes = {ID: "", Name: ""};
             patientRes.ID = patient.ID;
@@ -58,7 +62,7 @@ module.exports={
             res.json(patientRes)})
         .catch(err=>res.status(400).json('Error: ' + err));
     },
-    
+
     addPractice:(req,res)=>{
         
         const newPractice = new Practice(req.body);

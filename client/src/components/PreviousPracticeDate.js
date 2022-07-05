@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { setDate } from '../actions';
+import { convertDate } from '../actions/utils';
 
 const PreviousPracticeDate = () =>  {
     
@@ -12,12 +13,14 @@ const PreviousPracticeDate = () =>  {
         dispatch(setDate(date));
     }
 
+    // const statePracticeListreverse = (event) => {
+
     return (
         <div>
             <div className="list-group">
                 {statePracticeList.map((practice) =>
-                    <button type="button" key={practice.created_at} className="list-group-item list-group-item-action btnDate" onClick={handleDateSelected} name={practice.created_at}>{(new Date(practice.created_at)).toISOString().split('T')[0]}</button>
-                )}
+                    <button type="button" key={practice.created_at} className="list-group-item list-group-item-action btnDate" onClick={handleDateSelected} name={practice.created_at}>{convertDate(new Date(practice.created_at))}</button>
+                ).reverse()}
             </div>
         </div>
     )

@@ -5,7 +5,7 @@ import { axiosPost } from '../actions/serverHelper';
 
 const Login = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch();    
 
     const[user,setUser]=useState({
         Email:"",
@@ -25,8 +25,8 @@ const Login = () => {
             let res = await axiosPost(user, 'login');
             if(res.status===200)
             {
-            dispatch(changeUser(res.data));
-            dispatch(changeLogin());
+                dispatch(changeUser(res.data));
+                dispatch(changeLogin());
             }
             else if(res.response.data === 'no user or password') {
                 document.getElementById("erorrEmailOrPass").hidden=false;
