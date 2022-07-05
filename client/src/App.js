@@ -13,7 +13,7 @@ const App = () => {
   
   let login = useSelector(state => state.isLogin);
 
-  // ReceivingDataA();
+  ReceivingDataA();
   return (
     <div className="h-100 d-flex justify-content-center align-items-center appBg">
       <Spinner/>
