@@ -14,31 +14,26 @@ const UserSelection =  () =>  {
     let IDOther = "";
     const[ showSearch, setShowSearch] = useState(false);
 
-    const getAnswer = async () => {
+    const getPatientList = async () => {
         let res = await axiosPost(therapist, 'patientsList');
         dispatch(setPatientList(res.data));
     };
 
     if (patientListState.length == 0){
-        getAnswer();
+        getPatientList();
     }
 
     const updateUserDetails = (e) => {
-        IDOther += e.target.value;
+        IDOther = e.target.value;
     }
 
-    const handlechange = (e) => {
+    const handlechangePatient = (event) => {
         let patient = {ID: "", Name: ""};
-        let IDHtml = e.target.innerHTML.match(/(\d+)/)[0];
-        let patientID = {ID: IDHtml};
-        getPatient(patient, patientID);
+        getPatient(patient, {ID: event.target.value});
     }
 
-    const handlechangeID = (e) => {
-        let patient = {ID: "", Name: ""};
-        let IDHtml = IDOther;
-        let patientID = {ID: IDHtml};
-        getPatient(patient, patientID);
+    const handlechangeID = () => {
+        getPatient({ID: "", Name: ""}, {ID: IDOther});
     }
 
     const getPatient = async (patient, patientID) => {
@@ -59,7 +54,7 @@ const UserSelection =  () =>  {
            <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
                 {patientListState.map((patient) => 
-                <button className="list-group-item list-group-item-action text-center d-flex justify-content-between userSelectionBtn" onClick={handlechange}>
+                <button className="list-group-item list-group-item-action text-center d-flex justify-content-between userSelectionBtn" onClick={handlechangePatient} value={patient.ID}>
                     <h5 className='m-0'>{patient.ID}</h5> 
                     <h5 className='m-0'>{patient.Name}</h5> 
                 </button>)}
