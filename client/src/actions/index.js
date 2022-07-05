@@ -174,6 +174,14 @@ export const changeCounter = (newData) => {
     };
 };
 
+export const cycleCopmlte = () => {
+    return {
+            type: "CYCLE_COMPLTE",
+            //payload: newData
+    };
+};
+
+
 export const stopSpinner = () => {
     return {
             type: "STOP_SPINNER",

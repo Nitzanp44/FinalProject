@@ -1,7 +1,6 @@
-
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { useSelector, useDispatch } from 'react-redux';
-import { playingChange,changeCounter } from '../actions/index'
+import { playingChange,changeCounter,cycleCopmlte } from '../actions/index'
 import { useState } from "react";
 
 
@@ -48,6 +47,7 @@ const Timer = () =>   {
     const onComplete = () => {
       dispatch(playingChange(false));
       dispatch(changeCounter(-1));
+      dispatch(cycleCopmlte());
       let neweRemainingTime = 0;
       if(cyclePosition < cycleTimes.length){
         setTimeout(() => setCyclePosition(cyclePosition+1), 0);

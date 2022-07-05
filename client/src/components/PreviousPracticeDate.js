@@ -19,7 +19,7 @@ const PreviousPracticeDate = () =>  {
         <div>
             <div className="list-group">
                 {statePracticeList.map((practice) =>
-                    <button type="button" className="list-group-item list-group-item-action btnDate" onClick={handleDateSelected} name={practice.created_at}>{convertDate(new Date(practice.created_at))}</button>
+                    <button type="button" key={practice.created_at} className="list-group-item list-group-item-action btnDate" onClick={handleDateSelected} name={practice.created_at}>{convertDate(new Date(practice.created_at))}</button>
                 ).reverse()}
             </div>
         </div>

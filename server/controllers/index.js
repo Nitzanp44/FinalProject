@@ -71,5 +71,22 @@ module.exports={
             .then((practice) => res.json(practice._id))
             .catch(err => res.status(400).json('Error: ' + err));
     },
+
+    getThrapist:(req,res)=>
+    {
+        therapists.findOne({ID:req.body.ID})
+        .then(therapist=>{
+            let therapistRes = {Name: ""};
+            therapistRes.Name = therapist.Name;
+            res.json(therapistRes)})
+        .catch(err=>res.status(400).json('Error: ' + err));
+    },
+
+    signUp:(req,res)=>{
+        const newThrapist = new therapists(req.body);
+        newThrapist.save()
+        .than(res.json("ההרשמה בוצעה בהצלחה"))
+            .catch(err => res.status(400).json('Error: ' + err));
+    },
 }
 

@@ -7,7 +7,9 @@ const {
     patientsList,
     choosePatient,
     addPractice,
-    practiceList
+    practiceList,
+    getThrapist,
+    signUp
   } = require('../controllers/index.js');
   router.post('/login',login);
   router.post('/addPatient',addPatient);
@@ -15,5 +17,7 @@ const {
   router.post('/choosePatient',choosePatient);
   router.post('/addPractice',addPractice);
   router.post('/practiceList',practiceList);
-
+  router.post('/getThrapist',getThrapist);
+  router.post('/signUp',signUp);
+  
   module.exports = router;
