@@ -2,11 +2,12 @@ import { useSelector, shallowEqual } from 'react-redux';
 import React from 'react';
 import { CDBTable, CDBTableHeader, CDBTableBody, CDBContainer } from 'cdbreact';
 import { axiosPost } from '../actions/serverHelper';
+import { convertDate } from '../actions/utils';
 
 
 const PreviosPracticeDetails=()=>
 {
-    const statePracticeList = useSelector((state) => state.practiceList, shallowEqual);
+    const statePracticeList = useSelector((state) => state.practiceList);
     const statePracticeDate = useSelector((state) => state.practiceDate);
 
     let date="";
@@ -20,15 +21,15 @@ const PreviosPracticeDetails=()=>
     const getThrapist = async(IDTherapist)=>
     {
         let res = await axiosPost({ID:IDTherapist}, 'getThrapist');
-        thrapist=res.data.Name;
+        return res.data.Name;
     };
     
     if(statePracticeList.length > 0){ 
         let practiceDate = statePracticeList.find(checkDate);
         if (practiceDate){
-            date=practiceDate.created_at;
+            date=convertDate(new Date(practiceDate.created_at));
             max=practiceDate.MuscleLoad;
-            getThrapist(practiceDate.IDTherapist);
+            thrapist=getThrapist(practiceDate.IDTherapist);
         }}
 
     return (
@@ -37,14 +38,14 @@ const PreviosPracticeDetails=()=>
         <CDBTableHeader>
           <tr>
             <th>עומס שריר מירבי שהוגדר</th>
-            <th>מטפל</th>
+            {/* <th>מטפל</th> */}
             <th>תאריך הטיפול</th>
           </tr>
         </CDBTableHeader>
         <CDBTableBody>
           <tr>
             <td>{max}</td>
-            <td>{thrapist}</td>
+            {/* <td>{thrapist}</td> */}
             <td>{date}</td>
           </tr>
           </CDBTableBody>

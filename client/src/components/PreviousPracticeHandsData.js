@@ -34,7 +34,7 @@ const PreviousPracticeHandsData = () =>  {
     let layout={
         shapes:[],
          width: 600,
-         height: 400, 
+         height: 450, 
          title: 'מהלך האימון'  };
 
     let { labels, datasets } = barData;
@@ -51,7 +51,6 @@ const PreviousPracticeHandsData = () =>  {
             for (let i=cycleList.length-1; i>=0;i--)
              {
                 let cycle= cycleList[i];
-                len+=cycle.dataLeft.length;
                 labels.push(cycleIndex++);
                 cycle.dataLeft.forEach(dL=>{
                     datasets[0].y.unshift(dL);
@@ -59,7 +58,9 @@ const PreviousPracticeHandsData = () =>  {
                 cycle.dataRight.forEach(dR=>{
                     datasets[1].y.unshift(dR);
                 });
-            
+             }
+             cycleList.forEach(cycle=>{
+                len+=cycle.dataLeft.length;
                 layout.shapes.push( {
                     type: 'line',
                     xref: 'x',
@@ -75,7 +76,9 @@ const PreviousPracticeHandsData = () =>  {
                         width: 4,
                         dash: 'dot'
                     }})
-        }; 
+             })
+                
+         
         layout.shapes.push( {
             type: 'line',
             x0: 0,

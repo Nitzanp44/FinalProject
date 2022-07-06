@@ -29,7 +29,6 @@ const PreviousPractice = () =>  {
     
     return (
         <div>
-        <h2 className='text-center mb-3'>{(convertDate(new Date(dateState)))}</h2>
         <div className='d-flex align-items-start'>
             <PreviosPracticeDetails/>
         </div>

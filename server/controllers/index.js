@@ -85,7 +85,7 @@ module.exports={
     signUp:(req,res)=>{
         const newThrapist = new therapists(req.body);
         newThrapist.save()
-        .than(res.json("ההרשמה בוצעה בהצלחה"))
+        .than((p)=>res.json("ההרשמה בוצעה בהצלחה"))
             .catch(err => res.status(400).json('Error: ' + err));
     },
 }
