@@ -27,16 +27,12 @@ const UserSelection =  () =>  {
         IDOther = e.target.value;
     }
 
-    const handlechangePatient = (event) => {
-        let patient = {ID: "", Name: ""};
-        getPatient(patient, {ID: event.target.value});
-    }
-
     const handlechangeID = () => {
-        getPatient({ID: "", Name: ""}, {ID: IDOther});
+        getPatient({ID: IDOther});
     }
 
-    const getPatient = async (patient, patientID) => {
+    const getPatient = async (patientID) => {
+        let patient = {ID: "", Name: ""};
         if(patientID.ID != patientState.ID){
             let res = await axiosPost(patientID, 'choosePatient');
             if(res.data){
@@ -46,7 +42,7 @@ const UserSelection =  () =>  {
                 dispatch(restartPractice(patient.ID)); 
             } 
         }
-        // dispatch(changeCanvasShow())
+        dispatch(changeCanvasShow())
     };
 
     return (
@@ -54,7 +50,7 @@ const UserSelection =  () =>  {
            <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
                 {patientListState.map((patient) => 
-                <button className="list-group-item list-group-item-action text-center d-flex justify-content-between userSelectionBtn" onClick={handlechangePatient} value={patient.ID}>
+                <button className="list-group-item list-group-item-action text-center d-flex justify-content-between userSelectionBtn" onClick={() => getPatient({ID:patient.ID})} id={patient.ID}>
                     <h5 className='m-0'>{patient.ID}</h5> 
                     <h5 className='m-0'>{patient.Name}</h5> 
                 </button>)}
