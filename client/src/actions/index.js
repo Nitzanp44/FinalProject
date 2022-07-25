@@ -138,6 +138,20 @@ export const setPatientList = (newData) => {
     };
 };
 
+export const setAllPatientList = (newData) => {
+    return {
+            type: "INTIANAL_ALL_PATIENT_LIST",
+            payload: newData
+    };
+};
+
+export const setAllTherapistList = (newData) => {
+    return {
+            type: "INTIANAL_ALL_THERAPIST_LIST",
+            payload: newData
+    };
+};
+
 export const setDate = (newData) => {
     return {
             type: "SELECTED_DATE",
