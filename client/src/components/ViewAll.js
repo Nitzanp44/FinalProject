@@ -17,10 +17,6 @@ const ViewAll = (props) => {
         showModal = !showModal;
     };
 
-    const deleteRecord = () => {
-        alert('deleteRecord');
-    };
-
     const getData = async (data) => {
         let res = await axiosPost({}, data);
         if(res.data){
@@ -49,19 +45,19 @@ const ViewAll = (props) => {
 
     return(  
         <div>
-            <table class="table">
+            <table className="table">
                 <thead>
                     <tr>
                         <th scope="col" disebeld="true">עריכה</th><th scope="col">מייל</th><th scope="col">טלפון</th><th scope="col">שם</th><th scope="col">#</th>
                     </tr>
                 </thead>
             </table>
-            <div class="tableContainer">
-                <table class="table table-hover">
+            <div className="tableContainer">
+                <table className="table table-hover">
                         <tbody>
                             {showList.map((val, index) => 
                             <tr id={val.Email} data-index={index} data-name={val.Name} data-phone={val.Phone} data-email={val.Email}>
-                                <td><button data-line-id={val.Email} class="btn btn-outline-success" onClick={editLine}>עריכה</button></td>
+                                <td><button data-line-id={val.Email} className="btn btn-outline-success" onClick={editLine}>עריכה</button></td>
                                 <td>{val.Email}</td>
                                 <td>{val.Phone}</td>
                                 <td>{val.Name}</td>

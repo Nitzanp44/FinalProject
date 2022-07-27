@@ -258,3 +258,7 @@ img.logo {
 table.table {
   margin: unset !important;
 }
+
+i.fas {
+  margin: 0 !important;
+}
