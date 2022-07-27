@@ -28,7 +28,6 @@ const renderRecord = (line, lineId, index, email, phone, name) => {
         <td>${email}</td>
         <td>${phone}</td>
         <td>${name}</td>
-        <td><button data-line-id=${email} class="btn btn-outline-success" onClick={editLine}>עריכה</button></td>
     `;
     line.innerHTML = '';
     line.innerHTML = recordHtml;
@@ -52,8 +51,8 @@ const editLineById = (lineId, line) => {
     `;
     line.innerHTML = '';
     let tdButtonContainer = getTdButtonContainer(lineId);
-    line.appendChild(tdButtonContainer);
     line.innerHTML += allTd;
+    line.appendChild(tdButtonContainer);
 }
 
 const getTdButtonContainer = (lineId) => {
