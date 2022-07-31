@@ -45,17 +45,19 @@ const ViewAll = (props) => {
 
     return(  
         <div>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th className='col-2'>מייל</th>
-                        <th className='col-2'>טלפון</th>
-                        <th className='col-2'>שם</th>
-                        <th className='col-2'>#</th>
-                        <th className='col-2'>עריכה</th>
-                    </tr>
-                </thead>
-            </table>
+            <div className='theadContainer'>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th className='col-2'>מייל</th>
+                            <th className='col-2'>טלפון</th>
+                            <th className='col-2'>שם</th>
+                            <th className='col-2'>#</th>
+                            <th className='col-2'>עריכה</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
             <div className="tableContainer">
                 <table className="table table-hover">
                         <tbody>

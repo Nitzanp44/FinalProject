@@ -262,3 +262,7 @@ table.table {
 i.fas {
   margin: 0 !important;
 }
+
+.theadContainer {
+  padding-right: 10px;
+}
