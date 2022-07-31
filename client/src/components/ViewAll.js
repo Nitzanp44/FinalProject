@@ -48,11 +48,11 @@ const ViewAll = (props) => {
             <table className="table">
                 <thead>
                     <tr>
-                        <th scope="col">מייל</th>
-                        <th scope="col">טלפון</th>
-                        <th scope="col">שם</th>
-                        <th scope="col">#</th>
-                        <th scope="col">עריכה</th>
+                        <th className='col-2'>מייל</th>
+                        <th className='col-2'>טלפון</th>
+                        <th className='col-2'>שם</th>
+                        <th className='col-2'>#</th>
+                        <th className='col-2'>עריכה</th>
                     </tr>
                 </thead>
             </table>
@@ -61,11 +61,11 @@ const ViewAll = (props) => {
                         <tbody>
                             {showList.map((val, index) => 
                             <tr id={val.Email} data-index={index} data-name={val.Name} data-phone={val.Phone} data-email={val.Email}>
-                                <td>{val.Email}</td>
-                                <td>{val.Phone}</td>
-                                <td>{val.Name}</td>
-                                <td>{index}</td>
-                                <td>
+                                <td className='col-2'>{val.Email}</td>
+                                <td className='col-2'>{val.Phone}</td>
+                                <td className='col-2'>{val.Name}</td>
+                                <td className='col-2'>{index}</td>
+                                <td className='col-2'>
                                     <button data-line-id={val.Email} className="btn btn-outline-success" onClick={editLine}>
                                         <i class='fas fa-sm me-3 fa-fw fa-edit' data-line-id="${lineId}"></i>
                                     </button>

@@ -57,8 +57,11 @@ const validateName = (name) => {
     return isValid;
 }
 
-const deleteRecord = () => {
-    alert('deleteRecord');
+const deleteRecord = (event) => {
+    let lineId = event.target.dataset.lineId;
+    let line = document.getElementById(lineId);
+    line.innerHTML = '';
+    // await axiosPost({email: lineId}, 'DeleteUser');
 };
 
 const cencelEditRecord = (event) => {
