@@ -88,8 +88,7 @@ module.exports={
             .catch(err => res.status(400).json('Error: ' + err));
     },
 
-    getThrapist:(req,res)=>
-    {
+    getThrapist:(req,res)=> {
         users.findOne({ID:req.body.ID})
         .then(therapist=>{
             let therapistRes = {Name: ""};
@@ -102,6 +101,18 @@ module.exports={
         const newThrapist = new user(req.body);
         newThrapist.save()
         .than(res.json("ההרשמה בוצעה בהצלחה"))
+            .catch(err => res.status(400).json('Error: ' + err));
+    },
+    updateUser:(req,res)=>{
+        const updateThrapist = new user(req.body);
+        updateThrapist.update()
+        .than(res.json("העדכון בוצע בהצלחה"))
+            .catch(err => res.status(400).json('Error: ' + err));
+    },
+    deleteUser:(req,res)=>{
+        const deleteThrapist = new user(req.body);
+        deleteThrapist.delete()
+        .than(res.json("המחקיה בוצעה בהצלחה"))
             .catch(err => res.status(400).json('Error: ' + err));
     },
 }

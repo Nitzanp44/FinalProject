@@ -83,6 +83,13 @@ export const changeModalShow = () => {
     };
 };
 
+
+export const changeAddModalShow = () => {
+    return {
+            type: "CHANGE_ADD_MODAL_SHOW"
+    };
+};
+
 export const changeCanvasShow = () => {
     return {
             type: "CHANGE_CANVAS_SHOW"

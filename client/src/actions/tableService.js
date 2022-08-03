@@ -14,9 +14,12 @@ const saveRecord = (event) => {
 const updateRecord = async (lineId) => {
     let record = createNewRecord(lineId);
     if (validateEmail(record.email) && validatePhone(record.phone) && validateName(record.name)) {
-        // await axiosPost(record, 'UpdateUser');
+        // await axiosPost(record, 'updateUser');
         let line = document.getElementById(lineId);
         let index = line.dataset.index;
+        line.dataset.email = record.email;
+        line.dataset.phone = record.phone;
+        line.dataset.name = record.name;
         renderRecord(line, lineId, index, record.email, record.phone, record.name);
     }
 };
@@ -61,7 +64,7 @@ const deleteRecord = (event) => {
     let lineId = event.target.dataset.lineId;
     let line = document.getElementById(lineId);
     line.innerHTML = '';
-    // await axiosPost({email: lineId}, 'DeleteUser');
+    // await axiosPost({email: lineId}, 'deleteUser');
 };
 
 const cencelEditRecord = (event) => {

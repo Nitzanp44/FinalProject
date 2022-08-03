@@ -11,7 +11,9 @@ const {
     getThrapist,
     addTherapist,
     therapistList,
-    allPatientsList
+    allPatientsList,
+    updateUser,
+    deleteUser
   } = require('../controllers/index.js');
   router.post('/login',login);
   router.post('/addPatient',addPatient);
@@ -23,5 +25,7 @@ const {
   router.post('/addTherapist',addTherapist);
   router.post('/therapistList',therapistList);
   router.post('/allPatientsList',allPatientsList);
+  router.post('/updateUser',updateUser);
+  router.post('/deleteUser',deleteUser);
   
   module.exports = router;

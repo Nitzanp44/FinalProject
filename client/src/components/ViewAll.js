@@ -3,19 +3,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
 import AddPatient from './AddPatient';
 import AddTherapist from './AddTherapist';
-import { changeModalShow, changePatient, changeCanvasShow, setAllTherapistList, setAllPatientList } from '../actions/index';
+import { changeAddModalShow, setAllTherapistList, setAllPatientList } from '../actions/index';
 import { editLine } from '../actions/tableService';
 
 const ViewAll = (props) => {
     const dispatch = useDispatch();
     const patientListState = useSelector((state) => state.allPatientList);
     const therapistListState = useSelector((state) => state.allTherapistList);
-    let showModal = false;
+    const showAddModalState = useSelector((state) => state.showAddModal);
     let showList = [];
-
-    const changeShowModal = () => {
-        showModal = !showModal;
-    };
 
     const getData = async (data) => {
         let res = await axiosPost({}, data);
@@ -62,7 +58,7 @@ const ViewAll = (props) => {
                 <table className="table table-hover">
                         <tbody>
                             {showList.map((val, index) => 
-                            <tr id={val.Email} data-index={index} data-name={val.Name} data-phone={val.Phone} data-email={val.Email}>
+                            <tr key={val.Email} id={val.Email} data-index={index} data-name={val.Name} data-phone={val.Phone} data-email={val.Email}>
                                 <td className='col-2'>{val.Email}</td>
                                 <td className='col-2'>{val.Phone}</td>
                                 <td className='col-2'>{val.Name}</td>
@@ -77,11 +73,11 @@ const ViewAll = (props) => {
                 </table>
             </div>
             <div className='d-flex justify-content-center'>
-                <button className="btn btn-outline-secondary mt-4" onClick={changeShowModal()}>+ הוסף</button>
+                <button className="btn btn-outline-secondary mt-4" onClick={dispatch(changeAddModalShow())}>+ הוסף</button>
             </div>
-            {/* <Modal show={showModal} fullscreen={true} size={'l'} >
+            <Modal show={showAddModalState} fullscreen={true} size={'l'} onHide={() => dispatch(changeAddModalShow())}>
                 {(props.viewAt == "patient")? <AddPatient/> : <AddTherapist/>}
-            </Modal> */}
+            </Modal>
         </div>
     )
 }
