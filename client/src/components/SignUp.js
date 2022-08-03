@@ -23,7 +23,7 @@ const SignUp = () =>  {
 
         e.preventDefault();
         try {
-            let res = await axiosPost(user, 'signUp');
+            let res = await axiosPost(user, 'addTherapist');
             console.log(res)
             if(res.status===200)
             {

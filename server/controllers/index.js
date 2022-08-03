@@ -1,19 +1,20 @@
 
-const therapists=require('../models/therapists');
+const users=require('../models/user');
 const Patients=require('../models/patient');
 const Practice=require('../models/practice');
 
 module.exports={
     login:(req,res)=>{
-        therapists.findOne({Email:req.body.Email})
+        users.findOne({Email:req.body.Email})
         .then(user=>{
             if(user)
             {
                 if (user.Password===req.body.Password)
                 {
-                    let clientUser = {ID: "", Name: ""};
+                    let clientUser = {ID: "", Name: "", Type:""};
                     clientUser.ID = user.ID;
                     clientUser.Name = user.Name;
+                    clientUser.Type = user.Type;
                     res.json(clientUser);
                 }
              else {
@@ -47,6 +48,21 @@ module.exports={
         .catch(err => res.status(400).json('Error: ' + err));
     },
 
+    therapistList:(req,res)=>{
+        users.find({Type: "therapist"})
+        .then(lst=>{                
+            res.json(lst)})
+        .catch(err => res.status(400).json('Error: ' + err));
+    },
+
+    allPatientsList:(req,res)=>{
+        Patients.find()
+        .then(lst=>{  
+            console.log(lst);              
+            res.json(lst)})
+        .catch(err => res.status(400).json('Error: ' + err));
+    },
+
     addPatient:(req,res)=>{
         const newPatient = new Patients(req.body);
         newPatient.save()
@@ -72,9 +88,8 @@ module.exports={
             .catch(err => res.status(400).json('Error: ' + err));
     },
 
-    getThrapist:(req,res)=>
-    {
-        therapists.findOne({ID:req.body.ID})
+    getThrapist:(req,res)=> {
+        users.findOne({ID:req.body.ID})
         .then(therapist=>{
             let therapistRes = {Name: ""};
             therapistRes.Name = therapist.Name;
@@ -82,10 +97,22 @@ module.exports={
         .catch(err=>res.status(400).json('Error: ' + err));
     },
 
-    signUp:(req,res)=>{
-        const newThrapist = new therapists(req.body);
+    addTherapist:(req,res)=>{
+        const newThrapist = new user(req.body);
         newThrapist.save()
         .than(res.json("ההרשמה בוצעה בהצלחה"))
+            .catch(err => res.status(400).json('Error: ' + err));
+    },
+    updateUser:(req,res)=>{
+        const updateThrapist = new user(req.body);
+        updateThrapist.update()
+        .than(res.json("העדכון בוצע בהצלחה"))
+            .catch(err => res.status(400).json('Error: ' + err));
+    },
+    deleteUser:(req,res)=>{
+        const deleteThrapist = new user(req.body);
+        deleteThrapist.delete()
+        .than(res.json("המחקיה בוצעה בהצלחה"))
             .catch(err => res.status(400).json('Error: ' + err));
     },
 }

@@ -1,9 +1,9 @@
 import './App.css';
 import React from 'react';
-import Footer from './components/Footer'
-import EntranceManagement from './components/EntranceManagement'
-import Main from './components/Main'
-import Spinner from './components/Spinner'
+import Footer from './components/Footer';
+import EntranceManagement from './components/EntranceManagement';
+import Main from './components/Main';
+import Spinner from './components/Spinner';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector } from 'react-redux';
 import ReceivingDataA from './MQTT/ReceivingDataA';

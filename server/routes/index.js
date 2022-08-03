@@ -9,7 +9,11 @@ const {
     addPractice,
     practiceList,
     getThrapist,
-    signUp
+    addTherapist,
+    therapistList,
+    allPatientsList,
+    updateUser,
+    deleteUser
   } = require('../controllers/index.js');
   router.post('/login',login);
   router.post('/addPatient',addPatient);
@@ -18,6 +22,10 @@ const {
   router.post('/addPractice',addPractice);
   router.post('/practiceList',practiceList);
   router.post('/getThrapist',getThrapist);
-  router.post('/signUp',signUp);
+  router.post('/addTherapist',addTherapist);
+  router.post('/therapistList',therapistList);
+  router.post('/allPatientsList',allPatientsList);
+  router.post('/updateUser',updateUser);
+  router.post('/deleteUser',deleteUser);
   
   module.exports = router;
