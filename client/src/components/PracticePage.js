@@ -6,10 +6,13 @@ import SideBar from './SideBar';
 import createPlotlyComponent from 'react-plotly.js/factory';
 import Plotly from "plotly.js-basic-dist";
 import Timer from './Timer';
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
+import {useLocation, BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import ReceivingDataA from '../MQTT/ReceivingDataA';
 
 const PracticePage = () =>  {
+  const location = useLocation();
+  let topic= location.state;
+  ReceivingDataA(topic);
   var Plot = createPlotlyComponent(Plotly);
   const stateSideBar = useSelector((state) => state.sideBar);
   const statePractice = useSelector((state) => state.practice);

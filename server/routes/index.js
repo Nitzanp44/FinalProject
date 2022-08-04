@@ -10,6 +10,8 @@ const {
     addPractice,
     practiceList,
     getThrapist,
+    signUp,
+    weightsList,
     addTherapist,
     therapistList,
     allPatientsList,
@@ -25,6 +27,8 @@ const {
   router.post('/addPractice',addPractice);
   router.post('/practiceList',practiceList);
   router.post('/getThrapist',getThrapist);
+  router.post('/signUp',signUp);
+  router.get('/weightsList',weightsList);
   router.post('/addTherapist',addTherapist);
   router.post('/therapistList',therapistList);
   router.post('/allPatientsList',allPatientsList);

@@ -7,7 +7,7 @@ ReactFC.fcRoot(FusionCharts, realtimeline, FusionTheme);
 
 let len=0;
 let dataGraphIntianal = {
-    viewScale: 600,
+    viewScale: 300,
     labels: [],
     datasets: [
       {
@@ -17,7 +17,7 @@ let dataGraphIntianal = {
         name: "עומס שריר מרבי",
         marker: { color: 'yellow' },
        // x:Array(600).fill("-"),
-        y: Array(600).fill(4),
+        y: Array(300).fill(4),
       },
       {
         type: 'scatter',
@@ -25,7 +25,7 @@ let dataGraphIntianal = {
         visible: true,
         name: "שמאל",
         marker: { color: 'blue' },
-        //x:Array(600).fill("-"),
+        //x:Array(300).fill("-"),
         y: Array(),
       },
       {

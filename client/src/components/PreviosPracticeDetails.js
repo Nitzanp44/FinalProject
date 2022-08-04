@@ -4,8 +4,6 @@ import { CDBTable, CDBTableHeader, CDBTableBody, CDBContainer } from 'cdbreact';
 import { axiosPost } from '../actions/serverHelper';
 import { convertDate } from '../actions/utils';
 
-
-
 const PreviosPracticeDetails=()=>
 {
     const statePracticeList = useSelector((state) => state.practiceList, shallowEqual);

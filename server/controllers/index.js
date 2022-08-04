@@ -2,6 +2,7 @@
 const users=require('../models/user');
 const Patients=require('../models/patient');
 const Practice=require('../models/practice');
+const weights=require('../models/weights');
 
 module.exports={
     login:(req,res)=>{
@@ -100,8 +101,20 @@ module.exports={
     addTherapist:(req,res)=>{
         const newThrapist = new user(req.body);
         newThrapist.save()
-        .than(res.json("ההרשמה בוצעה בהצלחה"))
+        .than((p)=>res.json("ההרשמה בוצעה בהצלחה"))
             .catch(err => res.status(400).json('Error: ' + err));
+    },
+    
+    weightsList:(req,res)=>{
+        weights.find()
+        .then(lst=>{
+            if(lst){
+                // let IDlst=[];
+                // lst.forEach(l=>
+                //     IDlst.push(l.ID))
+                res.json(lst);
+    }})
+        .catch(err => res.status(400).json('Error: ' + err));
     },
     updateUser:(req,res)=>{
         users.updateOne(req.body[0], {$set: req.body[1]})

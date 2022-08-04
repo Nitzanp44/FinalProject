@@ -2,7 +2,7 @@ import { changeData } from '../actions/index'
 import Paho from 'paho-mqtt';
 import { useDispatch } from 'react-redux';
 
-const ReceivingDataA = () =>  {
+const ReceivingDataA = (topic) =>  {
 
 const dispatch = useDispatch();
 var numMassageA=0;
@@ -11,7 +11,8 @@ var numMessageRecive=0;
 var hostname = "localhost";
 var port = 9001;
 var clientId = "WebSocket";
-var topicA = "esp32_hx711A";
+//var topicA = "esp32_hx711A";
+var topicA = topic;
 var mqttClient = new Paho.Client(hostname, port, clientId);
 mqttClient.onMessageArrived = MessageArrived;
 mqttClient.onConnectionLost = ConnectionLost;

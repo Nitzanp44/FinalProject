@@ -50,7 +50,7 @@ const UserSelection =  () =>  {
            <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
                 {patientListState.map((patient) => 
-                <button className="list-group-item list-group-item-action text-center d-flex justify-content-between userSelectionBtn" onClick={() => getPatient({ID:patient.ID})} id={patient.ID}>
+                <button key={patient.ID} className="list-group-item list-group-item-action text-center d-flex justify-content-between userSelectionBtn" onClick={() => getPatient({ID:patient.ID})} id={patient.ID}>
                     <h5 className='m-0'>{patient.ID}</h5> 
                     <h5 className='m-0'>{patient.Name}</h5> 
                 </button>)}

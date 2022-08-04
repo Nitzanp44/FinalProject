@@ -20,3 +20,17 @@ export const axiosPost = async (payload, domain) => {
         return err;
     }
 }
+
+export const axiosGet = async (domain) => {
+  
+    store.dispatch(continueSpinner());
+    setTimeout(() => store.dispatch(stopSpinner()), 500);
+    try{
+        let res = await axios.get(SERVER_BASE_URL + '/' + domain );
+        return res.data;
+    } catch(err) {
+        store.dispatch(stopSpinner());
+        console.log('err --->', err);
+        return err;
+    }
+}
