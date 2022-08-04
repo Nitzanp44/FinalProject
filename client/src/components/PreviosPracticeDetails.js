@@ -45,14 +45,14 @@ const PreviosPracticeDetails=()=>
         <CDBTableHeader>
           <tr>
             <th>עומס שריר מירבי שהוגדר</th>
-            {/* <th>מטפל</th> */}
+            <th>מטפל</th>
             <th>תאריך הטיפול</th>
           </tr>
         </CDBTableHeader>
         <CDBTableBody>
           <tr>
             <td>{max}</td>
-            {/* <td>{thrapist}</td> */}
+            <td>{thrapist}</td>
             <td>{date}</td>
           </tr>
           </CDBTableBody>

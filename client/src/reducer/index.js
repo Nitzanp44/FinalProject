@@ -13,6 +13,7 @@ import isPatientListChangeReducer from "./isPatientListChangeReducer";
 import isTimerPlayingReducer from "./isTimerPlayingReducer";
 import showSpinnerReducer from "./showSpinnerReducer";
 import patientListReducer from "./patientListReducer";
+import weightsListReducer from "./weightsListReducer";
 
 const reducers = combineReducers({
     sideBar: sideBarReducer,
@@ -28,7 +29,8 @@ const reducers = combineReducers({
     isPatientListChange: isPatientListChangeReducer,
     isTimerPlaying: isTimerPlayingReducer,
     showSpinner: showSpinnerReducer,
-    patientList: patientListReducer
+    patientList: patientListReducer,
+    weightsList:weightsListReducer
 });
 
 export default reducers;

@@ -9,7 +9,8 @@ const {
     addPractice,
     practiceList,
     getThrapist,
-    signUp
+    signUp,
+    weightsList
   } = require('../controllers/index.js');
   router.post('/login',login);
   router.post('/addPatient',addPatient);
@@ -19,5 +20,6 @@ const {
   router.post('/practiceList',practiceList);
   router.post('/getThrapist',getThrapist);
   router.post('/signUp',signUp);
+  router.get('/weightsList',weightsList);
   
   module.exports = router;

@@ -2,6 +2,7 @@
 const therapists=require('../models/therapists');
 const Patients=require('../models/patient');
 const Practice=require('../models/practice');
+const weights=require('../models/weights');
 
 module.exports={
     login:(req,res)=>{
@@ -87,6 +88,19 @@ module.exports={
         newThrapist.save()
         .than((p)=>res.json("ההרשמה בוצעה בהצלחה"))
             .catch(err => res.status(400).json('Error: ' + err));
+    },
+    
+    weightsList:(req,res)=>{
+        weights.find()
+        .then(lst=>{
+            if(lst){
+                // let IDlst=[];
+                // lst.forEach(l=>
+                //     IDlst.push(l.ID))
+                res.json(lst);
+    }})
+        .catch(err => res.status(400).json('Error: ' + err));
+
     },
 }
 

@@ -193,3 +193,11 @@ export const continueSpinner = () => {
             type: "CONTINUE_SPINNER",
     };
 };
+
+export const weigthsListChange = (newData) => {
+    return {
+            type: "INTIANAL_WEIGHTS_LIST",
+            payload: newData
+    };
+};
+
