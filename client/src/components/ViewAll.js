@@ -58,7 +58,7 @@ const ViewAll = (props) => {
                 <table className="table table-hover">
                         <tbody>
                             {showList.map((val, index) => 
-                            <tr key={val.Email} id={val.Email} data-index={index} data-name={val.Name} data-phone={val.Phone} data-email={val.Email}>
+                            <tr key={val.Email} id={val.Email} data-type={props.viewAt} data-index={index} data-name={val.Name} data-phone={val.Phone} data-email={val.Email}>
                                 <td className='col-2'>{val.Email}</td>
                                 <td className='col-2'>{val.Phone}</td>
                                 <td className='col-2'>{val.Name}</td>
@@ -73,7 +73,7 @@ const ViewAll = (props) => {
                 </table>
             </div>
             <div className='d-flex justify-content-center'>
-                <button className="btn btn-outline-secondary mt-4" onClick={dispatch(changeAddModalShow())}>+ הוסף</button>
+                <button className="btn btn-outline-secondary mt-4" onClick={() => dispatch(changeAddModalShow())}>+ הוסף</button>
             </div>
             <Modal show={showAddModalState} fullscreen={true} size={'l'} onHide={() => dispatch(changeAddModalShow())}>
                 {(props.viewAt == "patient")? <AddPatient/> : <AddTherapist/>}

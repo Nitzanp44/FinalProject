@@ -6,7 +6,6 @@ import { axiosPost } from '../actions/serverHelper';
 const Login = () => {
 
     const dispatch = useDispatch();    
-
     const[user,setUser]=useState({
         Email:"",
         Password:""
@@ -42,29 +41,31 @@ const Login = () => {
     
 
     return (
-        <form onSubmit = {onSubmit}>
-            <h3 className='mb-5'>כניסה</h3>
+        <div>
+            <form onSubmit = {onSubmit}>
+                <h3 className='mb-5'>כניסה</h3>
 
-            <div className="form-group">
-                <input id="Email" name="Email" type="email" className="form-control" placeholder="אימייל" onChange={handlechange}/>
-            </div>
-
-            <div className="form-group">
-                <input id="Password" name="Password" type="password" className="form-control" placeholder="סיסמא" onChange={handlechange}/>
-            </div>
-
-            <div className="form-group float-right">
-                <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                    <label className="custom-control-label" htmlFor="customCheck1">זכור אותי</label>
+                <div className="form-group">
+                    <input id="Email" name="Email" type="email" className="form-control" placeholder="אימייל" onChange={handlechange}/>
                 </div>
-            </div>
 
-                <p id="erorrEmailOrPass" style={{ color: "red" }} hidden={true}>שם המשתמש או הסיסמא אינם תקינים</p>
-                <button type="submit" className="btn btn-primary btn-block">אישור</button>
-                <p className="forgot-password text-right">?שכחת <a href="#">סיסמא</a>
-            </p>
-        </form>
+                <div className="form-group">
+                    <input id="Password" name="Password" type="password" className="form-control" placeholder="סיסמא" onChange={handlechange}/>
+                </div>
+
+                <div className="form-group float-right">
+                    <div className="custom-control custom-checkbox">
+                        <input type="checkbox" className="custom-control-input" id="customCheck1" />
+                        <label className="custom-control-label" htmlFor="customCheck1">זכור אותי</label>
+                    </div>
+                </div>
+
+                    <p id="erorrEmailOrPass" style={{ color: "red" }} hidden={true}>שם המשתמש או הסיסמא אינם תקינים</p>
+                    <button type="submit" className="btn btn-primary btn-block">אישור</button>
+                    <p className="forgot-password text-right">?שכחת <a href="#">סיסמא</a>
+                </p>
+            </form>
+        </div>
     );
 
 }

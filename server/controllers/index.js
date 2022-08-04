@@ -104,15 +104,24 @@ module.exports={
             .catch(err => res.status(400).json('Error: ' + err));
     },
     updateUser:(req,res)=>{
-        const updateThrapist = new user(req.body);
-        updateThrapist.update()
+        users.updateOne(req.body[0], {$set: req.body[1]})
+        .than(res.json("העדכון בוצע בהצלחה"))
+            .catch(err => res.status(400).json('Error: ' + err));
+    },
+    updatePatient:(req,res)=>{
+        Patients.updateOne(req.body[0], {$set: req.body[1]})
         .than(res.json("העדכון בוצע בהצלחה"))
             .catch(err => res.status(400).json('Error: ' + err));
     },
     deleteUser:(req,res)=>{
-        const deleteThrapist = new user(req.body);
-        deleteThrapist.delete()
-        .than(res.json("המחקיה בוצעה בהצלחה"))
+        users.deleteOne({Email:req.body.Email})
+        .than(res.json("המחיקה בוצעה בהצלחה"))
+            .catch(err => res.status(400).json('Error: ' + err));
+    },
+    deletePatient:(req,res)=>{
+        console.log("delete ", req.body.Email);
+        Patients.deleteOne({Email: req.body.Email})
+        .than(res.json("המחיקה בוצעה בהצלחה"))
             .catch(err => res.status(400).json('Error: ' + err));
     },
 }
