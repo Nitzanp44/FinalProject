@@ -1,5 +1,6 @@
 let express = require('express');
 const router = express.Router();
+const passport = require("passport");
 
 const {
     login,
@@ -13,6 +14,8 @@ const {
     therapistList,
     allPatientsList,
     updateUser,
+    updatePatient,
+    deletePatient,
     deleteUser
   } = require('../controllers/index.js');
   router.post('/login',login);
@@ -26,6 +29,8 @@ const {
   router.post('/therapistList',therapistList);
   router.post('/allPatientsList',allPatientsList);
   router.post('/updateUser',updateUser);
+  router.post('/updatePatient',updatePatient);
   router.post('/deleteUser',deleteUser);
+  router.post('/deletePatient',deletePatient);
   
   module.exports = router;
