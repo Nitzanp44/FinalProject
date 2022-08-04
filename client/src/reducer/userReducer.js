@@ -1,6 +1,7 @@
 let userIntianal = {
   ID:"",
   Name:"",
+  Type:"",
 };
 
 const user = (state = userIntianal, action) =>{
@@ -9,11 +10,13 @@ const user = (state = userIntianal, action) =>{
           let user = action.payload;
           userIntianal.ID=user.ID;
           userIntianal.Name=user.Name;
+          userIntianal.Type=user.Type;
           return userIntianal;
         }
         case "LOGOUT":{
           userIntianal.ID="";
           userIntianal.Name="";
+          userIntianal.Type="";
           return userIntianal;
         }
         default:

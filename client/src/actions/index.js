@@ -83,6 +83,13 @@ export const changeModalShow = () => {
     };
 };
 
+
+export const changeAddModalShow = () => {
+    return {
+            type: "CHANGE_ADD_MODAL_SHOW"
+    };
+};
+
 export const changeCanvasShow = () => {
     return {
             type: "CHANGE_CANVAS_SHOW"
@@ -134,6 +141,20 @@ export const setPracticeList = (newData) => {
 export const setPatientList = (newData) => {
     return {
             type: "INTIANAL_PATIENT_LIST",
+            payload: newData
+    };
+};
+
+export const setAllPatientList = (newData) => {
+    return {
+            type: "INTIANAL_ALL_PATIENT_LIST",
+            payload: newData
+    };
+};
+
+export const setAllTherapistList = (newData) => {
+    return {
+            type: "INTIANAL_ALL_THERAPIST_LIST",
             payload: newData
     };
 };

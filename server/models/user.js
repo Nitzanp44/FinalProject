@@ -1,17 +1,18 @@
 const mongoose = require("mongoose");
 
-const therapistsSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
         ID:{ type: String, required: true, unique: true, index: true },
         Name: { type: String, required: true},
         Email:{ type: String, required: true },
         Phone: { type: String, required: true },
         Password: { type: String, required: true },
+        Type: { type: String, required: true },
         created_at: Date,
         updated_at: Date
     }); 
 
     // on every save, add the date
-    therapistsSchema.pre('save', function(next) {
+    userSchema.pre('save', function(next) {
         // get the current date
         let currentDate = new Date();
         this.IsActive=true;
@@ -23,4 +24,4 @@ const therapistsSchema = mongoose.Schema({
         next();
     });
 
-    module.exports = mongoose.model('therapists', therapistsSchema);
+    module.exports = mongoose.model('user', userSchema);
