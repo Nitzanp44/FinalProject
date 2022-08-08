@@ -27,7 +27,7 @@ export const axiosGet = async (domain) => {
     setTimeout(() => store.dispatch(stopSpinner()), 500);
     try{
         let res = await axios.get(SERVER_BASE_URL + '/' + domain );
-        return res.data;
+        return res;
     } catch(err) {
         store.dispatch(stopSpinner());
         console.log('err --->', err);

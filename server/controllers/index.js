@@ -59,9 +59,9 @@ module.exports={
     allPatientsList:(req,res)=>{
         Patients.find()
         .then(lst=>{  
-            console.log(lst);              
+           // console.log(lst);              
             res.json(lst)})
-        .catch(err => res.status(400).json('Error: ' + err));
+        //.catch(err => res.status(400).json('Error: ' + err));
     },
 
     addPatient:(req,res)=>{
@@ -109,9 +109,6 @@ module.exports={
         weights.find()
         .then(lst=>{
             if(lst){
-                // let IDlst=[];
-                // lst.forEach(l=>
-                //     IDlst.push(l.ID))
                 res.json(lst);
     }})
         .catch(err => res.status(400).json('Error: ' + err));
