@@ -21,7 +21,7 @@ const updateRecord = async (lineId) => {
         line.dataset.name = record.Name;
         renderRecord(line, lineId, index, record.Email, record.Phone, record.Name);
         if(line.dataset.type == "patient"){
-            await axiosPost({Email: lineId}, 'updatePatient');
+            await axiosPost([{Email: lineId}, record], 'updatePatient');
         }
     
         if(line.dataset.type == "therapist"){

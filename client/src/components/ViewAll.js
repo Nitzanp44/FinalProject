@@ -1,4 +1,4 @@
-import { axiosPost } from '../actions/serverHelper';
+import { axiosGet } from '../actions/serverHelper';
 import { useSelector, useDispatch } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
 import AddPatient from './AddPatient';
@@ -14,7 +14,7 @@ const ViewAll = (props) => {
     let showList = [];
 
     const getData = async (data) => {
-        let res = await axiosPost({}, data);
+        let res = await axiosGet(data);
         if(res.data){
            if(data == 'allPatientsList'){
             dispatch(setAllPatientList(res.data));
@@ -65,7 +65,7 @@ const ViewAll = (props) => {
                                 <td className='col-2'>{index}</td>
                                 <td className='col-2'>
                                     <button data-line-id={val.Email} className="btn btn-outline-success" onClick={editLine}>
-                                        <i class='fas fa-sm me-3 fa-fw fa-edit' data-line-id="${lineId}"></i>
+                                        <i className='fas fa-sm me-3 fa-fw fa-edit' data-line-id={val.Email} onClick={editLine}></i>
                                     </button>
                                 </td>
                             </tr>)}

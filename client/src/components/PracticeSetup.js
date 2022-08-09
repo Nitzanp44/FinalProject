@@ -72,7 +72,6 @@ const PracticeSetup =() =>  {
     const selectedWeights=(e)=>
     {
         macAdress=e;
-        console.log(macAdress);
     }
 
     return (
