@@ -22,7 +22,8 @@ const PracticeSetup =() =>  {
     let macAdress="";
     
     const getWeightsList = async () => {
-        let WeightsList= await axiosGet('weightsList');
+        let res= await axiosGet('weightsList');
+        let WeightsList=res.data;
         dispatch(weigthsListChange(WeightsList));
     };
 

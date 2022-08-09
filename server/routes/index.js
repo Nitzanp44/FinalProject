@@ -38,12 +38,3 @@ const {
   router.post('/deletePatient',deletePatient);
   
   module.exports = router;
-
-
-  // router.post('/login', passport.authenticate("local", login);
-//   router.post(
-  //     '/login',
-  //     function(req, res) {
-    //        console.log('passport.authenticate ---> ',req);
-    //     }
-    //  );

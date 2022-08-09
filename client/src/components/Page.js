@@ -4,14 +4,23 @@ import PracticeSummary from './PracticeSummary';
 import PracticeSetup from './PracticeSetup';
 import PreviousPractice from './PreviousPractice';
 import ViewAll from "./ViewAll";
-import ViewAllWeights from "./ViewAllWeights";
+import Chat from "./Chat";
+import { useSelector, useDispatch } from 'react-redux';
+import io from "socket.io-client";
+const socket = io.connect("http://localhost:3001");
 
 const Page = () =>  {
+    const therapist = useSelector((state) => state.user);
+
+    if (therapist.Name !== "") {
+        socket.emit("join_room", 1);
+    }
 
     return (
         <div>
+        <div>
             <Routes>
-                <Route exact path='/' element={<PracticeSetup/>} />
+                {/* <Route exact path='/' element={<PracticeSetup/>} /> */}
                 <Route path="/practiceSetup" element={<PracticeSetup/>} />
                 <Route path="/practicePage" element={<PracticePage/>} />
                 <Route path="/practiceSummary" element={<PracticeSummary/>} />
