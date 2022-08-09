@@ -4,6 +4,7 @@ import PracticeSummary from './PracticeSummary';
 import PracticeSetup from './PracticeSetup';
 import PreviousPractice from './PreviousPractice';
 import ViewAll from "./ViewAll";
+import ViewAllWeights from "./ViewAllWeights";
 
 const Page = () =>  {
 
@@ -17,6 +18,7 @@ const Page = () =>  {
                 <Route path="/previousPractice" element={<PreviousPractice/>} />
                 <Route path="/viewAllPatient" element={<ViewAll viewAt ={"patient"}/>} />
                 <Route path="/viewAllTherapist" element={<ViewAll viewAt ={"therapist"}/>} />
+                <Route path="/viewAllWeights" element={<ViewAllWeights/>} />
             </Routes>
         </div>
     )
