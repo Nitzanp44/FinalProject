@@ -20,7 +20,6 @@ const ViewAllWeights = (props) => {
 
     
     if(weightsListState.length == 0){
-        console.log(weightsListState);
         getData('weightsList');
     }
     showList = weightsListState;
@@ -34,7 +33,6 @@ const ViewAllWeights = (props) => {
                             <th className='col-2'>כתובת MAC</th>
                             <th className='col-2'>מספר עמדה</th>
                             <th className='col-2'>#</th>
-                            <th className='col-2'>עריכה</th>
                         </tr>
                     </thead>
                 </table>
@@ -47,11 +45,6 @@ const ViewAllWeights = (props) => {
                                 <td className='col-2'>{val.macAdress}</td>
                                 <td className='col-2'>{val.ID}</td>
                                 <td className='col-2'>{index}</td>
-                                <td className='col-2'>
-                                    <button data-line-id={val.Email} className="btn btn-outline-success" onClick={editLine}>
-                                        <i class='fas fa-sm me-3 fa-fw fa-edit' data-line-id="${lineId}"></i>
-                                    </button>
-                                </td>
                             </tr>)}
                         </tbody>               
                 </table>

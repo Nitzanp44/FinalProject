@@ -65,7 +65,7 @@ const ViewAll = (props) => {
                                 <td className='col-2'>{index}</td>
                                 <td className='col-2'>
                                     <button data-line-id={val.Email} className="btn btn-outline-success" onClick={editLine}>
-                                        <i class='fas fa-sm me-3 fa-fw fa-edit' data-line-id="${lineId}"></i>
+                                        <i className='fas fa-sm me-3 fa-fw fa-edit' data-line-id={val.Email} onClick={editLine}></i>
                                     </button>
                                 </td>
                             </tr>)}
