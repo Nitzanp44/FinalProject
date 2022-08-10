@@ -40,19 +40,7 @@ const Page = () =>  {
                       
                       <div className="wrapper"> 
                       <Chat socket={socket} username={therapist.Name} room={1} />
-                      {/* <div class="header"> 
-                      <h6>Let's Chat - Online</h6> 
-                      </div>
-                       <div class="text-center p-2"> 
-                       <span>Please fill out the form to start chat!</span> 
-                       </div>
-                        <div class="chat-form"> 
-                        <input type="text" class="form-control" placeholder="Name"/> 
-                        <input type="text" class="form-control" placeholder="Email"/> 
-                        <textarea class="form-control" placeholder="Your Text Message"></textarea>
-                         <button class="btn btn-success btn-block">Submit</button> 
-                         </div>  */}
-                         </div>
+                    </div>
         </div>
         </div>
     )
