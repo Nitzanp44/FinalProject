@@ -14,9 +14,6 @@ const EntranceManagement = () => {
                                 <li className="nav-item">
                                     <Link className="nav-link" to={"/sign-in"}>כניסה</Link>
                                 </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to={"/sign-up"}>הרשמה</Link>
-                                </li>
                             </ul>
                         </div>
                     </div>

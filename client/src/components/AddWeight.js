@@ -4,32 +4,24 @@ import { setPatientList, changeCanvasShow, changeModalShow } from '../actions/in
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 
-const AddTherapist = () => {
-    const dispatch = useDispatch();
+const AddWeight = () => {
   
     const onSubmit =  async () =>{
-        await axiosPost(user, 'addTherapist');
+        await axiosPost(weight, 'addWeight');
     }
 
     const updateUserDetails = (e) =>{
-        user[e.target.name] = e.target.value;
+        weight[e.target.name] = e.target.value;
     }
     
     let inputsArr = [
-        {label: 'שם', name: 'Name', type: 'text', placeHolder: 'אנא הקלד שם', icon: 'fa-user'},
-        {label: 'דואר אלקטרוני', name: 'Email', type: 'email', placeHolder: 'אנא הקלד שם', icon: 'fa-envelope'},
-        {label: 'תעודת זהות', name: 'ID', type: 'text', placeHolder: 'אנא הקלד שם', icon: 'fa-id-card'},
-        {label: 'טלפון נייד', name: 'Phone', type: 'text', placeHolder: 'אנא הקלד שם', icon: 'fa-phone'},
-        {label: 'סיסמא', name: 'Password', type: 'text', placeHolder: 'אנא הקלד שם', icon: 'fa-key'},
+        {label: 'MAC כתובת', name: 'macAdress', type: 'email', placeHolder: 'אנא הקלד שם', icon: 'fa-sitemap'},
+        {label: 'מספר מזהה', name: 'ID', type: 'text', placeHolder: 'אנא הקלד שם', icon: 'fa-tag'},
     ]
 
-    let user = {
-        Name:"",
-        Email:"",
+    let weight = {
         ID:"",
-        Phone:"",
-        Password: "",
-        Type: "therapist"
+        macAdress:"",
     };
 
     return(
@@ -52,11 +44,11 @@ const AddTherapist = () => {
                     </div>
                 )}
                 <div className='d-flex justify-content-center mt-4'>
-                    <Link to="/viewAllTherapist" type="button" className='btn btn-outline-secondary' onClick={onSubmit}>הוסף מטפל</Link >
+                    <Link to="/viewAllWeights" type="button" className='btn btn-outline-secondary' onClick={onSubmit}>הוסף משקולת</Link >
                 </div>
             </form>
         </div>
     )
 }
 
-export default AddTherapist;
+export default AddWeight;
