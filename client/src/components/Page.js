@@ -42,7 +42,7 @@ const Page = () =>  {
                       
                       <div className="wrapper"> 
                       <Chat socket={socket} username={therapist.Name} room={1} />
-                         </div>
+                    </div>
         </div>
         </div>
     )
