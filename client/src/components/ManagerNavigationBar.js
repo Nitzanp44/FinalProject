@@ -22,7 +22,7 @@ const ManagerNavigationBar = () => {
                         <span className="navbar-text-primary">שלום {therapist.Name}</span>
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <Link className="nav-link" to={"/practicePage"}>פרטי משקולות</Link>
+                                <Link className="nav-link" to={"/viewAllWeights"}>פרטי משקולות</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to={"/viewAllPatient"}>פרטי מטופלים</Link>

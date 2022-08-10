@@ -25,7 +25,8 @@ const AddPatient = () => {
         {label: 'דואר אלקטרוני', name: 'Email', type: 'email', placeHolder: 'אנא הקלד שם', icon: 'fa-envelope'},
         {label: 'תעודת זהות', name: 'ID', type: 'text', placeHolder: 'אנא הקלד שם', icon: 'fa-id-card'},
         {label: 'טלפון נייד', name: 'Phone', type: 'text', placeHolder: 'אנא הקלד שם', icon: 'fa-phone'},
-        {label: 'גיל', name: 'Age', type: 'number', placeHolder: 'אנא הקלד שם', icon: 'fa-calendar'}
+        {label: 'גיל', name: 'Age', type: 'number', placeHolder: 'אנא הקלד שם', icon: 'fa-calendar'},
+        {label: ((therapist.Type == "therapist")? (therapist.ID).toString():'תעודת זהות מטפל'), name: 'IDTherapist', type: 'text', placeHolder: 'אנא הקלד שם', icon: 'fa-user-md'}
     ]
 
     let user = {

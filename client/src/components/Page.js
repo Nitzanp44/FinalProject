@@ -4,6 +4,7 @@ import PracticeSummary from './PracticeSummary';
 import PracticeSetup from './PracticeSetup';
 import PreviousPractice from './PreviousPractice';
 import ViewAll from "./ViewAll";
+import ViewAllWeights from "./ViewAllWeights";
 import Chat from "./Chat";
 import { useSelector, useDispatch } from 'react-redux';
 import io from "socket.io-client";
@@ -18,16 +19,17 @@ const Page = () =>  {
 
     return (
         <div>
-        <div>
-            <Routes>
-                {/* <Route exact path='/' element={<PracticeSetup/>} /> */}
-                <Route path="/practiceSetup" element={<PracticeSetup/>} />
-                <Route path="/practicePage" element={<PracticePage/>} />
-                <Route path="/practiceSummary" element={<PracticeSummary/>} />
-                <Route path="/previousPractice" element={<PreviousPractice/>} />
-                <Route path="/viewAllPatient" element={<ViewAll viewAt ={"patient"}/>} />
-                <Route path="/viewAllTherapist" element={<ViewAll viewAt ={"therapist"}/>} />
-            </Routes>
+            <div>
+                <Routes>
+                    <Route exact path='/' element={<PracticeSetup/>} />
+                    <Route path="/practiceSetup" element={<PracticeSetup/>} />
+                    <Route path="/practicePage" element={<PracticePage/>} />
+                    <Route path="/practiceSummary" element={<PracticeSummary/>} />
+                    <Route path="/previousPractice" element={<PreviousPractice/>} />
+                    <Route path="/viewAllPatient" element={<ViewAll viewAt ={"patient"}/>} />
+                    <Route path="/viewAllTherapist" element={<ViewAll viewAt ={"therapist"}/>} />
+                    <Route path="/viewAllWeights" element={<ViewAllWeights/>} />
+                </Routes>
             </div>
             <div>
                 <input type="checkbox" id="check"/> 
@@ -40,7 +42,7 @@ const Page = () =>  {
                       
                       <div className="wrapper"> 
                       <Chat socket={socket} username={therapist.Name} room={1} />
-                    </div>
+                         </div>
         </div>
         </div>
     )

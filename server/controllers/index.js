@@ -99,8 +99,15 @@ module.exports={
     },
 
     addTherapist:(req,res)=>{
-        const newThrapist = new user(req.body);
+        const newThrapist = new users(req.body);
         newThrapist.save()
+        .than((p)=>res.json("ההרשמה בוצעה בהצלחה"))
+            .catch(err => res.status(400).json('Error: ' + err));
+    },
+    
+    addWeight:(req,res)=>{
+        const newWeight = new weights(req.body);
+        newWeight.save()
         .than((p)=>res.json("ההרשמה בוצעה בהצלחה"))
             .catch(err => res.status(400).json('Error: ' + err));
     },
@@ -113,26 +120,39 @@ module.exports={
     }})
         .catch(err => res.status(400).json('Error: ' + err));
     },
+
     updateUser:(req,res)=>{
-        users.updateOne(req.body[0], {$set: req.body[1]})
-        .than(res.json("העדכון בוצע בהצלחה"))
-            .catch(err => res.status(400).json('Error: ' + err));
+        users.updateOne(req.body[0], {$set: req.body[1]}, (error, deleteRecord) =>{
+            if(!error){
+                res.json(deleteRecord);
+            }
+        }
+            );
     },
+
     updatePatient:(req,res)=>{
-        Patients.updateOne(req.body[0], {$set: req.body[1]})
-        .than(res.json("העדכון בוצע בהצלחה"))
-            .catch(err => res.status(400).json('Error: ' + err));
+        Patients.updateOne(req.body[0], {$set: req.body[1]}, (error, deleteRecord) =>{
+            if(!error){
+                res.json(deleteRecord);
+            }
+        }
+            );
     },
+
     deleteUser:(req,res)=>{
-        users.deleteOne({Email:req.body.Email})
-        .than(res.json("המחיקה בוצעה בהצלחה"))
-            .catch(err => res.status(400).json('Error: ' + err));
+        users.findOneAndRemove({Email: req.body.Email}, (error, deleteRecord) =>{
+            if(!error){
+                res.json(deleteRecord);
+            }
+        })
     },
+
     deletePatient:(req,res)=>{
-        console.log("delete ", req.body.Email);
-        Patients.deleteOne({Email: req.body.Email})
-        .than(res.json("המחיקה בוצעה בהצלחה"))
-            .catch(err => res.status(400).json('Error: ' + err));
+        Patients.findOneAndRemove({Email: req.body.Email}, (error, deleteRecord) =>{
+            if(!error){
+                res.json(deleteRecord);
+            }
+        })
     },
 }
 
